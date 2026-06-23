@@ -1,0 +1,499 @@
+===============================================================================
+ PawIntel AI Portal — How Each Completed Service Works
+===============================================================================
+ Document purpose : Plain-language explanation of every service built so far,
+                    including the technology used and the step-by-step flow.
+ Last updated     : 2026-06-23
+ Status           : 9 of 9 core services complete (ALL DONE)
+===============================================================================
+
+
+-------------------------------------------------------------------------------
+ 0. SYSTEM OVERVIEW (the big picture)
+-------------------------------------------------------------------------------
+
+The project is split into THREE separate programs ("microservices") that talk
+to each other over HTTP. Each can be developed and run independently.
+
+    +-------------------+      +---------------------+      +--------------------+
+    |  FRONTEND         |      |  BACKEND            |      |  PYTHON AI SERVICE |
+    |  React + Vite     | ---> |  Node.js + Express  | ---> |  FastAPI + Keras   |
+    |  Port 5173        | <--- |  Port 5000          | <--- |  Port 8000         |
+    +-------------------+      +----------+----------+      +--------------------+
+                                          |
+                                          v
+                                 +-------------------+        +----------------+
+                                 |  MongoDB Atlas    |        |  Groq AI API   |
+                                 |  (breeds, history)|        |  (LLM, cloud)  |
+                                 +-------------------+        +----------------+
+
+  - FRONTEND  : What the user sees (pages, forms, buttons). It NEVER talks to
+                the database or AI directly; it only calls the Backend.
+  - BACKEND   : The "brain in the middle". Validates input, talks to the
+                database, calls the AI services, and shapes the response.
+  - PYTHON AI : Runs the trained image-recognition model (TensorFlow/Keras).
+  - MongoDB   : Stores the 200-breed encyclopedia + user history.
+  - Groq API  : A cloud Large Language Model (LLM) used for text/chat answers
+                and structured nutrition plans. Model: openai/gpt-oss-20b.
+
+Why split it up? So a "breed team", an "AI team", and a "frontend team" can
+each finish their own part without breaking the others.
+
+
+===============================================================================
+ SERVICE #1 — AI DOG BREED IDENTIFICATION
+===============================================================================
+
+WHAT IT DOES
+  The user uploads a photo of a dog. The system predicts the breed (top 3
+  guesses with confidence %) and shows full breed details (origin, temperament,
+  health issues, etc.).
+
+TECHNOLOGY
+  - Frontend : React file upload + axios (multipart/form-data)
+  - Backend  : Express + multer (handles the uploaded file in memory)
+               + axios + form-data (forwards the image to Python)
+  - AI       : Python FastAPI + TensorFlow/Keras deep-learning model
+               File: python-backend/dog_breed_model.keras
+               Input: 224 x 224 RGB image | Output: 120 dog-breed classes
+  - Database : MongoDB (to attach the detailed breed profile)
+
+STEP-BY-STEP FLOW
+  1. User selects an image on the "AI Breed Recognition" page and clicks
+     "Analyze now".
+  2. Frontend sends the file to:   POST /api/breed/identify   (key: "image")
+  3. Backend (multer) reads the image into memory, then forwards it to the
+     Python service:               POST http://localhost:8000/predict
+  4. Python loads the image, resizes it to 224x224, and runs the Keras model.
+     The model returns a probability for each of the 120 breeds.
+  5. Python returns the TOP 3 breeds + confidence. If the best guess is below
+     35% confidence, it replies "cannot identify clearly" instead of guessing.
+  6. Backend takes those breed names and looks them up in the MongoDB "Breed"
+     collection to attach origin, size, temperament, health issues, etc.
+  7. Backend returns the combined result; the frontend displays it nicely.
+
+KEY FILES
+  Frontend : frontend/src/pages/BreedRecognition/BreedRecognitionPage.jsx
+             frontend/src/api/breed.api.js            (identifyBreed)
+  Backend  : backend/src/routes/imageRecognition.routes.js
+             backend/src/controllers/imageRecognition.controller.js
+             backend/src/services/ai/breed-identification.service.js
+             backend/src/middlewares/upload.middleware.js   (multer)
+  Python   : python-backend/app/api/routes.py        (/predict endpoint)
+             python-backend/app/services/model_service.py (loads & runs model)
+             python-backend/app/core/config.py       (the 120 breed names)
+
+EXAMPLE RESULT (real test with a Husky photo)
+  Siberian Husky  — 72%  (origin: Russia, high energy, full profile)
+  Eskimo Dog      — 28%
+  Alaskan Malamute — 0%
+
+NOTE
+  Only the *trained model* file is used. The original training dataset is NOT
+  part of this project.
+
+
+===============================================================================
+ SERVICE #6 — AI NUTRITION RECOMMENDATION
+===============================================================================
+
+WHAT IT DOES
+  The user fills a form about their dog (breed, weight, age, activity, goal,
+  allergies...). The system returns a personalized feeding plan: calories per
+  day, meals per day, recommended/avoid foods, feeding schedule, supplements,
+  and portion guidance.
+
+TECHNOLOGY
+  - Frontend : React form + fetch
+  - Backend  : Express + express-validator (input checking)
+  - AI       : Groq LLM (model openai/gpt-oss-20b) using "structured outputs"
+               (JSON Schema) so the AI is forced to return clean, valid JSON.
+  - Database : MongoDB (breed lookup + saving NutritionHistory)
+
+STEP-BY-STEP FLOW
+  1. User submits the nutrition form on the "AI Nutrition Diagnosis" page.
+  2. Frontend sends the data to:   POST /api/nutrition/recommend
+  3. Backend validates the input (weight ranges, required fields, etc.).
+  4. Backend computes a SAFE BASELINE estimate using biology/math
+     (calories from weight, meals from life stage...). This is the fallback.
+  5. Backend looks up the breed in MongoDB to enrich the prompt with real data.
+  6. Backend builds a prompt and calls Groq, asking for a JSON nutrition plan
+     that stays close to the safe baseline.
+  7. If Groq answers correctly -> that AI plan is returned (high confidence).
+     If Groq fails for any reason -> the safe baseline is returned instead, so
+     the feature NEVER breaks for the user.
+  8. The result is saved to "NutritionHistory" and returned to the frontend.
+
+KEY FILES
+  Frontend : frontend/src/pages/Nutrition/NutritionPage.jsx
+  Backend  : backend/src/routes/nutrition.routes.js
+             backend/src/controllers/nutrition.controller.js
+             backend/src/services/nutrition/...           (baseline engine)
+             backend/src/services/ai/nutrition-ai.service.js (Groq call)
+             backend/src/services/ai/groq.service.js       (structured output)
+             backend/src/prompts/nutrition/nutrition.prompt.js
+             backend/src/config/groq.js                    (Groq client)
+
+IMPORTANT TECHNICAL DETAIL
+  Groq's "json_schema" structured-output mode only works with certain models.
+  We use "openai/gpt-oss-20b". (The older "llama-3.3-70b-versatile" does NOT
+  support it and silently fell back to the baseline — that was fixed.)
+
+EXAMPLE RESULT (Siberian Husky, 24kg, adult, high activity)
+  Calories/day: 1335 | Meals/day: 2 | Confidence: 0.95
+  + recommended foods, feeding schedule, hydration tips, portion guidance.
+
+
+===============================================================================
+ SERVICE #2 — AI CHATBOT (VETERINARY ASSISTANT)
+===============================================================================
+
+WHAT IT DOES
+  A chat window where the user asks dog-care questions in natural language and
+  gets helpful answers from an AI "veterinary assistant". It remembers the
+  conversation so follow-up questions make sense.
+
+TECHNOLOGY
+  - Frontend : React chat UI (message list + input) + axios
+  - Backend  : Express + express-validator
+  - AI       : Groq LLM (openai/gpt-oss-20b) — plain conversational text
+               (NOT structured JSON, because a chat reply is free text)
+  - Database : MongoDB (saves each Q&A to "ChatHistory")
+
+STEP-BY-STEP FLOW
+  1. User types a question in the Chatbot page and presses Send.
+  2. Frontend sends the message PLUS the recent conversation to:
+                                   POST /api/chatbot   { message, history }
+  3. Backend validates the message (1–2000 characters).
+  4. Backend builds the message list for the AI:
+       - a SYSTEM prompt that defines the assistant's personality and rules
+         (only dog topics, be safe, advise a real vet for emergencies, never
+          give human-medicine doses, reply in the user's language).
+       - the last ~10 turns of history (so it has context).
+       - the new user message.
+  5. Backend calls Groq's chat completion and gets a text reply.
+  6. The Q&A is saved to "ChatHistory" (non-blocking — if saving fails the
+     user still gets the answer).
+  7. The reply is returned and shown in the chat bubble. While waiting, the UI
+     shows a "PawIntel is typing…" indicator.
+
+KEY FILES
+  Frontend : frontend/src/pages/Chatbot/ChatbotPage.jsx
+             frontend/src/api/chatbot.api.js          (sendChatMessage)
+  Backend  : backend/src/routes/chatbot.routes.js
+             backend/src/controllers/chatbot.controller.js
+             backend/src/services/ai/chatbot.service.js
+             backend/src/prompts/chatbot/chatbot.prompt.js
+             backend/src/validations/chatbot.validation.js
+             backend/src/models/ChatHistory.js
+
+SAFETY DESIGN
+  The system prompt keeps the bot on-topic (dogs only) and makes it recommend
+  a real veterinarian for anything serious. It is an assistant, not a
+  replacement for a vet.
+
+
+===============================================================================
+ SERVICE #5 — DYNAMIC DOG ENCYCLOPEDIA
+===============================================================================
+
+WHAT IT DOES
+  A searchable library of dog breeds. The user can browse all breeds or search
+  by name, and each card shows origin, lifespan, size, energy, temperament,
+  and health notes. The data is LIVE from the database (not hardcoded).
+
+TECHNOLOGY
+  - Frontend : React + axios, with a debounced search box
+  - Backend  : Express
+  - Database : MongoDB (the "Breed" collection, ~200 breeds seeded)
+  - No AI here — this is a classic database-driven feature.
+
+STEP-BY-STEP FLOW
+  1. The Encyclopedia page loads and requests the breed list:
+                                   GET /api/breeds?limit=60
+  2. As the user types in the search box, the frontend waits ~350ms (so it
+     doesn't fire on every keystroke) then requests:
+                                   GET /api/breeds?search=husky
+  3. Backend runs a case-insensitive search on the breed name in MongoDB,
+     with pagination (page/limit), sorted alphabetically.
+  4. Backend returns { items, total, page, totalPages }.
+  5. Frontend renders one responsive card per breed. Cards reflow from
+     3 -> 2 -> 1 columns depending on screen width.
+  6. A single breed can also be fetched by id OR name:
+                                   GET /api/breeds/Golden%20Retriever
+
+KEY FILES
+  Frontend : frontend/src/pages/Encyclopedia/EncyclopediaPage.jsx
+             frontend/src/api/breed.api.js            (getBreeds, getBreed)
+  Backend  : backend/src/routes/breed.routes.js
+             backend/src/controllers/breed.controller.js
+             backend/src/services/breed/breed.service.js
+             backend/src/models/Breed.js
+  Seed     : backend/src/seed/seedBreeds.js  +  seed/breeds.json
+             (run once with: npm run seed)
+
+EXAMPLE
+  GET /api/breeds?search=husky  ->  Siberian Husky (Russia, large, high energy)
+  GET /api/breeds?limit=1       ->  total: 200 breeds in the database
+
+
+===============================================================================
+ SERVICE #3 — PERSONALIZED BREED RECOMMENDATION
+===============================================================================
+
+WHAT IT DOES
+  The user answers a few lifestyle questions (home size, activity level, family
+  type, climate, experience, shedding tolerance). The system recommends the best
+  3-5 dog breeds with a match score (%) and short reasons for each.
+
+TECHNOLOGY
+  - Frontend : React form + axios
+  - Backend  : Express + express-validator
+  - AI       : Groq LLM (openai/gpt-oss-20b) in JSON-object mode (it RANKS the
+               breeds and writes the reasons)
+  - Database : MongoDB (provides the candidate breeds + final details)
+
+STEP-BY-STEP FLOW
+  1. User submits preferences on the "AI Breed Recommendation" page.
+  2. Frontend sends them to:        POST /api/recommendation
+  3. Backend turns the "hard" preferences into a database query and pulls a
+     CANDIDATE list of breeds (e.g. apartment -> only small/apartment-friendly
+     breeds; high activity -> only medium/high-energy breeds). Up to 30 candidates.
+  4. If the filters were too strict (few candidates), it automatically broadens
+     the search so there is always something to recommend.
+  5. Backend sends the candidate list + the user's preferences to the AI and
+     asks it to pick the best 3-5 and explain why. IMPORTANT: the AI may ONLY
+     choose from the real candidate names, so it can never invent a fake breed.
+  6. If the AI fails, a simple heuristic returns the first few candidates so the
+     feature still works.
+  7. Each AI pick is enriched with full breed details from the DB, sorted by
+     match score, and returned to the frontend.
+
+KEY FILES
+  Frontend : frontend/src/pages/Recommendation/RecommendationPage.jsx
+             frontend/src/api/recommendation.api.js     (recommendBreeds)
+  Backend  : backend/src/routes/recommendation.routes.js
+             backend/src/controllers/recommendation.controller.js
+             backend/src/services/ai/breed-recommendation.service.js
+             backend/src/prompts/recommendation/breed-recommendation.prompt.js
+             backend/src/validations/recommendation.validation.js
+
+WHY JSON-OBJECT MODE (not strict json_schema)
+  Groq's STRICT schema mode rejected (HTTP 400) the longer recommendation output.
+  We switched to the more forgiving "json_object" mode and parse it ourselves.
+  (Nutrition still uses strict schema because its output is small and fixed.)
+
+EXAMPLE RESULT (large house, high activity, family with kids)
+  Australian Shepherd 95% | Belgian Malinois 93% | Border Collie 92%
+  Anatolian Shepherd 90% | Akita 88%  (each with reasons)
+
+
+===============================================================================
+ SERVICE #4 — SMART SEARCH (NATURAL LANGUAGE)
+===============================================================================
+
+WHAT IT DOES
+  Instead of dropdown filters, the user types a plain sentence like
+  "low shedding apartment dogs" or "friendly dogs for kids", and the system
+  understands the meaning and returns matching breeds.
+
+TECHNOLOGY
+  - Frontend : React search box + example chips + axios
+  - Backend  : Express
+  - AI       : Groq LLM (openai/gpt-oss-20b) to interpret the sentence
+  - Plus     : A deterministic RULE-BASED parser as a safety net
+  - Database : MongoDB (the breed search itself)
+
+STEP-BY-STEP FLOW
+  1. User types a sentence on the "Smart Breed Search" page (or clicks an
+     example chip).
+  2. Frontend calls:                GET /api/search?q=...
+  3. Backend interprets the sentence in TWO ways and merges them:
+       a) A rule-based parser scans for obvious words ("apartment", "low
+          shedding", "kids", "active"...) and maps them to filters. This is
+          deterministic and always runs.
+       b) The AI parses the sentence into the same filter shape, catching
+          phrasings the rules miss.
+     Merging both makes the search reliable even when the AI under-reads a query.
+  4. The merged filters become a MongoDB query (size, energyLevel, sheddingLevel,
+     familyFriendly, apartmentFriendly, temperament keywords).
+  5. If no structured filters are found, it falls back to a plain text search
+     across breed name / description / temperament.
+  6. Backend returns the matching breeds PLUS the "interpreted" filters, so the
+     UI can show the user how it understood their request.
+
+KEY FILES
+  Frontend : frontend/src/pages/Search/SearchPage.jsx
+             frontend/src/api/search.api.js              (smartSearch)
+  Backend  : backend/src/routes/search.routes.js
+             backend/src/controllers/search.controller.js
+             backend/src/services/breed/breed-search.service.js
+             backend/src/prompts/search/search.prompt.js
+
+EXAMPLE RESULTS (real tests)
+  "low shedding apartment dogs"  -> sheddingLevel:low + apartmentFriendly:true
+                                    -> Bichon Frise, Chinese Crested, ...
+  "calm small dogs for seniors"  -> size:small + energyLevel:low -> 10 breeds
+  "protective guard dogs"        -> temperament keyword "Protective" -> matches
+
+
+===============================================================================
+ SERVICE #8 — REAL-TIME VETERINARY ASSISTANCE
+===============================================================================
+
+WHAT IT DOES
+  Helps the user find veterinary clinics near them in an emergency. It uses the
+  browser's location, lists nearby clinics sorted by distance, shows whether
+  each is open 24/7, and gives a one-tap "Call" button.
+
+TECHNOLOGY
+  - Frontend : React + the browser Geolocation API (navigator.geolocation)
+  - Backend  : Express
+  - Math     : Haversine formula (calculates real distance between two
+               latitude/longitude points on Earth)
+  - Data     : A seeded clinic list (backend/src/data/clinics.json)
+
+  NOTE: This demo uses a built-in clinic list with real coordinates (Hanoi).
+  To show live real-world clinics anywhere, swap the data source for a maps API
+  (e.g. Google Places or OpenStreetMap) — the rest of the flow stays the same.
+
+STEP-BY-STEP FLOW
+  1. The "Emergency Vet Assistance" page asks the browser for the user's GPS
+     location (with their permission).
+  2. Frontend calls:                GET /api/vet/nearby?lat=...&lng=...
+     - If the user denies location, it calls without coordinates and the
+       backend falls back to central Hanoi.
+     - An optional "24/7 only" toggle adds &open24h=true.
+  3. Backend calculates the distance from the user to every clinic using the
+     Haversine formula, sorts them closest-first, and (optionally) keeps only
+     the 24/7 ones.
+  4. Backend returns the clinics with their distance in km.
+  5. Frontend shows a card per clinic: name, address, rating, open status, and
+     a "Call" button (tel: link). Green border = 24/7, red = limited hours.
+
+KEY FILES
+  Frontend : frontend/src/pages/VetAssistance/VetAssistancePage.jsx
+             frontend/src/api/vet.api.js               (getNearbyClinics)
+  Backend  : backend/src/routes/vet.routes.js
+             backend/src/controllers/vet.controller.js
+             backend/src/services/vet/vet.service.js   (Haversine distance)
+             backend/src/data/clinics.json             (clinic list)
+
+EXAMPLE RESULT (GPS near Cau Giay, Hanoi)
+  0.0 km - Pawcare International Veterinary Hospital (24/7)
+  2.4 km - Hanoi Pet Emergency Center (24/7)
+  3.3 km - Family Pet Clinic (limited hours)
+
+
+===============================================================================
+ SERVICE #7 — IMAGE GALLERY WITH AI TAGGING
+===============================================================================
+
+WHAT IT DOES
+  The user uploads dog photos. The AI automatically detects the breed and adds
+  tags (breed, size, energy, temperament). Photos are shown in a gallery that
+  can be filtered by tag.
+
+TECHNOLOGY
+  - Frontend : React upload + tag-filter grid + axios
+  - Backend  : Express + multer (memory upload), Node 'fs' to save files,
+               express.static to serve them
+  - AI       : REUSES Service #1 (Python Keras breed model + DB enrichment)
+  - Database : MongoDB (stores each image's tags + metadata in "GalleryImage")
+  - Storage  : Local folder backend/uploads/ (served at /uploads/...)
+
+STEP-BY-STEP FLOW
+  1. User uploads a photo on the "AI Tagging Gallery" page.
+  2. Frontend sends it to:          POST /api/gallery   (key "image")
+  3. Backend runs the SAME breed-identification pipeline used by #1 to get the
+     top breed + details, and converts them into hashtags:
+       e.g. #Dog #SiberianHusky #Large #highEnergy #Active #Intelligent
+     (If the model can't recognize the image, it still saves it as #Untagged
+      so the upload never fails.)
+  4. Backend saves the image file to backend/uploads/ with a unique name.
+  5. Backend stores a record in MongoDB (image URL, breed, confidence, tags).
+  6. The new tagged image is returned and appears instantly at the top of the
+     gallery. Clicking a tag filters the gallery by that tag.
+
+KEY FILES
+  Frontend : frontend/src/pages/Gallery/GalleryPage.jsx
+             frontend/src/api/gallery.api.js          (uploadGalleryImage, getGallery)
+  Backend  : backend/src/routes/gallery.routes.js
+             backend/src/controllers/gallery.controller.js
+             backend/src/services/image/image-tagging.service.js (AI tags)
+             backend/src/services/image/image-upload.service.js  (saves file)
+             backend/src/models/GalleryImage.js
+  Storage  : backend/uploads/   (git-ignored; created automatically)
+
+EXAMPLE RESULT (uploaded a Husky photo)
+  breed: Siberian Husky (72%)
+  tags:  #Dog #SiberianHusky #Large #highEnergy #Active #Intelligent
+
+NOTE
+  Images are stored locally for the demo. For production you would store them in
+  a cloud bucket (the repo already has Cloudinary config that just needs keys).
+
+
+===============================================================================
+ SHARED CONCEPTS (used by several services)
+===============================================================================
+
+  REST API        : The frontend and backend talk using simple HTTP requests
+                    (GET to read, POST to send data) and JSON messages.
+
+  CONTROLLER /     : The backend is layered for clarity:
+  SERVICE /          - route       = the URL ("/api/chatbot")
+  ROUTE pattern      - controller  = reads the request, sends the response
+                     - service     = the actual logic (call AI, query DB)
+                     - validation  = checks the input is safe/correct
+                     - model       = the database table definition (Mongoose)
+
+  ENV VARIABLES   : Secrets and settings live in backend/.env, e.g.
+                    MONGO_URI (database), GROQ_API_KEY (AI), GROQ_MODEL,
+                    PYTHON_AI_SERVICE_URL. They are never hardcoded.
+
+  GRACEFUL        : Nutrition falls back to a safe baseline if the AI fails.
+  FALLBACKS         Breed lookup still returns AI guesses even if the DB has
+                    no matching breed. Chat saving failures don't block replies.
+
+
+===============================================================================
+ HOW TO RUN EVERYTHING (3 terminals)
+===============================================================================
+
+  Terminal 1 — Python AI service:
+      cd python-backend
+      .\venv\Scripts\Activate
+      python -m app.main                 # -> http://localhost:8000
+
+  Terminal 2 — Backend:
+      cd backend
+      npm run dev                        # -> http://localhost:5000
+      (first time only: npm run seed)    # loads the 200 breeds into MongoDB
+
+  Terminal 3 — Frontend:
+      cd frontend
+      npm run dev                        # -> http://localhost:5173
+
+  Then open http://localhost:5173 in the browser.
+
+
+===============================================================================
+ QUICK ENDPOINT REFERENCE (what's live today)
+===============================================================================
+
+  POST /api/breed/identify          Upload image -> breed prediction (#1)
+  POST /api/nutrition/recommend     Dog profile  -> nutrition plan     (#6)
+  POST /api/chatbot                 Message      -> AI vet reply        (#2)
+  GET  /api/breeds                  List/search breeds                  (#5)
+  GET  /api/breeds/:idOrName        One breed by id or name             (#5)
+  POST /api/recommendation          Lifestyle    -> ranked breed matches (#3)
+  GET  /api/search?q=...            Plain-language search -> breeds      (#4)
+  GET  /api/vet/nearby?lat=&lng=    Nearby vet clinics by distance       (#8)
+  POST /api/gallery                 Upload image -> AI auto-tag          (#7)
+  GET  /api/gallery                 List tagged images (filter by ?tag=) (#7)
+  GET  /health                      Backend health check
+
+===============================================================================
+ END OF DOCUMENT
+===============================================================================

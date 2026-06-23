@@ -1,0 +1,154 @@
+/* Global App Layout */
+.app-layout {
+  display: flex;
+  min-height: calc(100vh - 70px); /* Height minus navbar */
+  background: var(--bg);
+}
+
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+}
+
+.app-main-content {
+  flex-grow: 1;
+  padding: 2.5rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .app-main-content {
+    padding: 1.5rem;
+  }
+}
+
+.content-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Section Panels */
+.section-panel {
+  animation: panel-fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  text-align: left;
+}
+
+.section-panel h2 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+}
+
+.panel-desc {
+  color: var(--text);
+  font-size: 1rem;
+  margin: 0 0 2rem;
+}
+
+@keyframes panel-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Demo Groups */
+.demo-group {
+  margin-bottom: 2.5rem;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .demo-group {
+    background: rgba(31, 32, 40, 0.4);
+  }
+}
+
+.demo-group h3 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  color: var(--text-h);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+/* Row utils */
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.items-center {
+  align-items: center;
+}
+
+/* Card Grid Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Tab panes */
+.tab-pane {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.tab-pane h3 {
+  margin: 0 0 0.5rem;
+  color: var(--text-h);
+}
+
+.tab-pane p {
+  color: var(--text);
+  margin: 0;
+}
+
+/* ticks and spacer from Vite template */
+.ticks {
+  position: relative;
+  width: 100%;
+}
+
+.ticks::before,
+.ticks::after {
+  content: '';
+  position: absolute;
+  top: -4.5px;
+  border: 5px solid transparent;
+}
+
+.ticks::before {
+  left: 0;
+  border-left-color: var(--border);
+}
+
+.ticks::after {
+  right: 0;
+  border-right-color: var(--border);
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 1024px) {
+  #spacer {
+    height: 48px;
+  }
+}

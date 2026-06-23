@@ -1,0 +1,82 @@
+[
+  {
+    "id": "c1",
+    "name": "Pawcare International Veterinary Hospital",
+    "address": "12 Tran Duy Hung, Cau Giay, Hanoi",
+    "lat": 21.0075,
+    "lng": 105.7995,
+    "phone": "+84 24 1234 5678",
+    "open24h": true,
+    "rating": 4.8
+  },
+  {
+    "id": "c2",
+    "name": "Happy Paws Animal Clinic",
+    "address": "85 Xuan Thuy, Cau Giay, Hanoi",
+    "lat": 21.0368,
+    "lng": 105.7827,
+    "phone": "+84 24 2345 6789",
+    "open24h": false,
+    "rating": 4.6
+  },
+  {
+    "id": "c3",
+    "name": "Hanoi Pet Emergency Center",
+    "address": "200 Tay Son, Dong Da, Hanoi",
+    "lat": 21.0067,
+    "lng": 105.8222,
+    "phone": "+84 24 3456 7890",
+    "open24h": true,
+    "rating": 4.7
+  },
+  {
+    "id": "c4",
+    "name": "Animal Care Veterinary Clinic",
+    "address": "47 Hang Bong, Hoan Kiem, Hanoi",
+    "lat": 21.0301,
+    "lng": 105.8470,
+    "phone": "+84 24 4567 8901",
+    "open24h": false,
+    "rating": 4.5
+  },
+  {
+    "id": "c5",
+    "name": "Royal Vet 24/7",
+    "address": "5 Nguyen Van Cu, Long Bien, Hanoi",
+    "lat": 21.0405,
+    "lng": 105.8760,
+    "phone": "+84 24 5678 9012",
+    "open24h": true,
+    "rating": 4.9
+  },
+  {
+    "id": "c6",
+    "name": "Smart Vet Clinic",
+    "address": "120 Giai Phong, Hai Ba Trung, Hanoi",
+    "lat": 20.9945,
+    "lng": 105.8410,
+    "phone": "+84 24 6789 0123",
+    "open24h": false,
+    "rating": 4.4
+  },
+  {
+    "id": "c7",
+    "name": "PetHealth Veterinary Hospital",
+    "address": "33 Lac Long Quan, Tay Ho, Hanoi",
+    "lat": 21.0680,
+    "lng": 105.8120,
+    "phone": "+84 24 7890 1234",
+    "open24h": true,
+    "rating": 4.7
+  },
+  {
+    "id": "c8",
+    "name": "Family Pet Clinic",
+    "address": "78 Kim Ma, Ba Dinh, Hanoi",
+    "lat": 21.0315,
+    "lng": 105.8190,
+    "phone": "+84 24 8901 2345",
+    "open24h": false,
+    "rating": 4.3
+  }
+]

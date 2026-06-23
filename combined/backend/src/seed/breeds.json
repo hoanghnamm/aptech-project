@@ -1,0 +1,4529 @@
+[
+  {
+    "breedName": "Afghan Hound",
+    "origin": "Afghanistan",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Afghan Hound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Airedale Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Airedale Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Akita",
+    "origin": "Japan",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Akita is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Alaskan Malamute",
+    "origin": "United States",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Alaskan Malamute is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "American Bulldog",
+    "origin": "United States",
+    "size": "medium",
+    "energyLevel": "low",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "American Bulldog is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "American Cocker Spaniel",
+    "origin": "United States",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "American Cocker Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "American Eskimo Dog",
+    "origin": "Germany/United States",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "American Eskimo Dog is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "American Foxhound",
+    "origin": "United States",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "American Foxhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "American Hairless Terrier",
+    "origin": "United States",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "American Hairless Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "American Leopard Hound",
+    "origin": "United States",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "American Leopard Hound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "American Staffordshire Terrier",
+    "origin": "United States",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "American Staffordshire Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "American Water Spaniel",
+    "origin": "United States",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "American Water Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Anatolian Shepherd Dog",
+    "origin": "Turkey",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Anatolian Shepherd Dog is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Appenzeller Sennenhund",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Appenzeller Sennenhund is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Australian Cattle Dog",
+    "origin": "Australia",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Australian Cattle Dog is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Australian Kelpie",
+    "origin": "Australia",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Australian Kelpie is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Australian Shepherd",
+    "origin": "United States",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Australian Shepherd is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Australian Terrier",
+    "origin": "Australia",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Australian Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Basenji",
+    "origin": "Congo",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Basenji is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Basset Hound",
+    "origin": "France",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Basset Hound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Basset Artesien Normand",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Basset Artesien Normand is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Basset Bleu de Gascogne",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Basset Bleu de Gascogne is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Beagle",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Beagle is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Bearded Collie",
+    "origin": "Scotland",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Bearded Collie is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Beauceron",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Beauceron is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Bedlington Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Bedlington Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Belgian Laekenois",
+    "origin": "Belgium",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Belgian Laekenois is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Belgian Malinois",
+    "origin": "Belgium",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Belgian Malinois is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Belgian Sheepdog",
+    "origin": "Belgium",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Belgian Sheepdog is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Belgian Tervuren",
+    "origin": "Belgium",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Belgian Tervuren is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Bergamasco Sheepdog",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Bergamasco Sheepdog is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Berger Picard",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Berger Picard is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Bernese Mountain Dog",
+    "origin": "Switzerland",
+    "size": "giant",
+    "energyLevel": "medium",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Bernese Mountain Dog is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Bichon Frise",
+    "origin": "Mediterranean",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Bichon Frise is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Black and Tan Coonhound",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Black and Tan Coonhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Black Russian Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Black Russian Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Bloodhound",
+    "origin": "Belgium/France",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Bloodhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Boerboel",
+    "origin": "Varies",
+    "size": "giant",
+    "energyLevel": "medium",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Boerboel is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Border Collie",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Border Collie is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Border Terrier",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Border Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Borzoi",
+    "origin": "Russia",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Borzoi is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Boston Terrier",
+    "origin": "United States",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Boston Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Bouvier des Flandres",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Bouvier des Flandres is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Boxer",
+    "origin": "Germany",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Boxer is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Boykin Spaniel",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Boykin Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Bracco Italiano",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Bracco Italiano is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Briard",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Briard is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Brittany",
+    "origin": "France",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Brittany is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Brussels Griffon",
+    "origin": "Belgium",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Brussels Griffon is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Bull Terrier",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Bull Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Bullmastiff",
+    "origin": "United Kingdom",
+    "size": "giant",
+    "energyLevel": "low",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Bullmastiff is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Cairn Terrier",
+    "origin": "Scotland",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Bold"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Cairn Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Canaan Dog",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Canaan Dog is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Canadian Eskimo Dog",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Canadian Eskimo Dog is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Cane Corso",
+    "origin": "Italy",
+    "size": "giant",
+    "energyLevel": "medium",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Cane Corso is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Cardigan Welsh Corgi",
+    "origin": "Wales",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Cardigan Welsh Corgi is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Catahoula Leopard Dog",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Catahoula Leopard Dog is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Cavalier King Charles Spaniel",
+    "origin": "United Kingdom",
+    "size": "medium",
+    "energyLevel": "low",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Cavalier King Charles Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Central Asian Shepherd Dog",
+    "origin": "Varies",
+    "size": "giant",
+    "energyLevel": "high",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Central Asian Shepherd Dog is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Chesapeake Bay Retriever",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Chesapeake Bay Retriever is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Chihuahua",
+    "origin": "Mexico",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Chihuahua is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Chinese Crested",
+    "origin": "China",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Chinese Crested is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Chinese Shar-Pei",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Chinese Shar-Pei is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Chinook",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Chinook is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Chow Chow",
+    "origin": "China",
+    "size": "large",
+    "energyLevel": "low",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Chow Chow is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Cirneco dell'Etna",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Cirneco dell'Etna is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Clumber Spaniel",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "low",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Clumber Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Cocker Spaniel",
+    "origin": "United Kingdom",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Cocker Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Collie",
+    "origin": "Scotland",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Collie is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Coton de Tulear",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Coton de Tulear is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Curly-Coated Retriever",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Curly-Coated Retriever is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Dachshund",
+    "origin": "Germany",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Dachshund is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Dalmatian",
+    "origin": "Croatia",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Dalmatian is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Dandie Dinmont Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Dandie Dinmont Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Doberman Pinscher",
+    "origin": "Germany",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Doberman Pinscher is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Dogo Argentino",
+    "origin": "Argentina",
+    "size": "giant",
+    "energyLevel": "medium",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Dogo Argentino is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Dutch Shepherd",
+    "origin": "Netherlands",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Dutch Shepherd is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "English Cocker Spaniel",
+    "origin": "United Kingdom",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "English Cocker Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "English Foxhound",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "English Foxhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "English Setter",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "English Setter is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "English Springer Spaniel",
+    "origin": "United Kingdom",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "English Springer Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "English Toy Spaniel",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "English Toy Spaniel is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "English Toy Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "English Toy Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Entlebucher Mountain Dog",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Entlebucher Mountain Dog is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Estrela Mountain Dog",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Estrela Mountain Dog is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Eurasier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Eurasier is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Field Spaniel",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Field Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Finnish Lapphund",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Finnish Lapphund is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Finnish Spitz",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Finnish Spitz is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Flat-Coated Retriever",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Flat-Coated Retriever is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Fox Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Fox Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "French Bulldog",
+    "origin": "France",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "French Bulldog is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "French Spaniel",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "French Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "German Longhaired Pointer",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "German Longhaired Pointer is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "German Pinscher",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "German Pinscher is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "German Shepherd Dog",
+    "origin": "Germany",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "German Shepherd Dog is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "German Shorthaired Pointer",
+    "origin": "Germany",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "German Shorthaired Pointer is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "German Spitz",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "German Spitz is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "German Wirehaired Pointer",
+    "origin": "Germany",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "German Wirehaired Pointer is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Giant Schnauzer",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Giant Schnauzer is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Glen of Imaal Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Glen of Imaal Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Golden Retriever",
+    "origin": "Scotland",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Golden Retriever is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Gordon Setter",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Gordon Setter is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Grand Basset Griffon Vendéen",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "low",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Grand Basset Griffon Vendéen is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Great Dane",
+    "origin": "Germany",
+    "size": "giant",
+    "energyLevel": "low",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Great Dane is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Great Pyrenees",
+    "origin": "France/Spain",
+    "size": "giant",
+    "energyLevel": "medium",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Great Pyrenees is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Greyhound",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Greyhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Harrier",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Harrier is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Havanese",
+    "origin": "Cuba",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Havanese is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Ibizan Hound",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Ibizan Hound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Icelandic Sheepdog",
+    "origin": "Iceland",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Icelandic Sheepdog is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Irish Red and White Setter",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Irish Red and White Setter is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Irish Setter",
+    "origin": "Ireland",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Irish Setter is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Irish Terrier",
+    "origin": "Ireland",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Irish Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Irish Water Spaniel",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Irish Water Spaniel is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Irish Wolfhound",
+    "origin": "Ireland",
+    "size": "giant",
+    "energyLevel": "high",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Irish Wolfhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Italian Greyhound",
+    "origin": "Italy",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Italian Greyhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Jagdterrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Jagdterrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Japanese Chin",
+    "origin": "Japan",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Japanese Chin is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Japanese Spitz",
+    "origin": "Japan",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Japanese Spitz is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Jindo",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "high",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Jindo is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Keeshond",
+    "origin": "Netherlands",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Keeshond is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Kerry Blue Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Kerry Blue Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Kishu Ken",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Kishu Ken is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Komondor",
+    "origin": "Hungary",
+    "size": "giant",
+    "energyLevel": "medium",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Komondor is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Kooikerhondje",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Kooikerhondje is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Kuvasz",
+    "origin": "Hungary",
+    "size": "giant",
+    "energyLevel": "medium",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Kuvasz is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Labrador Retriever",
+    "origin": "Canada",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Labrador Retriever is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Lagotto Romagnolo",
+    "origin": "Italy",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Lagotto Romagnolo is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Lakeland Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Lakeland Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Lancashire Heeler",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Lancashire Heeler is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Leonberger",
+    "origin": "Varies",
+    "size": "giant",
+    "energyLevel": "low",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Leonberger is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Lhasa Apso",
+    "origin": "Tibet",
+    "size": "large",
+    "energyLevel": "low",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Lhasa Apso is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Lowchen",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Lowchen is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Maltese",
+    "origin": "Mediterranean",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Maltese is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Manchester Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Manchester Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Maremma Sheepdog",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Maremma Sheepdog is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Mastiff",
+    "origin": "United Kingdom",
+    "size": "giant",
+    "energyLevel": "low",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Mastiff is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Miniature American Shepherd",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Miniature American Shepherd is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Miniature Bull Terrier",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Bold"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Miniature Bull Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Miniature Dachshund",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Miniature Dachshund is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Miniature Pinscher",
+    "origin": "Germany",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Miniature Pinscher is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Miniature Schnauzer",
+    "origin": "Germany",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Miniature Schnauzer is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Mudi",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Mudi is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Neapolitan Mastiff",
+    "origin": "Varies",
+    "size": "giant",
+    "energyLevel": "low",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Neapolitan Mastiff is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Newfoundland",
+    "origin": "Canada",
+    "size": "giant",
+    "energyLevel": "low",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Newfoundland is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Norfolk Terrier",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Bold"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Norfolk Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Norwegian Buhund",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Norwegian Buhund is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Norwegian Elkhound",
+    "origin": "Norway",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Norwegian Elkhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Norwegian Lundehund",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Norwegian Lundehund is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Norwich Terrier",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Bold"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Norwich Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Nova Scotia Duck Tolling Retriever",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Nova Scotia Duck Tolling Retriever is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Old English Sheepdog",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Old English Sheepdog is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Otterhound",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Otterhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Papillon",
+    "origin": "France",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Papillon is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Parson Russell Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Parson Russell Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Pekingese",
+    "origin": "China",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Pekingese is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Pembroke Welsh Corgi",
+    "origin": "Wales",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Pembroke Welsh Corgi is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Perro de Presa Canario",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Perro de Presa Canario is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Petit Basset Griffon Vendéen",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Petit Basset Griffon Vendéen is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Pharaoh Hound",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Pharaoh Hound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Plott Hound",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Plott Hound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Pointer",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Pointer is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Polish Lowland Sheepdog",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Polish Lowland Sheepdog is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Pomeranian",
+    "origin": "Germany/Poland",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Pomeranian is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Poodle",
+    "origin": "Germany/France",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Poodle is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Portuguese Water Dog",
+    "origin": "Portugal",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Portuguese Water Dog is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Presa Canario",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Presa Canario is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Pug",
+    "origin": "China",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Pug is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Puli",
+    "origin": "Hungary",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Puli is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Pyrenean Mastiff",
+    "origin": "Varies",
+    "size": "giant",
+    "energyLevel": "low",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Pyrenean Mastiff is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Pyrenean Shepherd",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Pyrenean Shepherd is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Rat Terrier",
+    "origin": "United States",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Rat Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Redbone Coonhound",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Redbone Coonhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Rhodesian Ridgeback",
+    "origin": "Southern Africa",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Rhodesian Ridgeback is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Rottweiler",
+    "origin": "Germany",
+    "size": "giant",
+    "energyLevel": "medium",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Rottweiler is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Russian Toy",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "medium",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Russian Toy is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Russian Tsvetnaya Bolonka",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Russian Tsvetnaya Bolonka is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Saint Bernard",
+    "origin": "Switzerland",
+    "size": "giant",
+    "energyLevel": "low",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Saint Bernard is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Saluki",
+    "origin": "Middle East",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Saluki is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Samoyed",
+    "origin": "Russia",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Samoyed is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Schipperke",
+    "origin": "Belgium",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Schipperke is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Scottish Deerhound",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Scottish Deerhound is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Scottish Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Scottish Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Sealyham Terrier",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Bold"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Sealyham Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Shar-Pei",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Shar-Pei is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Shetland Sheepdog",
+    "origin": "Scotland",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Shetland Sheepdog is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Shiba Inu",
+    "origin": "Japan",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Shiba Inu is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Shih Tzu",
+    "origin": "China/Tibet",
+    "size": "small",
+    "energyLevel": "low",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Shih Tzu is a compact companion breed that usually thrives on portion control and consistent feeding routines."
+  },
+  {
+    "breedName": "Siberian Husky",
+    "origin": "Russia",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Siberian Husky is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Silky Terrier",
+    "origin": "Varies",
+    "size": "small",
+    "energyLevel": "high",
+    "lifeExpectancy": "12-15 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Bold"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 32,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Silky Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Skye Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Skye Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Sloughi",
+    "origin": "Varies",
+    "size": "medium",
+    "energyLevel": "medium",
+    "lifeExpectancy": "11-14 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": true,
+    "nutritionProfile": {
+      "caloriesPerKg": 35,
+      "proteinRequirement": "medium",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Sloughi is a balanced family breed suited to a stable feeding plan and routine daily activity."
+  },
+  {
+    "breedName": "Smooth Fox Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Smooth Fox Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Soft Coated Wheaten Terrier",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Soft Coated Wheaten Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  },
+  {
+    "breedName": "Spanish Mastiff",
+    "origin": "Varies",
+    "size": "giant",
+    "energyLevel": "low",
+    "lifeExpectancy": "8-11 years",
+    "temperament": [
+      "Calm",
+      "Easygoing",
+      "Gentle",
+      "Protective"
+    ],
+    "sheddingLevel": "high",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 42,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "low"
+    },
+    "description": "Spanish Mastiff is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Spanish Water Dog",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "low",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Spanish Water Dog is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Spinone Italiano",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Spinone Italiano is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Stabyhoun",
+    "origin": "Varies",
+    "size": "large",
+    "energyLevel": "medium",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Balanced",
+      "Friendly",
+      "Adaptable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": true,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "medium",
+      "carbRequirement": "medium"
+    },
+    "description": "Stabyhoun is a larger breed that does best with controlled portions, joint-friendly nutrition, and regular activity."
+  },
+  {
+    "breedName": "Staffordshire Bull Terrier",
+    "origin": "United Kingdom",
+    "size": "large",
+    "energyLevel": "high",
+    "lifeExpectancy": "10-12 years",
+    "temperament": [
+      "Active",
+      "Intelligent",
+      "Trainable",
+      "Protective"
+    ],
+    "sheddingLevel": "medium",
+    "familyFriendly": false,
+    "apartmentFriendly": false,
+    "nutritionProfile": {
+      "caloriesPerKg": 38,
+      "proteinRequirement": "high",
+      "fatRequirement": "high",
+      "carbRequirement": "medium"
+    },
+    "description": "Staffordshire Bull Terrier is an active, intelligent breed that benefits from structured exercise and protein-rich balanced meals."
+  }
+]
