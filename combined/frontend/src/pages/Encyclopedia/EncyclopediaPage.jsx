@@ -1,93 +1,175 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { getBreeds } from '../../api/breed.api';
-import { trackBreedView } from '../../api/analytics.api';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getBreeds } from "../../api/breed.api";
+import { Footer } from "../../components/Footer";
+import { Navbar } from "../../components/Navbar/Navbar";
+import { BreedCard } from "../../components/breed/BreedCard";
+import { BreedFilter } from "../../components/breed/BreedFilter";
+import { BreedSearchHeader } from "../../components/breed/BreedSearchHeader";
+import { BreedPagination } from "../../components/breed/BreedPagination";
 
-export default function EncyclopediaPage() {
-  const [search, setSearch] = useState('');
+const INITIAL_FILTERS = {
+  page: 1,
+  limit: 12, // Tăng limit lên 12 để chia hết cho 3 cột
+  search: "",
+  size: "",
+  sheddingLevel: "",
+  spaceRequirement: "",
+  barkingLevel: "",
+  weatherTolerance: "",
+  vulnerabilityToDisease: "",
+  energyLevel: [],
+};
+
+export function BreedEncyclopedia() {
   const [breeds, setBreeds] = useState([]);
-  const [total, setTotal] = useState(0);
+  const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  const load = useCallback(async (term) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await getBreeds({ search: term, limit: 60 });
-      setBreeds(data.items || []);
-      setTotal(data.total || 0);
-    } catch (err) {
-      setError(err?.response?.data?.message || err?.message || 'Failed to load breeds.');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const [filters, setFilters] = useState(INITIAL_FILTERS);
+  const navigate = useNavigate();
 
-  // Initial load
-  useEffect(() => { load(''); }, [load]);
+  const isFiltered = Object.keys(INITIAL_FILTERS).some((key) => {
+    if (key === "page" || key === "limit") return false;
+    if (Array.isArray(filters[key])) return filters[key].length > 0;
+    return filters[key] !== INITIAL_FILTERS[key];
+  });
 
-  // Debounced search
+  const handleResetFilters = () => {
+    setFilters(INITIAL_FILTERS);
+  };
+
   useEffect(() => {
-    const t = setTimeout(() => load(search.trim()), 350);
-    return () => clearTimeout(t);
-  }, [search, load]);
+    const fetchBreeds = async () => {
+      setLoading(true);
+      try {
+        const params = { ...filters };
+
+        if (filters.energyLevel.length > 0) {
+          params.energyLevel = filters.energyLevel.join(",");
+        } else {
+          delete params.energyLevel;
+        }
+
+        const data = await getBreeds(params);
+
+        if (data && data.items) {
+          setBreeds(data.items || []);
+          setPagination({
+            currentPage: data.page,
+            totalPages: data.totalPages,
+          });
+        } else {
+          setBreeds([]);
+          setPagination(null);
+        }
+      } catch (err) {
+        console.error("Lỗi tải danh sách hồ sơ:", err);
+        setBreeds([]);
+        setPagination(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const delayDebounceFn = setTimeout(() => {
+      fetchBreeds();
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [filters]);
+
+  const handleSingleFilterChange = (filterKey, value) => {
+    setFilters((prev) => ({
+      ...prev,
+      [filterKey]: prev[filterKey] === value ? "" : value,
+      page: 1,
+    }));
+  };
+
+  const handleMultiFilterChange = (filterKey, value) => {
+    setFilters((prev) => {
+      const currentList = prev[filterKey];
+      const isSelected = currentList.includes(value);
+      return {
+        ...prev,
+        [filterKey]: isSelected
+          ? currentList.filter((item) => item !== value)
+          : [...currentList, value],
+        page: 1,
+      };
+    });
+  };
+
+  const handleSearchChange = (e) => {
+    setFilters((prev) => ({ ...prev, search: e.target.value, page: 1 }));
+  };
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= (pagination?.totalPages || 1)) {
+      setFilters((prev) => ({ ...prev, page: newPage }));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
-    <div className="page page-wide">
-      <div>
-        <h1 className="page__title">Dog Encyclopedia</h1>
-        <p className="page__subtitle">
-          In-depth lookup for origin, habits, and specific health issues of each dog breed.
-          {total > 0 && ` (${total} breeds)`}
-        </p>
-      </div>
+    <div className="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-tertiary selection:text-on-tertiary">
+      <Navbar />
 
-      <input
-        type="text"
-        className="input-text"
-        placeholder="🔍 Search breeds (e.g., Husky, Poodle, Corgi)..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <main className="flex-grow w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col gap-12">
+        <section className="flex flex-col gap-8">
+          <BreedSearchHeader
+            searchValue={filters.search}
+            onSearchChange={handleSearchChange}
+          />
 
-      {loading && <div style={{ textAlign: 'center', color: '#999999' }}>Loading breeds…</div>}
-      {error && <div style={{ color: '#E34432', textAlign: 'center', fontWeight: '600' }}>⚠️ {error}</div>}
-      {!loading && !error && breeds.length === 0 && (
-        <div style={{ textAlign: 'center', color: '#999999' }}>No breeds found for "{search}".</div>
-      )}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mt-4 items-start">
+            <BreedFilter
+              filters={filters}
+              isFiltered={isFiltered}
+              onResetFilters={handleResetFilters}
+              onSingleFilterChange={handleSingleFilterChange}
+              onMultiFilterChange={handleMultiFilterChange}
+            />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 18rem), 1fr))', gap: 'var(--space-3)' }}>
-        {breeds.map(breed => (
-          <div
-            key={breed._id}
-            className="card-standard"
-            style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
-            onClick={() => trackBreedView(breed.breedName)}
-            title="Viewing this breed personalizes your recommendations"
-          >
-            <div>
-              <h3 style={{ fontSize: 'var(--fs-600)', marginBottom: 'var(--space-1)' }}>{breed.breedName}</h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)', fontSize: 'var(--fs-400)', color: '#25221E' }}>
-                <div>🌐 <strong>Origin:</strong> {breed.origin || 'Unknown'}</div>
-                <div>⏳ <strong>Lifespan:</strong> {breed.lifeExpectancy || 'Unknown'}</div>
-                <div>📏 <strong>Size:</strong> <span style={{ textTransform: 'capitalize' }}>{breed.size}</span></div>
-                <div>⚡ <strong>Energy:</strong> <span style={{ textTransform: 'capitalize' }}>{breed.energyLevel}</span></div>
-                {breed.temperament?.length > 0 && (
-                  <div>🐾 <strong>Temperament:</strong> {breed.temperament.join(', ')}</div>
-                )}
-                {breed.healthIssues?.length > 0 && (
-                  <div style={{ color: '#E34432' }}>⚠️ <strong>Health:</strong> {breed.healthIssues.join(', ')}</div>
-                )}
-              </div>
-              {breed.description && (
-                <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--fs-300)', color: '#6b645c', lineHeight: '1.5' }}>
-                  {breed.description}
-                </p>
+            <div className="md:col-span-9 flex flex-col gap-12">
+              {loading ? (
+                <div className="w-full py-24 flex justify-center items-center">
+                  <div className="w-8 h-8 border-2 border-secondary/20 border-t-primary rounded-full animate-spin"></div>
+                </div>
+              ) : breeds.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {breeds.map((breed) => (
+                    <BreedCard
+                      key={breed.breedId}
+                      breed={breed}
+                      onClick={() => navigate(`/breeds/${breed.breedId}`)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="w-full py-24 flex flex-col items-center justify-center text-center gap-4">
+                  <span className="material-symbols-outlined text-4xl text-secondary/50">
+                    find_in_page
+                  </span>
+                  <p className="font-body-md text-on-surface-variant italic">
+                    No botanical or biological records found for this query.
+                  </p>
+                </div>
               )}
+
+              <BreedPagination
+                currentPage={pagination?.currentPage || 1}
+                totalPages={pagination?.totalPages || 1}
+                onPageChange={handlePageChange}
+              />
             </div>
           </div>
-        ))}
-      </div>
+        </section>
+      </main>
+      <Footer></Footer>
     </div>
   );
 }
+
+export default BreedEncyclopedia;

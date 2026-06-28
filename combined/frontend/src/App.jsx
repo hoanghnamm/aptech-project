@@ -1,55 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import MainLayout from './layouts/MainLayout';
-import Home from './pages/Home/Home';
-import BreedRecognitionPage from './pages/BreedRecognition/BreedRecognitionPage';
-import ChatbotPage from './pages/Chatbot/ChatbotPage';
-import NutritionPage from './pages/Nutrition/NutritionPage';
-import EncyclopediaPage from './pages/Encyclopedia/EncyclopediaPage';
-import RecommendationPage from './pages/Recommendation/RecommendationPage';
-import SearchPage from './pages/Search/SearchPage';
-import VetAssistancePage from './pages/VetAssistance/VetAssistancePage';
-import GalleryPage from './pages/Gallery/GalleryPage';
-import InsightsPage from './pages/Insights/InsightsPage';
-import { trackPageView } from './api/analytics.api';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+import { BreedEncyclopedia } from "./pages/Encyclopedia/EncyclopediaPage";
+import { BreedProfile } from "./pages/Encyclopedia/BreedProfile";
+import { ImageAnalyzer } from "./pages/BreedRecognition/BreedRecognitionPage";
+import NutritionPage from "./pages/Nutrition/NutritionPage";
+import RecommendationPage from "./pages/Recommendation/RecommendationPage";
+import VetAssistancePage from "./pages/VetAssistance/VetAssistancePage";
+import ChatbotPage from "./pages/Chatbot/ChatbotPage";
+import GalleryPage from "./pages/Gallery/GalleryPage";
+import InsightsPage from "./pages/Insights/InsightsPage";
 
-  // Visitor analytics: log every page view (session-based, anonymous)
-  useEffect(() => {
-    trackPageView(currentPage);
-  }, [currentPage]);
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <Home onNavigate={setCurrentPage} />;
-      case 'identification':
-        return <BreedRecognitionPage />;
-      case 'chatbot':
-        return <ChatbotPage />;
-      case 'nutrition':
-        return <NutritionPage />;
-      case 'encyclopedia':
-        return <EncyclopediaPage />;
-      case 'recommendation':
-        return <RecommendationPage />;
-      case 'search':
-        return <SearchPage />;
-      case 'vet':
-        return <VetAssistancePage />;
-      case 'gallery':
-        return <GalleryPage />;
-      case 'insights':
-        return <InsightsPage onNavigate={setCurrentPage} />;
-      default:
-        return <Home onNavigate={setCurrentPage} />;
-    }
-  };
-
+function App() {
   return (
-    <MainLayout onNavigate={setCurrentPage} currentPage={currentPage}>
-      {renderPage()}
-    </MainLayout>
+    <Router>
+      <Routes>
+        <Route path="/" element={<BreedEncyclopedia />} />
+        <Route path="/identify" element={<ImageAnalyzer />} />
+        <Route path="/breeds/:breedId" element={<BreedProfile />} />
+        <Route path="/nutrition" element={<NutritionPage />} />
+        <Route path="/recommendation" element={<RecommendationPage />} />
+        <Route path="/vet" element={<VetAssistancePage />} />
+        <Route path="/chatbot" element={<ChatbotPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/insights" element={<InsightsPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
+
+export default App;

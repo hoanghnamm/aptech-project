@@ -3,8 +3,7 @@ const { sendSuccess, sendError } = require("../utils/response");
 
 const listBreeds = async (req, res, next) => {
   try {
-    const { search, size, page, limit } = req.query;
-    const result = await breedService.listBreeds({ search, size, page, limit });
+    const result = await breedService.listBreeds(req.query);
     return sendSuccess(res, result, "Breeds fetched");
   } catch (error) {
     next(error);

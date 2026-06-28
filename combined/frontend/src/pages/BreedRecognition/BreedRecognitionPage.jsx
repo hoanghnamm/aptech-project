@@ -1,132 +1,252 @@
-import React, { useState } from 'react';
-import { identifyBreed } from '../../api/breed.api';
-import { trackBreedView } from '../../api/analytics.api';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { identifyBreed } from "../../api/breed.api";
+import { Footer } from "../../components/Footer";
+import { UploadBox } from "../../components/imageRecognition/UploadBox";
+import { ImagePreview } from "../../components/imageRecognition/ImagePreview";
+import { ResultCard } from "../../components/imageRecognition/ResultCard";
+import { Navbar } from "../../components/Navbar/Navbar";
 
-export default function BreedRecognitionPage() {
+export function ImageAnalyzer() {
   const [file, setFile] = useState(null);
-  const [image, setImage] = useState(null);
-  const [analyzing, setAnalyzing] = useState(false);
-  const [result, setResult] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState(null);
+  const [systemFunFact, setSystemFunFact] = useState("");
+  const [loadingText, setLoadingText] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const handleUpload = (e) => {
-    const selected = e.target.files[0];
-    if (selected) {
-      setFile(selected);
-      setImage(URL.createObjectURL(selected));
-      setResult(null);
-      setError(null);
+  const loadingFacts = [
+    "Analyzing cranial structure metrics...",
+    "Cross-referencing pigmentary traits with archival data...",
+    "Evaluating morphological indicators...",
+  ];
+
+  useEffect(() => {
+    let interval;
+    if (loading) {
+      let i = 0;
+      setLoadingText(loadingFacts[0]);
+      interval = setInterval(() => {
+        i++;
+        setLoadingText(loadingFacts[i % loadingFacts.length]);
+      }, 3000);
+    }
+    return () => clearInterval(interval);
+  }, [loading]);
+
+  useEffect(() => {
+    const savedResults = sessionStorage.getItem("identifyResults");
+    const savedPreviewUrl = sessionStorage.getItem("identifyPreviewUrl");
+    const savedFact = sessionStorage.getItem("identifyFact");
+
+    if (savedResults && savedPreviewUrl) {
+      setResults(JSON.parse(savedResults));
+      setPreviewUrl(savedPreviewUrl);
+      setSystemFunFact(savedFact || "");
+    }
+  }, []);
+
+  const handleFileDrop = (e) => {
+    e.preventDefault();
+    const droppedFile = e.dataTransfer?.files[0] || e.target.files[0];
+    if (droppedFile && droppedFile.type.startsWith("image/")) {
+      setFile(droppedFile);
+      setPreviewUrl(URL.createObjectURL(droppedFile));
     }
   };
 
-  const reset = () => {
-    setFile(null);
-    setImage(null);
-    setResult(null);
-    setError(null);
-  };
-
-  const runAIAnalysis = async () => {
+  const handleScan = async () => {
     if (!file) return;
-    setAnalyzing(true);
+    setLoading(true);
     setError(null);
-    setResult(null);
 
     try {
-      const res = await identifyBreed(file);
-      const data = res?.data || res;
+      const data = await identifyBreed(file);
+      const payload = data?.data || data;
 
-      if (!data?.success || !data.predictions?.length) {
-        setError(
-          data?.message ||
-            "Could not identify a dog breed from this image. Try a clearer photo."
-        );
+      if (data?.success || payload?.success || payload?.predictions) {
+        const preds = payload.predictions || payload.data?.predictions || [];
+        const fact = payload.systemFunFact || payload.data?.systemFunFact || "";
+
+        setResults(preds);
+        setSystemFunFact(fact);
+
+        sessionStorage.setItem("identifyResults", JSON.stringify(preds));
+        sessionStorage.setItem("identifyFact", fact);
+        sessionStorage.setItem("identifyPreviewUrl", previewUrl);
       } else {
-        setResult(data);
-        if (data.predictions?.[0]?.breed) trackBreedView(data.predictions[0].breed);
+        setError(
+          "Due to archival limitations or suboptimal lighting of the specimen, the system could not extract identifying features. Please try again with a clearer photograph."
+        );
       }
     } catch (err) {
+      console.error("Analysis Error:", err);
       setError(
-        err?.response?.data?.message ||
-          err?.message ||
-          'Something went wrong while analyzing the image.'
+        "Archival system disruption or invalid imagery detected. Please provide a clearer specimen photograph."
       );
     } finally {
-      setAnalyzing(false);
+      setLoading(false);
     }
   };
 
-  const top = result?.predictions?.[0];
-  const details = top?.details;
+  const resetScan = () => {
+    setFile(null);
+    setPreviewUrl(null);
+    setResults(null);
+    setSystemFunFact("");
+    setError(null);
+    sessionStorage.removeItem("identifyResults");
+    sessionStorage.removeItem("identifyPreviewUrl");
+    sessionStorage.removeItem("identifyFact");
+  };
+
+  const isSplit = loading || results || error;
 
   return (
-    <div className="page">
-      <div>
-        <h1 className="page__title">AI Breed Recognition</h1>
-        <p className="page__subtitle">Upload a clear image of your dog's face or body for AI breed analysis.</p>
-      </div>
+    <div className="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-tertiary selection:text-on-tertiary overflow-x-hidden">
+      <Navbar />
 
-      <div className="card-standard" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderStyle: 'dashed', borderWidth: '2px', padding: 'var(--space-6)', backgroundColor: '#FCFCFC' }}>
-        {image ? (
-          <div style={{ textAlign: 'center', width: '100%' }}>
-            <img src={image} alt="Preview" style={{ maxHeight: 'min(40vh, 18.75rem)', maxWidth: '100%', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-3)' }} />
-            <div style={{ display: 'flex', gap: 'var(--space-1)', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <button className="btn-secondary" onClick={reset} disabled={analyzing}>Choose another photo</button>
-              <button className="btn-primary" onClick={runAIAnalysis} disabled={analyzing}>
-                {analyzing ? 'Scanning image...' : 'Analyze now'}
+      {/* MAIN CONTENT */}
+      <main className="flex-grow w-full px-margin-mobile md:px-margin-desktop py-12 flex flex-col justify-center">
+        {/* HEADER TEXT */}
+        <div
+          className={`text-center max-w-2xl mx-auto flex flex-col gap-4 overflow-hidden transition-all duration-[800ms] ease-in-out ${
+            isSplit
+              ? "max-h-0 opacity-0 mb-0"
+              : "max-h-[200px] opacity-100 mb-10"
+          }`}
+        >
+          <h1 className="font-headline-xl text-primary leading-tight">
+            Digitize Specimen
+          </h1>
+          <p className="font-body-md text-on-surface-variant leading-relaxed">
+            Upload high-resolution photography of the subject to engage the
+            archival identification matrix. Ensure neutral lighting for optimal
+            phenotypical analysis.
+          </p>
+        </div>
+
+        {/* CONTAINER WITH SLIDE EFFECT */}
+        <div
+          className={`mx-auto w-full flex flex-col lg:flex-row items-start transition-all duration-[1000ms] ease-in-out ${
+            isSplit ? "max-w-[1280px]" : "max-w-2xl"
+          }`}
+        >
+          {/* LEFT COLUMN: IMAGE PREVIEW / DROPZONE */}
+          <div
+            className={`w-full shrink-0 transition-all duration-[1000ms] ease-in-out ${
+              isSplit ? "lg:w-5/12 sticky top-24" : "lg:w-full"
+            }`}
+          >
+            <label
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={handleFileDrop}
+              className={`w-full bg-surface-container-lowest flex flex-col items-center justify-center gap-5 relative overflow-hidden group shadow-none transition-all duration-[1000ms] ${
+                previewUrl
+                  ? "border border-secondary/20 p-3 rounded-sm"
+                  : "h-[380px] md:h-[460px] border border-dashed border-secondary/40 cursor-pointer hover:bg-surface-container rounded-sm"
+              }`}
+            >
+              {previewUrl ? (
+                <ImagePreview
+                  previewUrl={previewUrl}
+                  isSplit={isSplit}
+                  results={results}
+                />
+              ) : (
+                <UploadBox />
+              )}
+              {!isSplit && (
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleFileDrop}
+                />
+              )}
+            </label>
+
+            {/* Scan button */}
+            <div
+              className={`flex justify-center overflow-hidden transition-all duration-[800ms] ease-in-out ${
+                isSplit || !file
+                  ? "h-0 opacity-0 mt-0"
+                  : "h-[80px] opacity-100 mt-8"
+              }`}
+            >
+              <button
+                onClick={handleScan}
+                className="px-12 py-4 h-fit rounded-sm font-label-md uppercase tracking-[0.2em] transition-colors duration-300 border-none cursor-pointer bg-primary text-white hover:bg-[#0f2e0d] shadow-none"
+              >
+                Commence Analysis
               </button>
             </div>
           </div>
-        ) : (
-          <label style={{ cursor: 'pointer', textAlign: 'center' }}>
-            <div style={{ fontSize: 'clamp(2.5rem, 1.5rem + 4vw, 3rem)', marginBottom: 'var(--space-2)' }}>📸</div>
-            <span style={{ fontSize: 'var(--fs-btn)', fontWeight: '500', color: '#EE6449' }}>Click to choose photo</span> or drag and drop file here
-            <input type="file" accept="image/*" onChange={handleUpload} style={{ display: 'none' }} />
-          </label>
-        )}
-      </div>
 
-      {error && (
-        <div className="card-standard" style={{ backgroundColor: '#FFF1F0', border: '1px solid rgba(227, 68, 50, 0.25)', color: '#E34432' }}>
-          <strong>⚠️ {error}</strong>
-        </div>
-      )}
+          {/* RIGHT COLUMN: RESULTS CARD */}
+          <div
+            className={`w-full relative z-20 transition-all duration-[1000ms] ease-in-out ${
+              isSplit
+                ? "lg:w-7/12 opacity-100 max-h-[5000px] overflow-visible"
+                : "lg:w-0 opacity-0 max-h-0 lg:max-h-[5000px] overflow-hidden"
+            }`}
+          >
+            <div className="w-full lg:min-w-[650px] lg:pl-16 pt-12 lg:pt-0 flex flex-col gap-10">
+              {/* TRẠNG THÁI LOADING */}
+              {loading && (
+                <div className="flex flex-col items-center justify-center gap-8 min-h-[500px] w-full bg-surface-container-lowest border border-secondary/20 rounded-sm p-12">
+                  <div className="w-12 h-12 border border-secondary/20 border-t-primary rounded-full animate-spin"></div>
+                  <p className="font-body-md text-primary italic text-center animate-pulse tracking-wide">
+                    {loadingText}
+                  </p>
+                </div>
+              )}
 
-      {top && (
-        <div className="card-standard" style={{ backgroundColor: '#FFF6F0', border: '1px solid rgba(238, 100, 73, 0.2)' }}>
-          <h3 style={{ color: '#EE6449', fontSize: 'var(--fs-600)', marginBottom: 'var(--space-2)' }}>AI Analysis Results</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)', fontSize: 'var(--fs-400)' }}>
-            <div><strong>Identified Breed:</strong> {top.breed} (Confidence: {top.confidencePercentage}%)</div>
-
-            {details ? (
-              <>
-                {details.origin && <div><strong>Origin:</strong> {details.origin}</div>}
-                {details.size && <div><strong>Size:</strong> {details.size}</div>}
-                {details.energyLevel && <div><strong>Energy Level:</strong> {details.energyLevel}</div>}
-                {details.lifeExpectancy && <div><strong>Life Expectancy:</strong> {details.lifeExpectancy}</div>}
-                {Array.isArray(details.temperament) && details.temperament.length > 0 && (
-                  <div><strong>Temperament:</strong> {details.temperament.join(', ')}</div>
-                )}
-                {Array.isArray(details.healthIssues) && details.healthIssues.length > 0 && (
-                  <div style={{ color: '#E34432' }}>
-                    <strong>⚠️ Common Health Issues:</strong> {details.healthIssues.join(', ')}
+              {/* TRẠNG THÁI ERROR */}
+              {error && !loading && !results && (
+                <div className="flex flex-col items-center justify-center gap-6 w-full bg-surface-container-lowest border-t-2 border-error p-10 rounded-sm">
+                  <span className="material-symbols-outlined text-[48px] text-error opacity-80 font-light">
+                    troubleshoot
+                  </span>
+                  <div className="text-center flex flex-col gap-3">
+                    <h3 className="font-headline-lg text-error">
+                      Extraction Failed
+                    </h3>
+                    <p className="font-body-md text-on-surface-variant leading-relaxed max-w-lg mx-auto">
+                      {error}
+                    </p>
                   </div>
-                )}
-                {details.description && <div>{details.description}</div>}
-              </>
-            ) : (
-              <div style={{ color: '#999999' }}>No detailed profile found in the encyclopedia for this breed yet.</div>
-            )}
+                  <button
+                    onClick={resetScan}
+                    className="mt-2 font-label-md text-secondary hover:text-primary transition-colors flex items-center gap-2 uppercase tracking-[0.15em] cursor-pointer bg-transparent border-b border-secondary/30 hover:border-primary pb-1"
+                  >
+                    <span className="material-symbols-outlined text-sm">
+                      refresh
+                    </span>
+                    Mount New Specimen
+                  </button>
+                </div>
+              )}
 
-            {result.predictions.length > 1 && (
-              <div style={{ marginTop: 'var(--space-1)' }}>
-                <strong>Other possibilities:</strong>{' '}
-                {result.predictions.slice(1).map((p) => `${p.breed} (${p.confidencePercentage}%)`).join(', ')}
-              </div>
-            )}
+              {/* TRẠNG THÁI RESULTS */}
+              {results && !loading && (
+                <ResultCard
+                  results={results}
+                  systemFunFact={systemFunFact}
+                  onReset={resetScan}
+                  navigate={navigate}
+                />
+              )}
+            </div>
           </div>
         </div>
-      )}
+      </main>
+
+      <Footer />
     </div>
   );
 }
+
+export default ImageAnalyzer;

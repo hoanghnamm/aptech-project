@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   /* Colors */
@@ -318,4 +322,32 @@ h1, h2, h3, h4 {
   .form-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* --- CUSTOM EDITORIAL SCROLLBAR --- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(98, 94, 80, 0.3) transparent;
+}
+html::-webkit-scrollbar {
+  width: 6px;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: rgba(98, 94, 80, 0.3);
+  border-radius: 4px;
+}
+
+/* --- CUSTOM MINIMAL SIDEBAR SCROLLBAR --- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px !important;
+  background: transparent !important;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent !important;
+}
+.custom-scrollbar {
+  scrollbar-width: none !important;
 }
