@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const navigate = useNavigate();
@@ -103,9 +104,7 @@ export function Navbar() {
           className="md:hidden flex items-center justify-center p-2 text-on-surface-variant hover:text-primary bg-transparent border-none cursor-pointer"
           aria-label="Toggle menu"
         >
-          <span className="material-symbols-outlined text-[24px]">
-            {mobileMenuOpen ? "close" : "menu"}
-          </span>
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 

@@ -103,7 +103,7 @@ export function ImageAnalyzer() {
   const isSplit = loading || results || error;
 
   return (
-    <div className="w-full px-margin-mobile md:px-margin-desktop py-12 flex flex-col justify-center overflow-x-hidden">
+    <div className="w-full px-margin-mobile md:px-margin-desktop py-12 flex flex-col items-center justify-center overflow-x-hidden">
         {/* HEADER TEXT */}
         <div
           className={`text-center max-w-2xl mx-auto flex flex-col gap-4 overflow-hidden transition-all duration-[800ms] ease-in-out ${
