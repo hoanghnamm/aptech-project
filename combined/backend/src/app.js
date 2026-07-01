@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
+const authRoutes = require("./routes/auth.routes");
 const nutritionRoutes = require("./routes/nutrition.routes");
 const breedRecognitionRoutes = require("./routes/imageRecognition.routes");
 const chatbotRoutes = require("./routes/chatbot.routes");
@@ -32,6 +33,7 @@ app.get("/health", (req, res) => {
   });
 });
 
+app.use("/api/auth", authRoutes);
 app.use("/api/nutrition", nutritionRoutes);
 app.use("/api/breed", breedRecognitionRoutes);
 app.use("/api/chatbot", chatbotRoutes);
