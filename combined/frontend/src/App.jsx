@@ -1,38 +1,38 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
-import Home from "./pages/Home";
-import { BreedEncyclopedia } from "./pages/BreedEncyclopedia";
-import { BreedProfile } from "./pages/BreedProfile";
-import { ImageAnalyzer } from "./pages/ImageAnalyzer";
-import Recommendation from "./pages/Recommendation";
-import SmartSearch from "./pages/SmartSearch";
-import Chatbot from "./pages/Chatbot";
-import Nutrition from "./pages/Nutrition";
-import Gallery from "./pages/Gallery";
-import VetAssistance from "./pages/VetAssistance";
-import Insights from "./pages/Insights";
+import { BreedEncyclopedia } from "./pages/Encyclopedia/EncyclopediaPage";
+import { BreedProfile } from "./pages/Encyclopedia/BreedProfile";
+import { ImageAnalyzer } from "./pages/BreedRecognition/BreedRecognitionPage";
+import NutritionPage from "./pages/Nutrition/NutritionPage";
+import RecommendationPage from "./pages/Recommendation/RecommendationPage";
+import VetAssistancePage from "./pages/VetAssistance/VetAssistancePage";
+import ChatbotPage from "./pages/Chatbot/ChatbotPage";
+import GalleryPage from "./pages/Gallery/GalleryPage";
+import InsightsPage from "./pages/Insights/InsightsPage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/encyclopedia" element={<BreedEncyclopedia />} />
-        <Route path="/breeds/:breedId" element={<BreedProfile />} />
+        <Route path="/" element={<BreedEncyclopedia />} />
         <Route path="/identify" element={<ImageAnalyzer />} />
-        <Route path="/recommend" element={<Recommendation />} />
-        <Route path="/search" element={<SmartSearch />} />
-        <Route path="/chat" element={<Chatbot />} />
-        <Route path="/nutrition" element={<Nutrition />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/vets" element={<VetAssistance />} />
-        <Route path="/insights" element={<Insights />} />
+        <Route path="/breeds/:breedId" element={<BreedProfile />} />
+        <Route path="/nutrition" element={<NutritionPage />} />
+        <Route path="/recommendation" element={<RecommendationPage />} />
+        <Route path="/vet" element={<VetAssistancePage />} />
+        <Route path="/chatbot" element={<ChatbotPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/insights" element={<InsightsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
 }
 
-export { App };
 export default App;

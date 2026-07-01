@@ -2,105 +2,63 @@ const mongoose = require("mongoose");
 
 const breedSchema = new mongoose.Schema(
   {
-    breedName: {
+    breedId: {
       type: String,
       required: true,
       unique: true,
       trim: true,
       index: true,
     },
-
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     origin: {
       type: String,
       trim: true,
       default: "Unknown",
     },
-
-    size: {
-      type: String,
-      enum: ["toy", "small", "medium", "large", "giant"],
-      required: true,
-    },
-
-    energyLevel: {
-      type: String,
-      enum: ["low", "medium", "high"],
-      default: "medium",
-    },
-
-    lifeExpectancy: {
-      type: String,
-      trim: true,
-      default: "Unknown",
-    },
-
-    temperament: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-
-    sheddingLevel: {
-      type: String,
-      enum: ["low", "medium", "high"],
-      default: "medium",
-    },
-
-    familyFriendly: {
-      type: Boolean,
-      default: true,
-    },
-
-    apartmentFriendly: {
-      type: Boolean,
-      default: false,
-    },
-
-    commonAllergies: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-
-    healthIssues: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-
-    nutritionProfile: {
-      caloriesPerKg: {
-        type: Number,
-        default: 35,
-      },
-      proteinRequirement: {
-        type: String,
-        default: "medium",
-      },
-      fatRequirement: {
-        type: String,
-        default: "medium",
-      },
-      carbRequirement: {
-        type: String,
-        default: "medium",
-      },
-    },
-
-    imageUrl: {
-      type: String,
-      trim: true,
-    },
-
     description: {
       type: String,
       trim: true,
     },
+    thumbnail: {
+      type: String,
+      trim: true,
+    },
+    lifestyleFilters: {
+      size: { type: String },
+      sheddingLevel: { type: String },
+      spaceRequirement: { type: String },
+      barkingLevel: { type: String },
+      weatherTolerance: { type: String },
+      vulnerabilityToDisease: { type: String },
+    },
+    physicalStats: {
+      weight: { type: String },
+      height: { type: String },
+      lifespan: { type: String },
+    },
+    coreTraits: [{ type: String }],
+    careAdvice: [{ type: String }],
+    healthRisks: [{ type: String }],
+    comparisonMetrics: {
+      trainability: { type: Number },
+      energyLevel: { type: Number },
+      apartmentFriendly: { type: Number },
+      kidFriendly: { type: Number },
+      aloneTolerance: { type: Number },
+      petFriendly: { type: Number },
+    },
+    visualArchives: [
+      {
+        url: { type: String },
+        caption: { type: String },
+      }
+    ],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Breed", breedSchema);
+module.exports = mongoose.model("Breed", breedSchema, "dogbreeds");

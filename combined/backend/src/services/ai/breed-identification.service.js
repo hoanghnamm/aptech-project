@@ -1,6 +1,7 @@
 const axios = require("axios");
 const FormData = require("form-data");
 const Breed = require("../../models/Breed");
+const { normalizeBreed } = require("../breed/breed.service");
 
 /**
  * Forward ảnh người dùng upload sang Python AI microservice (TensorFlow/Keras),
@@ -52,24 +53,34 @@ async function identifyBreed(fileBuffer, originalName) {
     ? aiData.predictions
     : [];
 
-  // Tra cứu chi tiết giống chó trong DB theo tên (CLASS_NAMES của model khớp với breedName)
+  // Tra cứu chi tiết giống chó trong DB theo tên (CLASS_NAMES của model khớp với breedName hoặc name)
   const breedNames = aiPredictions.map((p) => p.breed);
   let breedDocs = [];
   try {
-    breedDocs = await Breed.find({ breedName: { $in: breedNames } }).lean();
+    breedDocs = await Breed.find({
+      $or: [
+        { name: { $in: breedNames } },
+        { breedName: { $in: breedNames } },
+      ],
+    }).lean();
   } catch (_) {
     // Nếu DB lỗi/không kết nối, vẫn trả kết quả AI thô thay vì làm sập request
     breedDocs = [];
   }
 
   // Map theo tên đã chuẩn hóa để tra cứu O(1) (không phân biệt hoa/thường, khoảng trắng)
-  const normalize = (s) => String(s).toLowerCase().trim();
-  const breedMap = new Map(breedDocs.map((b) => [normalize(b.breedName), b]));
+  const normalize = (s) => String(s || "").toLowerCase().trim();
+  const breedMap = new Map();
+  for (const doc of breedDocs) {
+    const normalizedDoc = normalizeBreed(doc);
+    if (normalizedDoc.name) breedMap.set(normalize(normalizedDoc.name), normalizedDoc);
+    if (normalizedDoc.breedName) breedMap.set(normalize(normalizedDoc.breedName), normalizedDoc);
+  }
 
   const predictions = aiPredictions.map((p) => {
     const details = breedMap.get(normalize(p.breed)) || null;
     return {
-      breed: details ? details.breedName : p.breed,
+      breed: details ? details.name : p.breed,
       confidence: p.confidence,
       confidencePercentage: Math.round(p.confidence * 100),
       dbSynced: Boolean(details),
@@ -88,3 +99,4 @@ async function identifyBreed(fileBuffer, originalName) {
 module.exports = {
   identifyBreed,
 };
+
