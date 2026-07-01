@@ -61,7 +61,7 @@ export default function GalleryPage() {
       <div className="card-standard" style={{ borderStyle: 'dashed', borderWidth: '2px', textAlign: 'center', backgroundColor: '#FCFCFC' }}>
         <label style={{ cursor: 'pointer', display: 'block' }}>
           <div style={{ fontSize: 'clamp(2rem, 1.5rem + 3vw, 3rem)', marginBottom: 'var(--space-1)' }}>📸</div>
-          <span style={{ color: '#EE6449', fontWeight: '600', fontSize: 'var(--fs-btn)' }}>
+          <span style={{ color: '#154212', fontWeight: '600', fontSize: 'var(--fs-btn)' }}>
             {uploading ? 'Uploading & tagging…' : 'Click to upload a dog photo'}
           </span>
           <input type="file" accept="image/*" onChange={handleUpload} disabled={uploading} style={{ display: 'none' }} />
@@ -74,7 +74,7 @@ export default function GalleryPage() {
       {(allTags.length > 0 || activeTag) && (
         <div style={{ display: 'flex', gap: 'var(--space-1)', flexWrap: 'wrap', alignItems: 'center' }}>
           {activeTag && (
-            <button className="feature-tag" style={{ cursor: 'pointer', background: '#EE6449', color: '#fff' }} onClick={() => filterByTag(activeTag)}>
+            <button className="feature-tag" style={{ cursor: 'pointer', background: '#154212', color: '#fff' }} onClick={() => filterByTag(activeTag)}>
               {activeTag} ✕
             </button>
           )}

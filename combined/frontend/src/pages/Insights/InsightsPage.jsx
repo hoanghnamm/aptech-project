@@ -14,7 +14,7 @@ const BreedCard = ({ breed }) => (
 
 const StatBox = ({ label, value }) => (
   <div className="card-standard" style={{ textAlign: 'center' }}>
-    <div style={{ fontSize: 'var(--fs-metric)', fontWeight: '700', color: '#EE6449' }}>{value}</div>
+    <div style={{ fontSize: 'var(--fs-metric)', fontWeight: '700', color: '#154212' }}>{value}</div>
     <div style={{ fontSize: 'var(--fs-300)', color: '#999999', fontWeight: '600' }}>{label}</div>
   </div>
 );

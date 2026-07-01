@@ -199,14 +199,14 @@ export default function NutritionPage() {
       {result && result.recommendation && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
           {/* Section: Summary & Description */}
-          <div className="card-standard" style={{ borderLeft: '6px solid #EE6449', backgroundColor: '#FFFBF8' }}>
+          <div className="card-standard" style={{ borderLeft: '6px solid #154212', backgroundColor: '#FFFBF8' }}>
             <h3 style={{ marginBottom: 'var(--space-1)', display: 'flex', flexWrap: 'wrap', gap: 'var(--space-1)', justifyContent: 'space-between' }}>
               <span>Plan for: {result.breed?.breedName}</span>
-              <span style={{ fontSize: 'var(--fs-400)', color: result.breedMatched ? '#438952' : '#EE6449' }}>
+              <span style={{ fontSize: 'var(--fs-400)', color: result.breedMatched ? '#438952' : '#154212' }}>
                 {result.breedMatched ? '● Database Matched' : '● Using Fallback Data'}
               </span>
             </h3>
-            <p style={{ color: '#25221E', fontStyle: 'italic' }}>"{result.recommendation.summary}"</p>
+            <p style={{ color: '#1e1c10', fontStyle: 'italic' }}>"{result.recommendation.summary}"</p>
             {result.breed?.description && (
               <p style={{ marginTop: 'var(--space-1)', fontSize: 'var(--fs-400)', color: '#666' }}>{result.breed.description}</p>
             )}
@@ -214,14 +214,14 @@ export default function NutritionPage() {
 
           {/* Section: Key Metrics */}
           <div className="auto-grid">
-            <div className="card-standard" style={{ textAlign: 'center', borderTop: '4px solid #EE6449' }}>
+            <div className="card-standard" style={{ textAlign: 'center', borderTop: '4px solid #154212' }}>
               <div style={{ fontSize: 'var(--fs-300)', color: '#999999', fontWeight: '600' }}>CALORIES / DAY</div>
-              <div style={{ fontSize: 'var(--fs-metric)', fontWeight: '600', color: '#EE6449', margin: 'var(--space-1) 0' }}>{result.recommendation.caloriesPerDay} kcal</div>
+              <div style={{ fontSize: 'var(--fs-metric)', fontWeight: '600', color: '#154212', margin: 'var(--space-1) 0' }}>{result.recommendation.caloriesPerDay} kcal</div>
               <div style={{ fontSize: 'var(--fs-300)' }}>Equivalent to {result.breed?.nutritionProfile?.caloriesPerKg} kcal/kg</div>
             </div>
-            <div className="card-standard" style={{ textAlign: 'center', borderTop: '4px solid #316FEA' }}>
+            <div className="card-standard" style={{ textAlign: 'center', borderTop: '4px solid #744336' }}>
               <div style={{ fontSize: 'var(--fs-300)', color: '#999999', fontWeight: '600' }}>MEAL COUNT</div>
-              <div style={{ fontSize: 'var(--fs-metric)', fontWeight: '600', color: '#316FEA', margin: 'var(--space-1) 0' }}>{result.recommendation.mealsPerDay} meals</div>
+              <div style={{ fontSize: 'var(--fs-metric)', fontWeight: '600', color: '#744336', margin: 'var(--space-1) 0' }}>{result.recommendation.mealsPerDay} meals</div>
               <div style={{ fontSize: 'var(--fs-300)' }}>{result.recommendation.feedingSchedule?.join(' - ')}</div>
             </div>
             <div className="card-standard" style={{ textAlign: 'center', borderTop: '4px solid #438952' }}>
@@ -233,7 +233,7 @@ export default function NutritionPage() {
 
           {/* Section: Breed Metadata (Dữ liệu từ Database) */}
           <div className="card-standard">
-            <h4 style={{ marginBottom: 'var(--space-2)', color: '#25221E' }}>BREED CHARACTERISTICS (DATABASE)</h4>
+            <h4 style={{ marginBottom: 'var(--space-2)', color: '#1e1c10' }}>BREED CHARACTERISTICS (DATABASE)</h4>
             <div className="auto-grid" style={{ fontSize: 'var(--fs-400)' }}>
               <div>
                 <span style={{ color: '#999' }}>Origin:</span> <strong>{result.breed?.origin}</strong>
@@ -258,7 +258,7 @@ export default function NutritionPage() {
 
           {/* Section: In-depth Nutrition Profile */}
           <div className="card-standard" style={{ backgroundColor: '#F8F9FF' }}>
-            <h4 style={{ marginBottom: 'var(--space-2)', color: '#316FEA' }}>IN-DEPTH NUTRITION PROFILE</h4>
+            <h4 style={{ marginBottom: 'var(--space-2)', color: '#744336' }}>IN-DEPTH NUTRITION PROFILE</h4>
             <div className="auto-grid" style={{ textAlign: 'center' }}>
               <div style={{ padding: 'var(--space-1)', background: 'white', borderRadius: 'var(--radius-sm)' }}>
                 <div style={{ fontSize: 'var(--fs-300)', color: '#999' }}>PROTEIN</div>
@@ -277,7 +277,7 @@ export default function NutritionPage() {
 
           {/* Section: Dietary Details */}
           <div className="card-standard">
-            <h4 style={{ marginBottom: 'var(--space-2)', color: '#25221E', borderBottom: '1px solid #EEE', paddingBottom: 'var(--space-1)' }}>DIETARY DETAILS</h4>
+            <h4 style={{ marginBottom: 'var(--space-2)', color: '#1e1c10', borderBottom: '1px solid #EEE', paddingBottom: 'var(--space-1)' }}>DIETARY DETAILS</h4>
             <div className="form-grid">
               <div>
                 <div style={{ color: '#438952', fontWeight: '700', fontSize: 'var(--fs-300)', marginBottom: 'var(--space-1)' }}>✅ RECOMMENDED FOODS</div>
@@ -295,7 +295,7 @@ export default function NutritionPage() {
             </div>
             {result.recommendation.supplementSuggestions?.length > 0 && (
               <div style={{ marginTop: 'var(--space-2)', borderTop: '1px solid rgba(37, 34, 30, 0.08)', paddingTop: 'var(--space-2)' }}>
-                <div style={{ color: '#316FEA', fontWeight: '700', fontSize: 'var(--fs-300)', marginBottom: 'var(--space-1)' }}>💊 SUPPLEMENT SUGGESTIONS</div>
+                <div style={{ color: '#744336', fontWeight: '700', fontSize: 'var(--fs-300)', marginBottom: 'var(--space-1)' }}>💊 SUPPLEMENT SUGGESTIONS</div>
                 <ul style={{ paddingLeft: '1.25rem', fontSize: 'var(--fs-400)', lineHeight: '1.6' }}>
                   {result.recommendation.supplementSuggestions.map((s, i) => <li key={i}>{s}</li>)}
                 </ul>

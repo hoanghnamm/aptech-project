@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { identifyBreed } from "../../api/breed.api";
-import { Footer } from "../../components/Footer";
 import { UploadBox } from "../../components/imageRecognition/UploadBox";
 import { ImagePreview } from "../../components/imageRecognition/ImagePreview";
 import { ResultCard } from "../../components/imageRecognition/ResultCard";
-import { Navbar } from "../../components/Navbar/Navbar";
 
 export function ImageAnalyzer() {
   const [file, setFile] = useState(null);
@@ -105,11 +103,7 @@ export function ImageAnalyzer() {
   const isSplit = loading || results || error;
 
   return (
-    <div className="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-tertiary selection:text-on-tertiary overflow-x-hidden">
-      <Navbar />
-
-      {/* MAIN CONTENT */}
-      <main className="flex-grow w-full px-margin-mobile md:px-margin-desktop py-12 flex flex-col justify-center">
+    <div className="w-full px-margin-mobile md:px-margin-desktop py-12 flex flex-col justify-center overflow-x-hidden">
         {/* HEADER TEXT */}
         <div
           className={`text-center max-w-2xl mx-auto flex flex-col gap-4 overflow-hidden transition-all duration-[800ms] ease-in-out ${
@@ -242,9 +236,6 @@ export function ImageAnalyzer() {
             </div>
           </div>
         </div>
-      </main>
-
-      <Footer />
     </div>
   );
 }

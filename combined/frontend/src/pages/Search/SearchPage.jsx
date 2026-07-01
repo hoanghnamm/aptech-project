@@ -102,7 +102,7 @@ export default function SearchPage() {
               {result.items.map((breed) => (
                 <div key={breed._id} className="card-standard">
                   <h3 style={{ fontSize: 'var(--fs-600)', marginBottom: 'var(--space-1)' }}>{breed.breedName}</h3>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)', fontSize: 'var(--fs-400)', color: '#25221E' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)', fontSize: 'var(--fs-400)', color: '#1e1c10' }}>
                     <div>📏 <strong>Size:</strong> <span style={{ textTransform: 'capitalize' }}>{breed.size}</span></div>
                     <div>⚡ <strong>Energy:</strong> <span style={{ textTransform: 'capitalize' }}>{breed.energyLevel}</span></div>
                     <div>🧼 <strong>Shedding:</strong> <span style={{ textTransform: 'capitalize' }}>{breed.sheddingLevel}</span></div>

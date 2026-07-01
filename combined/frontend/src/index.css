@@ -1,31 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 :root {
-  /* Colors */
-  --primary-coral: #EE6449;
-  --primary-coral-hover: #F07459;
-  --primary-coral-active: #D94D38;
-  --primary-dark: #25221E;
-  --secondary-accent: #316FEA;
-  --success-accent: #438952;
-  --error-state: #E34432;
+  /* Theme: Premium Editorial Organic (forest green + warm cream) */
+  --primary-coral: #154212;          /* primary */
+  --primary-coral-hover: #2d5a27;    /* primary-container */
+  --primary-coral-active: #0e2f0c;
+  --primary-dark: #1e1c10;           /* on-surface */
+  --secondary-accent: #154212;       /* focus/accent -> primary */
+  --success-accent: #2d5a27;
+  --error-state: #ba1a1a;
   --warning-state: #FFC93E;
 
   /* Backgrounds */
-  --bg-white: #FFFFFF;
-  --bg-off-white: #FEFDFC;
-  --bg-light-gray: #FAFAFA;
-  --bg-pale-beige: #FFF6F0;
-  --surface-fill: #FCFCFC;
-  --border-color: rgba(37, 34, 30, 0.18);
+  --bg-white: #FFFFFF;               /* surface-container-lowest */
+  --bg-off-white: #fff9eb;           /* surface (warm cream) */
+  --bg-light-gray: #faf3e0;          /* surface-container-low */
+  --bg-pale-beige: #f4eedb;          /* surface-container */
+  --surface-fill: #faf3e0;
+  --border-color: rgba(30, 28, 16, 0.14);
 
   /* Fonts */
-  --font-display: 'Graphik', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* Elevation */
   --shadow-sm: rgba(37, 34, 30, 0.04) 0px 1px 0px 0px;
@@ -134,7 +133,7 @@ h1, h2, h3, h4 {
 }
 .input-text:focus {
   border-color: var(--secondary-accent);
-  box-shadow: 0px 0px 0px 3px rgba(49, 111, 234, 0.1);
+  box-shadow: 0px 0px 0px 3px rgba(21, 66, 18, 0.12);
 }
 
 /* ---------- Large button variant ---------- */
@@ -154,10 +153,10 @@ h1, h2, h3, h4 {
 .home-hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #FFF6F0 0%, #FFE9DE 100%);
+  background: linear-gradient(135deg, #faf3e0 0%, #e9e2d0 100%);
   padding: clamp(2.5rem, 1.5rem + 4vw, 4.5rem) clamp(1.75rem, 1rem + 3.5vw, 4rem);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(238, 100, 73, 0.15);
+  border: 1px solid rgba(21, 66, 18, 0.15);
   box-shadow: var(--shadow-md);
 }
 
@@ -168,7 +167,7 @@ h1, h2, h3, h4 {
   right: -6%;
   width: clamp(12rem, 22vw, 20rem);
   aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(238, 100, 73, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(21, 66, 18, 0.16), transparent 70%);
   border-radius: 50%;
 }
 
@@ -218,7 +217,7 @@ h1, h2, h3, h4 {
 .feature-card:hover {
   transform: translateY(-0.5rem);
   box-shadow: var(--shadow-md);
-  border-color: rgba(238, 100, 73, 0.35);
+  border-color: rgba(21, 66, 18, 0.35);
 }
 
 .feature-card--alert {
@@ -281,6 +280,7 @@ h1, h2, h3, h4 {
   width: 100%;
   max-width: 50rem;
   margin: 0 auto;
+  padding: var(--space-6) var(--space-3);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);

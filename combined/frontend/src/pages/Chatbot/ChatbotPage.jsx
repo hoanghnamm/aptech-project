@@ -58,8 +58,8 @@ export default function ChatbotPage() {
           <div key={msg.id} style={{ display: 'flex', justifyContent: msg.sender === 'user' ? 'flex-end' : 'flex-start' }}>
             <div style={{
               maxWidth: '75%', padding: '0.75em 1em', borderRadius: 'var(--radius-sm)', fontSize: 'var(--fs-400)', lineHeight: '1.5',
-              backgroundColor: msg.sender === 'user' ? '#EE6449' : '#FFFFFF',
-              color: msg.sender === 'user' ? '#FFFFFF' : '#25221E',
+              backgroundColor: msg.sender === 'user' ? '#154212' : '#FFFFFF',
+              color: msg.sender === 'user' ? '#FFFFFF' : '#1e1c10',
               boxShadow: msg.sender === 'ai' ? 'var(--shadow-sm)' : 'none',
               border: msg.sender === 'ai' ? '1px solid var(--border-color)' : 'none'
             }}>

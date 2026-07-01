@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { Footer } from "../../components/Footer";
 import { getBreed } from "../../api/breed.api";
-import { Navbar } from "../../components/Navbar/Navbar";
 import { BreedProfileHero } from "../../components/breed/BreedProfileHero";
 import { BreedProfileStats } from "../../components/breed/BreedProfileStats";
 import { BreedProfileOrigins } from "../../components/breed/BreedProfileOrigins";
@@ -56,13 +54,11 @@ export function BreedProfile() {
   const remainingImages = visualAssets.slice(4);
 
   return (
-    <div className="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased">
-      <Navbar />
-
+    <>
       {/* 1. HERO SECTION */}
       <BreedProfileHero breed={breed} heroImage={heroImage} />
 
-      <main className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-16 flex flex-col gap-24">
+      <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-16 flex flex-col gap-24">
         {/* Navigation Back */}
         <button
           onClick={() => navigate(-1)}
@@ -93,8 +89,7 @@ export function BreedProfile() {
 
         {/* 6. FULL VISUAL ARCHIVES GALLERY */}
         <BreedProfileGallery remainingImages={remainingImages} />
-      </main>
-      <Footer></Footer>
-    </div>
+      </div>
+    </>
   );
 }

@@ -26,10 +26,10 @@ export default function Home({ onNavigate }) {
 
         {/* Breed Recommendation */}
         <div className="feature-card">
-          <div className="feature-icon" style={{ background: 'rgba(49, 111, 234, 0.1)' }}>
-            <Search size="50%" color="#316FEA" />
+          <div className="feature-icon" style={{ background: 'rgba(116, 67, 54, 0.12)' }}>
+            <Search size="50%" color="#744336" />
           </div>
-          <span className="feature-tag" style={{ background: 'rgba(49, 111, 234, 0.1)', color: '#316FEA', alignSelf: 'flex-start' }}>
+          <span className="feature-tag" style={{ background: 'rgba(116, 67, 54, 0.12)', color: '#744336', alignSelf: 'flex-start' }}>
             AI SUGGESTION
           </span>
           <h3 className="feature-card__title" style={{ marginTop: 'var(--space-2)' }}>Tìm giống chó phù hợp</h3>
@@ -57,7 +57,7 @@ export default function Home({ onNavigate }) {
           </p>
           <div className="feature-tags">
             <span className="feature-tag" style={{ color: '#438952' }}>#Healthy</span>
-            <span className="feature-tag" style={{ color: '#316FEA' }}>#Golden</span>
+            <span className="feature-tag" style={{ color: '#744336' }}>#Golden</span>
           </div>
           <div className="feature-card__spacer" />
           <button className="btn-secondary btn-lg" onClick={() => onNavigate('gallery')}>

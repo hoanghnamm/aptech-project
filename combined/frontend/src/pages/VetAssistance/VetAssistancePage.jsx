@@ -83,7 +83,7 @@ export default function VetAssistancePage() {
           <div key={c.id} className="card-standard" style={{ borderLeft: c.open24h ? '5px solid #438952' : '5px solid #E34432' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 'var(--space-1)', flexWrap: 'wrap' }}>
               <h3 style={{ fontSize: 'var(--fs-600)' }}>{c.name}</h3>
-              <span style={{ fontWeight: '700', color: '#EE6449' }}>{c.distanceKm} km</span>
+              <span style={{ fontWeight: '700', color: '#154212' }}>{c.distanceKm} km</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)', fontSize: 'var(--fs-400)', marginTop: 'var(--space-1)' }}>
               <div>📍 {c.address}</div>

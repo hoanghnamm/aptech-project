@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getBreeds } from "../../api/breed.api";
-import { Footer } from "../../components/Footer";
-import { Navbar } from "../../components/Navbar/Navbar";
 import { BreedCard } from "../../components/breed/BreedCard";
 import { BreedFilter } from "../../components/breed/BreedFilter";
 import { BreedSearchHeader } from "../../components/breed/BreedSearchHeader";
@@ -113,10 +111,7 @@ export function BreedEncyclopedia() {
   };
 
   return (
-    <div className="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-tertiary selection:text-on-tertiary">
-      <Navbar />
-
-      <main className="flex-grow w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col gap-12">
+    <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col gap-12">
         <section className="flex flex-col gap-8">
           <BreedSearchHeader
             searchValue={filters.search}
@@ -166,8 +161,6 @@ export function BreedEncyclopedia() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer></Footer>
     </div>
   );
 }

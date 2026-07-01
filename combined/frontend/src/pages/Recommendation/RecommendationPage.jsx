@@ -114,10 +114,10 @@ export default function RecommendationPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
           <h3 style={{ fontSize: 'var(--fs-600)' }}>Top matches for you</h3>
           {result.recommendations.map((rec) => (
-            <div key={rec.breedName} className="card-standard" style={{ borderLeft: '6px solid #EE6449' }}>
+            <div key={rec.breedName} className="card-standard" style={{ borderLeft: '6px solid #154212' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 'var(--space-1)' }}>
                 <h4 style={{ fontSize: 'var(--fs-600)' }}>{rec.breedName}</h4>
-                <span style={{ fontSize: 'var(--fs-500)', fontWeight: '700', color: '#EE6449' }}>{rec.matchScore}% match</span>
+                <span style={{ fontSize: 'var(--fs-500)', fontWeight: '700', color: '#154212' }}>{rec.matchScore}% match</span>
               </div>
               <ul style={{ paddingLeft: '1.25rem', marginTop: 'var(--space-1)', fontSize: 'var(--fs-400)', lineHeight: '1.6' }}>
                 {rec.reasons.map((r, i) => <li key={i}>{r}</li>)}
