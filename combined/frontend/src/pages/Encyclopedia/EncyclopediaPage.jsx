@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getBreeds } from "../../api/breed.api";
+import { Footer } from "../../components/Footer";
+import { Navbar } from "../../components/Navbar/Navbar";
 import { BreedCard } from "../../components/breed/BreedCard";
 import { BreedFilter } from "../../components/breed/BreedFilter";
 import { BreedSearchHeader } from "../../components/breed/BreedSearchHeader";
@@ -111,57 +113,57 @@ export function BreedEncyclopedia() {
   };
 
   return (
-    <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col gap-12">
-        <section className="flex flex-col gap-8">
-          <BreedSearchHeader
-            searchValue={filters.search}
-            onSearchChange={handleSearchChange}
+    <main className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col gap-12 selection:bg-tertiary selection:text-on-tertiary">
+      <section className="flex flex-col gap-8">
+        <BreedSearchHeader
+          searchValue={filters.search}
+          onSearchChange={handleSearchChange}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mt-4 items-start">
+          <BreedFilter
+            filters={filters}
+            isFiltered={isFiltered}
+            onResetFilters={handleResetFilters}
+            onSingleFilterChange={handleSingleFilterChange}
+            onMultiFilterChange={handleMultiFilterChange}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mt-4 items-start">
-            <BreedFilter
-              filters={filters}
-              isFiltered={isFiltered}
-              onResetFilters={handleResetFilters}
-              onSingleFilterChange={handleSingleFilterChange}
-              onMultiFilterChange={handleMultiFilterChange}
+          <div className="md:col-span-9 flex flex-col gap-12">
+            {loading ? (
+              <div className="w-full py-24 flex justify-center items-center">
+                <div className="w-8 h-8 border-2 border-secondary/20 border-t-primary rounded-full animate-spin"></div>
+              </div>
+            ) : breeds.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {breeds.map((breed) => (
+                  <BreedCard
+                    key={breed.breedId}
+                    breed={breed}
+                    onClick={() => navigate(`/breeds/${breed.breedId}`)}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="w-full py-24 flex flex-col items-center justify-center text-center gap-4">
+                <span className="material-symbols-outlined text-4xl text-secondary/50">
+                  find_in_page
+                </span>
+                <p className="font-body-md text-on-surface-variant italic">
+                  No botanical or biological records found for this query.
+                </p>
+              </div>
+            )}
+
+            <BreedPagination
+              currentPage={pagination?.currentPage || 1}
+              totalPages={pagination?.totalPages || 1}
+              onPageChange={handlePageChange}
             />
-
-            <div className="md:col-span-9 flex flex-col gap-12">
-              {loading ? (
-                <div className="w-full py-24 flex justify-center items-center">
-                  <div className="w-8 h-8 border-2 border-secondary/20 border-t-primary rounded-full animate-spin"></div>
-                </div>
-              ) : breeds.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {breeds.map((breed) => (
-                    <BreedCard
-                      key={breed.breedId}
-                      breed={breed}
-                      onClick={() => navigate(`/breeds/${breed.breedId}`)}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="w-full py-24 flex flex-col items-center justify-center text-center gap-4">
-                  <span className="material-symbols-outlined text-4xl text-secondary/50">
-                    find_in_page
-                  </span>
-                  <p className="font-body-md text-on-surface-variant italic">
-                    No breeds matched your search. Try different words or filters.
-                  </p>
-                </div>
-              )}
-
-              <BreedPagination
-                currentPage={pagination?.currentPage || 1}
-                totalPages={pagination?.totalPages || 1}
-                onPageChange={handlePageChange}
-              />
-            </div>
           </div>
-        </section>
-    </div>
+        </div>
+      </section>
+    </main>
   );
 }
 

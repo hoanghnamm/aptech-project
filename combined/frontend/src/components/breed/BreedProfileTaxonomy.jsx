@@ -28,14 +28,14 @@ const metricDefinitions = {
   },
   petFriendly: {
     label: "Pet Friendly",
-    desc: "How sociable and tolerant this breed is around other dogs and pets.",
+    desc: "Sociability and pack-tolerance towards other biological specimens.",
     scale: "1: Highly territorial — 5: Universally amicable",
   },
 };
 
 const lifestyleDefinitions = {
   size: {
-    label: "Size",
+    label: "Morphological Size",
     desc: "General body mass and structural scale at full maturity.",
   },
   sheddingLevel: {
@@ -79,10 +79,10 @@ export function BreedProfileTaxonomy({ breed }) {
               const def = lifestyleDefinitions[key] || { label: key };
               return (
                 <div key={key} className="flex flex-col gap-3 group relative text-left">
-                  <span className="font-label-md text-secondary/70 uppercase tracking-widest text-[12px] cursor-help border-b border-dashed border-secondary/30 w-fit pb-0.5">
+                  <span className="font-label-md text-on-surface uppercase tracking-widest text-[13px] cursor-help border-b border-dashed border-secondary/30 w-fit pb-0.5">
                     {def.label}
                   </span>
-                  <span className="font-body-md text-on-surface text-[20px] font-medium capitalize">
+                  <span className="font-label-md text-primary font-bold uppercase tracking-widest text-[14px]">
                     {value}
                   </span>
 

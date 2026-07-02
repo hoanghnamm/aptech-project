@@ -6,13 +6,13 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
   return (
     <div className="flex flex-col gap-10 w-full transition-opacity duration-700">
       <div className="flex items-center justify-between border-b border-secondary/20 pb-4">
-        <h2 className="font-headline-xl text-on-surface">What we found</h2>
+        <h2 className="font-headline-xl text-primary">Diagnostic Ledger</h2>
         <button
           onClick={onReset}
           className="font-label-md text-secondary hover:text-primary transition-colors flex items-center gap-2 uppercase tracking-[0.15em] cursor-pointer bg-transparent border-0"
         >
           <span className="material-symbols-outlined text-sm">refresh</span>
-          New photo
+          New Scan
         </button>
       </div>
 
@@ -23,11 +23,17 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
             <div className="flex flex-wrap sm:flex-nowrap justify-between items-start gap-4 border-b border-secondary/20 pb-6 text-left">
               <div className="flex flex-col gap-2 flex-1">
                 <div className="font-label-md text-secondary opacity-80 tracking-[0.2em] uppercase text-[10px]">
-                  Top match
+                  Primary Designation
                 </div>
                 <h3 className="font-headline-xl text-primary leading-tight break-normal hyphens-auto text-[32px] md:text-[40px]">
                   {results[0].breed}
                 </h3>
+                {results[0].details?.origin && (
+                  <div className="flex items-center gap-1.5 text-secondary/70 font-label-md uppercase tracking-wider text-[11px] mt-1.5">
+                    <span className="material-symbols-outlined text-[14px] opacity-80">public</span>
+                    <span>{results[0].details.origin.replaceAll(" / ", ", ")}</span>
+                  </div>
+                )}
               </div>
               <div className="bg-tertiary text-on-tertiary px-4 py-2 font-label-md flex items-center gap-2 rounded-sm uppercase tracking-widest shrink-0 mt-1 shadow-none">
                 <span className="material-symbols-outlined text-[16px]">
@@ -39,7 +45,7 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
 
             <p className="font-body-md text-on-surface-variant leading-relaxed text-[16px] max-w-xl italic border-l-2 border-primary/20 pl-4 py-1 text-left">
               {results[0].details?.description ||
-                "This is our best guess for the breed. Open the full profile for care, temperament and origin."}
+                "Phenotypic analysis indicates correlation with archival records. Proceed to full profile for anatomical data."}
             </p>
 
             {results[0].details?.coreTraits && (
@@ -67,11 +73,11 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
                   )
                 }
                 disabled={!results[0].dbSynced}
-                className="group bg-primary text-white font-label-md uppercase tracking-[0.15em] px-8 py-3.5 rounded-full hover:bg-[#b65a3d] transition-colors duration-300 flex items-center gap-3 disabled:bg-secondary/10 disabled:text-secondary/40 disabled:border disabled:border-secondary/20 disabled:cursor-not-allowed border-none shadow-none cursor-pointer"
+                className="group bg-primary text-white font-label-md uppercase tracking-[0.15em] px-8 py-3.5 hover:bg-[#0f2e0d] transition-colors duration-300 flex items-center gap-3 rounded-sm disabled:bg-secondary/10 disabled:text-secondary/40 disabled:border disabled:border-secondary/20 disabled:cursor-not-allowed border-none shadow-none cursor-pointer"
               >
                 {results[0].dbSynced
-                  ? "View full profile"
-                  : "Profile coming soon"}
+                  ? "Open Archival Record"
+                  : "Record Unavailable"}
                 {results[0].dbSynced && (
                   <span className="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">
                     arrow_forward
@@ -86,7 +92,7 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
         {results.length > 1 && (
           <div className="flex flex-col gap-2">
             <h4 className="font-label-md text-secondary uppercase tracking-[0.2em] border-b border-secondary/20 pb-3 text-[10px] text-left">
-              Other possible matches
+              Correlated Sub-Variants
             </h4>
 
             {results.slice(1, 3).map((match, idx) => (
@@ -122,9 +128,9 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
                     <div className="font-body-sm text-secondary flex items-center gap-2 truncate text-[13px] italic">
                       <span>
                         {idx === 0
-                          ? "Also a strong resemblance."
-                          : "Another possible match."}
-                        {!match.dbSynced && " (no profile yet)"}
+                          ? "Secondary correlation noted."
+                          : "Tertiary correlation noted."}
+                        {!match.dbSynced && " (Unarchived)"}
                       </span>
                     </div>
                   </div>
@@ -145,7 +151,7 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
                 {match.dbSynced && match.details && (
                   <div className="absolute right-[102%] top-1/2 -translate-y-1/2 w-[280px] bg-surface-container-lowest border border-secondary/20 p-5 rounded-sm z-50 opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 hidden md:flex flex-col gap-4 shadow-none">
                     <div className="font-label-md text-primary uppercase tracking-widest text-[10px] font-bold border-b border-secondary/10 pb-2 text-left">
-                      {match.breed} at a glance
+                      {match.breed} Specifications
                     </div>
                     <div className="flex flex-col gap-3">
                       {match.details.physicalStats?.weight && (
@@ -154,7 +160,7 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
                             <span className="material-symbols-outlined text-[14px] opacity-70">
                               scale
                             </span>
-                            Weight
+                            Weight Metric
                           </span>
                           <span className="text-primary font-bold text-[11px] text-right whitespace-nowrap">
                             {match.details.physicalStats.weight}
@@ -167,7 +173,7 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
                             <span className="material-symbols-outlined text-[14px] opacity-70">
                               straighten
                             </span>
-                            Height
+                            Height Metric
                           </span>
                           <span className="text-primary font-bold text-[11px] text-right whitespace-nowrap">
                             {match.details.physicalStats.height}
@@ -180,7 +186,7 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
                             <span className="material-symbols-outlined text-[14px] opacity-70">
                               public
                             </span>
-                            Origin
+                            Geographic Origin
                           </span>
                           <span className="text-primary font-bold text-[11px] tracking-wide text-right whitespace-nowrap truncate">
                             {match.details.origin.replaceAll(" / ", ", ")}
@@ -203,7 +209,7 @@ export function ResultCard({ results, systemFunFact, onReset, navigate }) {
               <span className="material-symbols-outlined text-[14px]">
                 auto_stories
               </span>
-              Did you know?
+              Archival Trivia
             </p>
             <p className="font-body-md text-on-surface-variant italic leading-relaxed">
               "{systemFunFact}"

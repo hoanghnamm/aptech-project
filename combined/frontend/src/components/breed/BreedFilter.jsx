@@ -10,7 +10,7 @@ export function BreedFilter({
   const filterBlocks = [
     {
       key: "size",
-      title: "Size",
+      title: "Morphology Size",
       options: ["Small", "Medium", "Large"],
     },
     {
@@ -20,22 +20,22 @@ export function BreedFilter({
     },
     {
       key: "spaceRequirement",
-      title: "Home Space",
+      title: "Habitat Size",
       options: ["Apartment", "Small Yard", "Large Yard"],
     },
     {
       key: "barkingLevel",
-      title: "Barking",
+      title: "Vocalization",
       options: ["Quiet", "Moderate", "Vocal"],
     },
     {
       key: "weatherTolerance",
-      title: "Climate",
+      title: "Climate Adaptability",
       options: ["Warm", "Cold", "Adaptable"],
     },
     {
       key: "vulnerabilityToDisease",
-      title: "Health Resilience",
+      title: "Pathological Resist.",
       options: ["Hardy", "Moderate", "Fragile"],
     },
   ];
@@ -56,7 +56,7 @@ export function BreedFilter({
       {/* Kinetic Energy */}
       <div className="flex flex-col gap-4">
         <h3 className="font-label-md uppercase text-primary tracking-widest border-b border-primary/20 pb-2">
-          Energy Level
+          Kinetic Energy
         </h3>
         <div className="flex flex-col gap-3">
           {[
@@ -72,7 +72,7 @@ export function BreedFilter({
                 type="checkbox"
                 checked={filters.energyLevel.includes(level.val)}
                 onChange={() => onMultiFilterChange("energyLevel", level.val)}
-                className="appearance-none w-4 h-4 cursor-pointer rounded-sm border border-primary/40 bg-surface relative flex items-center justify-center checked:border-primary after:content-[''] after:w-2 after:h-2 after:bg-primary after:rounded-xs after:scale-0 checked:after:scale-100 after:transition-transform focus:outline-none focus-visible:ring-1 focus-visible:ring-primary/50"
+                className="appearance-none w-4 h-4 cursor-pointer rounded-none border border-primary/40 bg-surface relative flex items-center justify-center checked:border-primary after:content-[''] after:w-2.5 after:h-2.5 after:bg-primary after:rounded-none after:scale-0 checked:after:scale-100 after:transition-transform focus:outline-none focus-visible:ring-1 focus-visible:ring-primary/50"
               />
               <span className="font-body-sm text-on-surface group-hover:text-primary transition-colors">
                 {level.label}
@@ -98,7 +98,7 @@ export function BreedFilter({
                   type="checkbox"
                   checked={filters[filterBlock.key] === opt}
                   onChange={() => onSingleFilterChange(filterBlock.key, opt)}
-                  className="appearance-none w-4 h-4 cursor-pointer rounded-sm border border-primary/40 bg-surface relative flex items-center justify-center checked:border-primary after:content-[''] after:w-2 after:h-2 after:bg-primary after:rounded-xs after:scale-0 checked:after:scale-100 after:transition-transform focus:outline-none focus-visible:ring-1 focus-visible:ring-primary/50"
+                  className="appearance-none w-4 h-4 cursor-pointer rounded-none border border-primary/40 bg-surface relative flex items-center justify-center checked:border-primary after:content-[''] after:w-2.5 after:h-2.5 after:bg-primary after:rounded-none after:scale-0 checked:after:scale-100 after:transition-transform focus:outline-none focus-visible:ring-1 focus-visible:ring-primary/50"
                 />
                 <span className="font-body-sm text-on-surface group-hover:text-primary transition-colors">
                   {opt}

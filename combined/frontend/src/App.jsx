@@ -12,7 +12,7 @@ import { BreedEncyclopedia } from "./pages/Encyclopedia/EncyclopediaPage";
 import { BreedProfile } from "./pages/Encyclopedia/BreedProfile";
 import { ImageAnalyzer } from "./pages/BreedRecognition/BreedRecognitionPage";
 import NutritionPage from "./pages/Nutrition/NutritionPage";
-import RecommendationPage from "./pages/Recommendation/RecommendationPage";
+
 import VetAssistancePage from "./pages/VetAssistance/VetAssistancePage";
 import ChatbotPage from "./pages/Chatbot/ChatbotPage";
 import GalleryPage from "./pages/Gallery/GalleryPage";
@@ -29,7 +29,7 @@ function App() {
           <Route path="/identify" element={<ImageAnalyzer />} />
           <Route path="/breeds/:breedId" element={<BreedProfile />} />
           <Route path="/nutrition" element={<NutritionPage />} />
-          <Route path="/recommendation" element={<RecommendationPage />} />
+
           <Route path="/search" element={<SearchPage />} />
           <Route path="/vet" element={<VetAssistancePage />} />
           <Route path="/chatbot" element={<ChatbotPage />} />

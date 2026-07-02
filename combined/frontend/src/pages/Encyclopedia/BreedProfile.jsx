@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { Footer } from "../../components/Footer";
 import { getBreed } from "../../api/breed.api";
+import { Navbar } from "../../components/Navbar/Navbar";
 import { BreedProfileHero } from "../../components/breed/BreedProfileHero";
 import { BreedProfileStats } from "../../components/breed/BreedProfileStats";
 import { BreedProfileOrigins } from "../../components/breed/BreedProfileOrigins";
@@ -17,6 +19,7 @@ export function BreedProfile() {
   const isFromIdentify = location.state?.from === "identify";
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchBreed = async () => {
       try {
         const data = await getBreed(breedId);
@@ -35,19 +38,19 @@ export function BreedProfile() {
   if (loading)
     return (
       <div className="w-full min-h-screen flex items-center justify-center bg-surface font-body-md text-secondary italic">
-        Loading breed profile…
+        Consulting biological archives...
       </div>
     );
   if (!breed)
     return (
       <div className="w-full min-h-screen flex items-center justify-center bg-surface font-headline-lg text-error">
-        Breed not found
+        Record Not Found
       </div>
     );
 
   // Tách mảng hình ảnh để đan xen và lấy Caption tương ứng
   const visualAssets = breed.visualArchives || [];
-  const heroImage = visualAssets[0]?.url || breed.thumbnail || "https://placehold.co/1200x800/f7dcc0/cb6a4b?text=No+Image";
+  const heroImage = visualAssets[0]?.url || breed.thumbnail || "https://placehold.co/1200x800/efe8d5/154212?text=No+Archival+Image";
   const vintageImg1 = visualAssets[1];
   const vintageImg2 = visualAssets[2];
   const vintageImg3 = visualAssets[3];
@@ -58,7 +61,7 @@ export function BreedProfile() {
       {/* 1. HERO SECTION */}
       <BreedProfileHero breed={breed} heroImage={heroImage} />
 
-      <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-16 flex flex-col gap-24">
+      <main className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-16 flex flex-col gap-24 antialiased">
         {/* Navigation Back */}
         <button
           onClick={() => navigate(-1)}
@@ -67,7 +70,7 @@ export function BreedProfile() {
           <span className="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">
             arrow_back
           </span>
-          {isFromIdentify ? "Back to results" : "Back to Encyclopedia"}
+          {isFromIdentify ? "Return to Identification" : "Return to Archive"}
         </button>
 
         {/* 2. PHYSICAL STATS */}
@@ -89,7 +92,7 @@ export function BreedProfile() {
 
         {/* 6. FULL VISUAL ARCHIVES GALLERY */}
         <BreedProfileGallery remainingImages={remainingImages} />
-      </div>
+      </main>
     </>
   );
 }

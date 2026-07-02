@@ -332,11 +332,19 @@ h1, h2, h3, h4 {
   }
 }
 
-/* --- CUSTOM EDITORIAL SCROLLBAR --- */
+/* --- GLOBAL RESPONSIVE SCALING & SCROLLBAR --- */
 html {
+  font-size: 100%; /* Base 16px */
+  scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: rgba(98, 94, 80, 0.3) transparent;
 }
+/* Scale down ALL rem-based sizing (padding, fonts, margins) on smaller screens automatically */
+@media (max-width: 1280px) { html { font-size: 96%; } }
+@media (max-width: 1024px) { html { font-size: 92%; } }
+@media (max-width: 768px) { html { font-size: 88%; } }
+@media (max-width: 480px) { html { font-size: 84%; } }
+
 html::-webkit-scrollbar {
   width: 6px;
 }

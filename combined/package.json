@@ -4,7 +4,7 @@
   "description": "PawIntel multi-service concurrent launcher",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev:python\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "node dev.js",
     "dev:python": "cd python-backend && venv\\Scripts\\python -m app.main",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev"

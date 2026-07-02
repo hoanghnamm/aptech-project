@@ -31,8 +31,8 @@ export default {
         'label-md': ['"Hanken Grotesk"', 'sans-serif'],
       },
       spacing: {
-        'margin-mobile': '16px',
-        'margin-desktop': '64px',
+        'margin-mobile': '1.25rem', // Scales down nicely on mobile
+        'margin-desktop': '4rem',
       }
     },
   },
