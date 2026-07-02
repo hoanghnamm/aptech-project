@@ -5,14 +5,21 @@
 
 :root {
   /* Theme: Premium Editorial Organic (forest green + warm cream) */
-  --primary-coral: #154212;          /* primary */
+  --primary-coral: #154212;          /* primary (deep forest green) */
   --primary-coral-hover: #2d5a27;    /* primary-container */
   --primary-coral-active: #0e2f0c;
-  --primary-dark: #1e1c10;           /* on-surface */
+  --primary-dark: #1e1c10;           /* on-surface (warm ink) */
   --secondary-accent: #154212;       /* focus/accent -> primary */
   --success-accent: #2d5a27;
   --error-state: #ba1a1a;
   --warning-state: #FFC93E;
+
+  /* Editorial material tokens (museum specimen frame) */
+  --wood-teak: #4E3629;              /* premium frame */
+  --mat-board: #F5EFE3;              /* cream mat backing inside frames */
+  --bevel: #e3d7bf;                  /* warm gold/bronze bevel line */
+  --sepia: #5C3A21;                  /* muted sepia-brown */
+  --tertiary-accent: #744336;        /* mild terracotta accent (replaces orange) */
 
   /* Backgrounds */
   --bg-white: #FFFFFF;               /* surface-container-lowest */
@@ -54,10 +61,11 @@
   --radius-lg: clamp(1rem, 0.7rem + 1.2vw, 1.5rem);
 }
 
+/* ponytail: box-sizing only. Don't reset margin/padding here — an unlayered
+   `* { margin:0; padding:0 }` outranks @layer utilities and silently kills every
+   Tailwind spacing utility (mx-auto, px-*, etc.). Preflight already resets these. */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
@@ -133,7 +141,7 @@ h1, h2, h3, h4 {
 }
 .input-text:focus {
   border-color: var(--secondary-accent);
-  box-shadow: 0px 0px 0px 3px rgba(21, 66, 18, 0.12);
+  box-shadow: 0px 0px 0px 3px rgba(21, 66, 18, 0.15);
 }
 
 /* ---------- Large button variant ---------- */
@@ -156,7 +164,7 @@ h1, h2, h3, h4 {
   background: linear-gradient(135deg, #faf3e0 0%, #e9e2d0 100%);
   padding: clamp(2.5rem, 1.5rem + 4vw, 4.5rem) clamp(1.75rem, 1rem + 3.5vw, 4rem);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(21, 66, 18, 0.15);
+  border: 1px solid rgba(21, 66, 18, 0.18);
   box-shadow: var(--shadow-md);
 }
 
@@ -167,7 +175,7 @@ h1, h2, h3, h4 {
   right: -6%;
   width: clamp(12rem, 22vw, 20rem);
   aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(21, 66, 18, 0.16), transparent 70%);
+  background: radial-gradient(circle, rgba(21, 66, 18, 0.18), transparent 70%);
   border-radius: 50%;
 }
 
@@ -217,7 +225,7 @@ h1, h2, h3, h4 {
 .feature-card:hover {
   transform: translateY(-0.5rem);
   box-shadow: var(--shadow-md);
-  border-color: rgba(21, 66, 18, 0.35);
+  border-color: rgba(21, 66, 18, 0.4);
 }
 
 .feature-card--alert {

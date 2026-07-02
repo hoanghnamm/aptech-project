@@ -47,7 +47,7 @@ export function BreedProfileOrigins({ breed, vintageImg1, vintageImg2, vintageIm
       {/* Cột Phải: Chữ và Ảnh 2 đan xen */}
       <div className="md:col-span-7 flex flex-col gap-10 text-left">
         <h2 className="font-headline-lg text-[40px] text-on-surface mb-2">
-          Archival Origins
+          Origins
         </h2>
         <p className="font-body-md text-on-surface-variant leading-relaxed text-[18px]">
           {breed.historySnippet}

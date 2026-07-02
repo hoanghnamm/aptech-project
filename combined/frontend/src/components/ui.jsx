@@ -50,7 +50,7 @@ export function PrimaryButton({ children, className = "", ...props }) {
   return (
     <button
       {...props}
-      className={`bg-primary text-white font-label-md uppercase tracking-[0.15em] px-8 py-3.5 rounded-sm hover:bg-[#0f2e0d] transition-colors duration-300 border-none cursor-pointer shadow-none disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${className}`}
+      className={`bg-primary text-white font-label-md uppercase tracking-[0.15em] px-8 py-3.5 rounded-sm hover:bg-[#b65a3d] transition-colors duration-300 border-none cursor-pointer shadow-none disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${className}`}
     >
       {children}
     </button>

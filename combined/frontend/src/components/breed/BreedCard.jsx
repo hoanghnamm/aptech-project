@@ -12,7 +12,7 @@ export function BreedCard({ breed, onClick }) {
           className="w-full h-full object-cover"
           src={
             breed.thumbnail ||
-            "https://placehold.co/600x450/efe8d5/154212?text=No+Image"
+            "https://placehold.co/600x450/f7dcc0/cb6a4b?text=No+Image"
           }
           loading="lazy"
         />
@@ -32,7 +32,7 @@ export function BreedCard({ breed, onClick }) {
       </div>
       <div className="mt-auto border-t border-secondary/20 pt-3 flex justify-between items-center">
         <span className="font-body-sm text-on-surface-variant uppercase tracking-widest text-[11px]">
-          View Record
+          View breed
         </span>
         <span className="material-symbols-outlined text-secondary/50 group-hover:text-primary transition-colors">
           arrow_forward

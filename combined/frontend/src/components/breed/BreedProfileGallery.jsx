@@ -6,7 +6,7 @@ export function BreedProfileGallery({ remainingImages }) {
   return (
     <section className="flex flex-col gap-12 border-t border-secondary/10 pt-20">
       <h2 className="font-headline-lg text-center text-[36px]">
-        Archival Compendium
+        Photo Gallery
       </h2>
       <div
         className={`grid gap-10 w-full ${
@@ -24,7 +24,7 @@ export function BreedProfileGallery({ remainingImages }) {
               <div className="w-full overflow-hidden rounded-sm flex items-center justify-center flex-grow">
                 <img
                   src={img.url}
-                  alt={img.caption || "Archival documentation"}
+                  alt={img.caption || "Dog photo"}
                   className="w-full h-auto max-h-[380px] object-contain group-hover:scale-105 transition-transform duration-1000 ease-in-out"
                   loading="lazy"
                 />

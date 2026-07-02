@@ -28,14 +28,14 @@ const metricDefinitions = {
   },
   petFriendly: {
     label: "Pet Friendly",
-    desc: "Sociability and pack-tolerance towards other biological specimens.",
+    desc: "How sociable and tolerant this breed is around other dogs and pets.",
     scale: "1: Highly territorial — 5: Universally amicable",
   },
 };
 
 const lifestyleDefinitions = {
   size: {
-    label: "Morphological Size",
+    label: "Size",
     desc: "General body mass and structural scale at full maturity.",
   },
   sheddingLevel: {

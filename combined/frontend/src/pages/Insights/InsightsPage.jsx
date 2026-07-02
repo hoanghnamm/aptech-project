@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getPersonalized, getTrending } from '../../api/analytics.api';
 
-const BreedCard = ({ breed }) => (
-  <div className="card-standard">
-    <h4 style={{ fontSize: 'var(--fs-600)', marginBottom: 'var(--space-1)' }}>{breed.breedName}</h4>
-    <div style={{ fontSize: 'var(--fs-400)', color: '#6b645c', display: 'flex', flexDirection: 'column', gap: '0.25em' }}>
-      <div style={{ textTransform: 'capitalize' }}>📏 {breed.size} • ⚡ {breed.energyLevel} energy</div>
+const RecordCard = ({ breed }) => (
+  <div className="bg-[#FEFDFC] border border-[#25221E]/10 rounded-sm p-6 shadow-none flex flex-col gap-2">
+    <h4 className="font-headline-lg text-[20px] text-[#25221E]">{breed.breedName}</h4>
+    <div className="font-body-md text-[14px] text-[#5C3A21]/85 flex flex-col gap-1">
+      <div className="capitalize">📏 {breed.size} · ⚡ {breed.energyLevel} energy</div>
       {breed.origin && <div>🌐 {breed.origin}</div>}
       {breed.temperament?.length > 0 && <div>🐾 {breed.temperament.slice(0, 3).join(', ')}</div>}
     </div>
   </div>
 );
 
-const StatBox = ({ label, value }) => (
-  <div className="card-standard" style={{ textAlign: 'center' }}>
-    <div style={{ fontSize: 'var(--fs-metric)', fontWeight: '700', color: '#154212' }}>{value}</div>
-    <div style={{ fontSize: 'var(--fs-300)', color: '#999999', fontWeight: '600' }}>{label}</div>
+const StatPlate = ({ label, value }) => (
+  <div className="bg-[#FEFDFC] border border-[#25221E]/10 rounded-sm p-6 text-center shadow-none">
+    <div className="font-headline-lg text-[clamp(1.6rem,2.5vw,2rem)] text-[#25221E]">{value}</div>
+    <div className="font-label-md text-[10px] uppercase tracking-[0.2em] text-[#EE6449] font-bold mt-1">{label}</div>
   </div>
 );
 
-export default function InsightsPage({ onNavigate }) {
+export default function InsightsPage() {
+  const navigate = useNavigate();
   const [personalized, setPersonalized] = useState(null);
   const [trending, setTrending] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -42,67 +44,76 @@ export default function InsightsPage({ onNavigate }) {
   }, []);
 
   return (
-    <div className="page page-wide">
-      <div>
-        <h1 className="page__title">For You</h1>
-        <p className="page__subtitle">
-          Personalized breed suggestions based on what you've explored, plus what's trending across PawIntel.
+    <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 py-16 flex flex-col gap-12 bg-[#FEFDFC] text-[#25221E] min-h-screen">
+      <header className="flex flex-col gap-3 max-w-2xl">
+        <span className="font-label-md text-[10px] uppercase tracking-[0.2em] text-[#EE6449] font-bold">
+          Reader’s Record
+        </span>
+        <h1 className="font-headline-xl text-[clamp(2rem,4vw,2.75rem)] text-[#25221E] leading-tight">
+          Curator’s Desk
+        </h1>
+        <p className="font-serif italic text-[15px] text-[#5C3A21]/85 leading-relaxed">
+          Records suggested from your reading history, and the plates most consulted across the archive.
         </p>
-      </div>
+      </header>
 
-      {loading && <div style={{ textAlign: 'center', color: '#999999' }}>Loading your insights…</div>}
-      {error && <div style={{ color: '#E34432', textAlign: 'center', fontWeight: '600' }}>⚠️ {error}</div>}
+      {loading && <div className="text-center font-serif italic text-[#5C3A21]/60">Retrieving the record…</div>}
+      {error && <div className="border-l-2 border-error bg-[#FEFDFC] p-6 font-serif italic text-error">{error}</div>}
 
       {/* Site stats */}
       {trending?.stats && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 9rem), 1fr))', gap: 'var(--space-2)' }}>
-          <StatBox label="UNIQUE VISITORS" value={trending.stats.uniqueVisitors} />
-          <StatBox label="PAGE VIEWS" value={trending.stats.pageViews} />
-          <StatBox label="BREED VIEWS" value={trending.stats.breedViews} />
-          <StatBox label="TOTAL EVENTS" value={trending.stats.totalEvents} />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <StatPlate label="Unique Visitors" value={trending.stats.uniqueVisitors} />
+          <StatPlate label="Page Views" value={trending.stats.pageViews} />
+          <StatPlate label="Breed Views" value={trending.stats.breedViews} />
+          <StatPlate label="Total Events" value={trending.stats.totalEvents} />
         </div>
       )}
 
-      {/* Personalized recommendations */}
+      {/* Personalized */}
       {personalized && (
-        <div>
-          <h3 style={{ fontSize: 'var(--fs-600)', marginBottom: 'var(--space-2)' }}>
-            {personalized.personalized ? 'Recommended for you' : 'Popular picks to get you started'}
-          </h3>
-          {personalized.personalized && personalized.basedOn?.length > 0 && (
-            <p style={{ fontSize: 'var(--fs-300)', color: '#999999', marginBottom: 'var(--space-2)' }}>
-              Based on your interest in: {personalized.basedOn.join(', ')}
-            </p>
-          )}
+        <section className="flex flex-col gap-5">
+          <div className="flex flex-col gap-1 border-b border-[#25221E]/10 pb-3">
+            <span className="font-label-md text-[10px] uppercase tracking-[0.2em] text-[#EE6449] font-bold">
+              {personalized.personalized ? 'Suggested from your reading' : 'Popular to get you started'}
+            </span>
+            {personalized.personalized && personalized.basedOn?.length > 0 && (
+              <p className="font-serif italic text-[13px] text-[#5C3A21]/70">
+                Based on your interest in: {personalized.basedOn.join(', ')}
+              </p>
+            )}
+          </div>
           {personalized.recommendations?.length > 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 16rem), 1fr))', gap: 'var(--space-3)' }}>
-              {personalized.recommendations.map((b) => <BreedCard key={b._id} breed={b} />)}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {personalized.recommendations.map((b) => <RecordCard key={b._id} breed={b} />)}
             </div>
           ) : (
-            <p style={{ color: '#999999' }}>
-              Browse the{' '}
-              <button className="btn-secondary" style={{ padding: '0.3em 0.8em' }} onClick={() => onNavigate?.('encyclopedia')}>
+            <p className="font-serif italic text-[15px] text-[#5C3A21]/85">
+              Consult the{' '}
+              <button onClick={() => navigate('/encyclopedia')} className="text-[#EE6449] underline underline-offset-2 bg-transparent border-none cursor-pointer p-0 font-serif italic">
                 Encyclopedia
               </button>{' '}
-              to personalize this page.
+              to personalise this record.
             </p>
           )}
-        </div>
+        </section>
       )}
 
       {/* Trending */}
       {trending?.trending?.length > 0 && (
-        <div>
-          <h3 style={{ fontSize: 'var(--fs-600)', marginBottom: 'var(--space-2)' }}>🔥 Trending breeds</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 12rem), 1fr))', gap: 'var(--space-2)' }}>
+        <section className="flex flex-col gap-5">
+          <span className="font-label-md text-[10px] uppercase tracking-[0.2em] text-[#EE6449] font-bold border-b border-[#25221E]/10 pb-3">
+            Most Consulted
+          </span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {trending.trending.map((t) => (
-              <div key={t.breedName} className="card-standard" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 'var(--space-1)' }}>
-                <span style={{ fontWeight: '600' }}>{t.breedName}</span>
-                <span className="feature-tag">{t.views} views</span>
+              <div key={t.breedName} className="bg-[#FEFDFC] border border-[#25221E]/10 rounded-sm px-5 py-4 flex justify-between items-center gap-3 shadow-none">
+                <span className="font-body-md font-medium text-[15px] text-[#25221E]">{t.breedName}</span>
+                <span className="font-label-md text-[10px] uppercase tracking-[0.15em] text-[#5C3A21]/70">{t.views} views</span>
               </div>
             ))}
           </div>
-        </div>
+        </section>
       )}
     </div>
   );

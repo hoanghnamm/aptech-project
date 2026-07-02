@@ -148,7 +148,7 @@ export function BreedEncyclopedia() {
                     find_in_page
                   </span>
                   <p className="font-body-md text-on-surface-variant italic">
-                    No botanical or biological records found for this query.
+                    No breeds matched your search. Try different words or filters.
                   </p>
                 </div>
               )}

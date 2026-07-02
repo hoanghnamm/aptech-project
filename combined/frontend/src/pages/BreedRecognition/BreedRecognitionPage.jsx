@@ -16,9 +16,9 @@ export function ImageAnalyzer() {
   const navigate = useNavigate();
 
   const loadingFacts = [
-    "Analyzing cranial structure metrics...",
-    "Cross-referencing pigmentary traits with archival data...",
-    "Evaluating morphological indicators...",
+    "Looking at the fur, markings and colors…",
+    "Comparing with known dog breeds…",
+    "Reading ear, muzzle and body shape…",
   ];
 
   useEffect(() => {
@@ -76,13 +76,13 @@ export function ImageAnalyzer() {
         sessionStorage.setItem("identifyPreviewUrl", previewUrl);
       } else {
         setError(
-          "Due to archival limitations or suboptimal lighting of the specimen, the system could not extract identifying features. Please try again with a clearer photograph."
+          "We couldn't quite read the breed from this photo — it may be blurry or poorly lit. Try again with a clearer, well-lit picture of the dog."
         );
       }
     } catch (err) {
       console.error("Analysis Error:", err);
       setError(
-        "Archival system disruption or invalid imagery detected. Please provide a clearer specimen photograph."
+        "Something went wrong on our side, or the image wasn't valid. Please try again with a clear photo of the dog."
       );
     } finally {
       setLoading(false);
@@ -112,13 +112,12 @@ export function ImageAnalyzer() {
               : "max-h-[200px] opacity-100 mb-10"
           }`}
         >
-          <h1 className="font-headline-xl text-primary leading-tight">
-            Digitize Specimen
+          <h1 className="font-headline-xl text-on-surface leading-tight">
+            Identify a dog
           </h1>
           <p className="font-body-md text-on-surface-variant leading-relaxed">
-            Upload high-resolution photography of the subject to engage the
-            archival identification matrix. Ensure neutral lighting for optimal
-            phenotypical analysis.
+            Upload a clear, well-lit photo of the dog and our AI vision will tell you the
+            breed, origin, temperament and care needs.
           </p>
         </div>
 
@@ -172,9 +171,9 @@ export function ImageAnalyzer() {
             >
               <button
                 onClick={handleScan}
-                className="px-12 py-4 h-fit rounded-sm font-label-md uppercase tracking-[0.2em] transition-colors duration-300 border-none cursor-pointer bg-primary text-white hover:bg-[#0f2e0d] shadow-none"
+                className="px-12 py-4 h-fit rounded-full font-label-md uppercase tracking-[0.15em] transition-colors duration-300 border-none cursor-pointer bg-primary text-white hover:bg-[#b65a3d] shadow-none"
               >
-                Commence Analysis
+                Identify breed
               </button>
             </div>
           </div>
@@ -206,7 +205,7 @@ export function ImageAnalyzer() {
                   </span>
                   <div className="text-center flex flex-col gap-3">
                     <h3 className="font-headline-lg text-error">
-                      Extraction Failed
+                      Couldn't identify this dog
                     </h3>
                     <p className="font-body-md text-on-surface-variant leading-relaxed max-w-lg mx-auto">
                       {error}
@@ -219,7 +218,7 @@ export function ImageAnalyzer() {
                     <span className="material-symbols-outlined text-sm">
                       refresh
                     </span>
-                    Mount New Specimen
+                    Try another photo
                   </button>
                 </div>
               )}

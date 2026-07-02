@@ -23,19 +23,15 @@ export default function VetAssistancePage() {
   }, []);
 
   const locateAndFetch = useCallback((only24h) => {
-    if (!navigator.geolocation) {
-      fetchClinics(null, null, only24h); // backend falls back to Hanoi center
-      return;
-    }
+    if (!navigator.geolocation) { fetchClinics(null, null, only24h); return; }
     setLoading(true);
     navigator.geolocation.getCurrentPosition(
       (pos) => fetchClinics(pos.coords.latitude, pos.coords.longitude, only24h),
-      () => fetchClinics(null, null, only24h), // permission denied -> fallback
+      () => fetchClinics(null, null, only24h),
       { timeout: 8000 }
     );
   }, [fetchClinics]);
 
-  // Auto-locate on first load
   useEffect(() => { locateAndFetch(false); }, [locateAndFetch]);
 
   const toggle24h = () => {
@@ -45,59 +41,80 @@ export default function VetAssistancePage() {
   };
 
   return (
-    <div className="page page-wide">
-      <div>
-        <h1 className="page__title">Emergency Vet Assistance</h1>
-        <p className="page__subtitle">
-          Find veterinary clinics near you, sorted by distance. For emergencies, call ahead before you go.
+    <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12 py-16 flex flex-col gap-12 bg-[#FEFDFC] text-[#25221E] min-h-screen">
+      <header className="flex flex-col gap-3 max-w-2xl">
+        <span className="font-label-md text-[10px] uppercase tracking-[0.2em] text-[#EE6449] font-bold">
+          Emergency Directory
+        </span>
+        <h1 className="font-headline-xl text-[clamp(2rem,4vw,2.75rem)] text-[#25221E] leading-tight">
+          Veterinary Registry
+        </h1>
+        <p className="font-serif italic text-[15px] text-[#5C3A21]/85 leading-relaxed">
+          Clinics on record near your location, sorted by distance. For emergencies, telephone ahead
+          before travelling.
         </p>
-      </div>
+      </header>
 
-      <div style={{ display: 'flex', gap: 'var(--space-1)', flexWrap: 'wrap', alignItems: 'center' }}>
-        <button className="btn-primary" onClick={() => locateAndFetch(open24h)} disabled={loading}>
-          {loading ? 'Locating…' : '📍 Find clinics near me'}
+      {/* Controls */}
+      <div className="flex flex-wrap gap-3 items-center">
+        <button
+          onClick={() => locateAndFetch(open24h)}
+          disabled={loading}
+          className="bg-[#EE6449] hover:bg-[#F07459] disabled:opacity-60 text-white font-label-md uppercase tracking-[0.15em] text-[11px] py-4 px-8 rounded-sm shadow-none transition-colors cursor-pointer border-none"
+        >
+          {loading ? 'Locating…' : 'Locate nearby clinics'}
         </button>
         <button
-          className={open24h ? 'btn-primary' : 'btn-secondary'}
           onClick={toggle24h}
           disabled={loading}
-          style={open24h ? { backgroundColor: '#438952' } : undefined}
+          className={`font-label-md uppercase tracking-[0.15em] text-[11px] py-4 px-8 rounded-sm transition-colors cursor-pointer ${
+            open24h
+              ? 'bg-[#25221E] text-white border-none'
+              : 'bg-transparent border border-[#25221E]/20 text-[#25221E] hover:bg-[#25221E]/5'
+          }`}
         >
           {open24h ? '✓ 24/7 only' : 'Show 24/7 only'}
         </button>
       </div>
 
       {usedFallback && (
-        <div style={{ fontSize: 'var(--fs-300)', color: '#999999' }}>
+        <p className="font-serif italic text-[13px] text-[#5C3A21]/60 -mt-6">
           Location unavailable — showing clinics near central Hanoi. Allow location access for accurate distances.
-        </div>
+        </p>
       )}
-
-      {error && <div style={{ color: '#E34432', textAlign: 'center', fontWeight: '600' }}>⚠️ {error}</div>}
+      {error && <div className="border-l-2 border-error bg-[#FEFDFC] p-6 font-serif italic text-error">{error}</div>}
       {!loading && !error && clinics.length === 0 && (
-        <div style={{ textAlign: 'center', color: '#999999' }}>No clinics found.</div>
+        <div className="border border-dashed border-[#25221E]/15 rounded-sm p-12 text-center font-serif italic text-[#5C3A21]/60">No clinics on record.</div>
       )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem), 1fr))', gap: 'var(--space-3)' }}>
+      {/* Clinic ledger cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {clinics.map((c) => (
-          <div key={c.id} className="card-standard" style={{ borderLeft: c.open24h ? '5px solid #438952' : '5px solid #E34432' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 'var(--space-1)', flexWrap: 'wrap' }}>
-              <h3 style={{ fontSize: 'var(--fs-600)' }}>{c.name}</h3>
-              <span style={{ fontWeight: '700', color: '#154212' }}>{c.distanceKm} km</span>
+          <article
+            key={c.id}
+            className="bg-[#FEFDFC] border border-[#25221E]/10 rounded-sm p-8 shadow-none flex flex-col gap-4"
+            style={{ borderLeft: `3px solid ${c.open24h ? '#4c8a54' : '#c0492e'}` }}
+          >
+            <div className="flex justify-between items-baseline gap-3 flex-wrap border-b border-[#25221E]/10 pb-4">
+              <h3 className="font-headline-lg text-[22px] text-[#25221E]">{c.name}</h3>
+              <span className="font-label-md text-[13px] uppercase tracking-[0.15em] text-[#EE6449] font-bold">{c.distanceKm} km</span>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)', fontSize: 'var(--fs-400)', marginTop: 'var(--space-1)' }}>
-              <div>📍 {c.address}</div>
-              <div>⭐ {c.rating} / 5</div>
-              <div style={{ color: c.open24h ? '#438952' : '#E34432', fontWeight: '600' }}>
-                {c.open24h ? '🟢 Open 24/7' : '🔴 Limited hours'}
+            <div className="flex flex-col gap-2 font-body-md text-[15px] text-[#25221E]/90">
+              <div className="flex justify-between gap-4 border-b border-[#25221E]/5 py-1"><span className="text-[#25221E]/60">Address</span><span className="text-right">{c.address}</span></div>
+              <div className="flex justify-between gap-4 border-b border-[#25221E]/5 py-1"><span className="text-[#25221E]/60">Rating</span><span>⭐ {c.rating} / 5</span></div>
+              <div className="flex justify-between gap-4 py-1">
+                <span className="text-[#25221E]/60">Status</span>
+                <span className="font-medium" style={{ color: c.open24h ? '#4c8a54' : '#c0492e' }}>
+                  {c.open24h ? 'Open 24/7' : 'Limited hours'}
+                </span>
               </div>
             </div>
-            <a href={`tel:${c.phone.replace(/\s/g, '')}`} style={{ textDecoration: 'none' }}>
-              <button className="btn-primary" style={{ width: '100%', marginTop: 'var(--space-2)', backgroundColor: '#E34432' }}>
-                📞 Call {c.phone}
+            <a href={`tel:${c.phone.replace(/\s/g, '')}`} className="mt-1">
+              <button className="w-full bg-[#25221E] hover:bg-[#4E3629] text-white font-label-md uppercase tracking-[0.15em] text-[11px] py-4 rounded-sm transition-colors cursor-pointer border-none">
+                Telephone {c.phone}
               </button>
             </a>
-          </div>
+          </article>
         ))}
       </div>
     </div>

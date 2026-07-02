@@ -10,7 +10,7 @@ export function BreedFilter({
   const filterBlocks = [
     {
       key: "size",
-      title: "Morphology Size",
+      title: "Size",
       options: ["Small", "Medium", "Large"],
     },
     {
@@ -20,22 +20,22 @@ export function BreedFilter({
     },
     {
       key: "spaceRequirement",
-      title: "Habitat Size",
+      title: "Home Space",
       options: ["Apartment", "Small Yard", "Large Yard"],
     },
     {
       key: "barkingLevel",
-      title: "Vocalization",
+      title: "Barking",
       options: ["Quiet", "Moderate", "Vocal"],
     },
     {
       key: "weatherTolerance",
-      title: "Climate Adaptability",
+      title: "Climate",
       options: ["Warm", "Cold", "Adaptable"],
     },
     {
       key: "vulnerabilityToDisease",
-      title: "Pathological Resist.",
+      title: "Health Resilience",
       options: ["Hardy", "Moderate", "Fragile"],
     },
   ];
@@ -56,7 +56,7 @@ export function BreedFilter({
       {/* Kinetic Energy */}
       <div className="flex flex-col gap-4">
         <h3 className="font-label-md uppercase text-primary tracking-widest border-b border-primary/20 pb-2">
-          Kinetic Energy
+          Energy Level
         </h3>
         <div className="flex flex-col gap-3">
           {[

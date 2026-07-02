@@ -5,7 +5,7 @@ export function ImagePreview({ previewUrl, isSplit, results }) {
     <div className="w-full relative overflow-hidden rounded-sm flex items-center justify-center">
       <img
         src={previewUrl}
-        alt="Specimen"
+        alt="Dog photo"
         className={`w-full h-auto max-h-[500px] object-contain transition-all duration-1000 ${
           isSplit ? "contrast-105" : "group-hover:scale-105 group-hover:opacity-60"
         }`}
@@ -18,7 +18,7 @@ export function ImagePreview({ previewUrl, isSplit, results }) {
             swap_horiz
           </span>
           <p className="font-label-md text-primary uppercase tracking-[0.2em] font-bold bg-surface-container-high px-4 py-2 border border-secondary/20">
-            Change Specimen
+            Change photo
           </p>
         </div>
       )}

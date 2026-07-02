@@ -1,96 +1,128 @@
-import React from 'react';
-import { Search, Camera, Stethoscope, MapPin, ArrowRight } from 'lucide-react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Camera,
+  MessageCircle,
+  Sparkles,
+  Search,
+  UtensilsCrossed,
+  BookOpen,
+  ArrowRight,
+  Heart,
+  PawPrint,
+} from "lucide-react";
+import heroDog from "../../assets/fullmascotfinal-Photoroom_01.png";
 
-export default function Home({ onNavigate }) {
+const FEATURES = [
+  { icon: Camera, title: "Breed Identifier", path: "/identify",
+    desc: "Snap a photo and let our AI vision tell you breed, origin, temperament & care." },
+  { icon: MessageCircle, title: "Ask PawPal", path: "/chatbot",
+    desc: "A friendly AI chat for care, training and vaccination questions — any time." },
+  { icon: Sparkles, title: "Find My Dog", path: "/recommendation",
+    desc: "Tell us about your life — get personalized breed matches that truly fit." },
+  { icon: Search, title: "Smart Search", path: "/search",
+    desc: "“Friendly dogs for kids,” “low-shedding apartment dogs” — just ask naturally." },
+  { icon: UtensilsCrossed, title: "Nutrition Plans", path: "/nutrition",
+    desc: "Age & breed-aware meal plans with foods to enjoy and foods to avoid." },
+  { icon: BookOpen, title: "Encyclopedia", path: "/encyclopedia",
+    desc: "Explore breeds by country, classification, behavior and grooming needs." },
+];
+
+export default function Home() {
+  const navigate = useNavigate();
+
   return (
-    <div className="home">
-      {/* Hero Welcome Section */}
-      <section className="home-hero">
-        <span className="home-hero__eyebrow">🐾 AI Pet Dashboard</span>
-        <h1 className="home-hero__title">Chào mừng bạn quay trở lại, Pet Lover!</h1>
-        <p className="home-hero__subtitle">
-          Dựa trên nhật ký phân tích hành vi của bạn, hệ thống AI khuyến nghị bạn nên cập
-          nhật lại chế độ dinh dưỡng mùa hè cho cún cưng của mình.
-        </p>
-        <button
-          className="btn-primary btn-lg"
-          onClick={() => onNavigate('nutrition')}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6em' }}
-        >
-          Phân tích dinh dưỡng ngay <ArrowRight size="1.1em" />
-        </button>
+    <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 flex flex-col gap-16 md:gap-24">
+      {/* Hero */}
+      <section className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div className="flex flex-col gap-6">
+          <span className="self-start inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container text-primary font-body-sm text-[0.72rem] font-bold uppercase tracking-wider">
+            <PawPrint size={14} /> Made with tail wags
+          </span>
+          <h1 className="font-headline-xl text-on-surface leading-[1.05] text-[clamp(2.5rem,6vw,4.25rem)]">
+            Every good dog,
+            <br />
+            <span className="italic text-primary">better understood.</span>
+          </h1>
+          <p className="font-body-md text-on-surface-variant text-[1.05rem] leading-relaxed max-w-[34rem]">
+            PawPal is your warm, AI-powered companion for everything dog — identify breeds
+            from a photo, get care advice, and discover the perfect pup for your life.
+          </p>
+          <div className="flex flex-wrap gap-3 mt-1">
+            <button
+              onClick={() => navigate("/identify")}
+              className="inline-flex items-center gap-2 bg-primary hover:bg-[#b65a3d] text-on-tertiary font-body-md font-semibold px-6 py-3.5 rounded-full transition-colors cursor-pointer border-none"
+            >
+              <Camera size={18} /> Identify a dog
+            </button>
+            <button
+              onClick={() => navigate("/chatbot")}
+              className="inline-flex items-center gap-2 bg-surface-container-lowest hover:bg-primary-container text-on-surface font-body-md font-semibold px-6 py-3.5 rounded-full border border-primary/20 transition-colors cursor-pointer"
+            >
+              <Heart size={18} className="text-primary" /> Ask PawPal
+            </button>
+          </div>
+        </div>
+
+        {/* Hero image */}
+        <div className="relative">
+          <div className="rounded-[2rem] bg-gradient-to-br from-primary-container to-surface-container-high p-4 sm:p-6 shadow-[0_24px_60px_-24px_rgba(203,106,75,0.45)]">
+            <div className="rounded-[1.5rem] bg-surface-container-lowest aspect-[4/3] flex items-center justify-center overflow-hidden">
+              <img src={heroDog} alt="A happy dog" className="h-[85%] w-auto object-contain drop-shadow-xl" />
+            </div>
+          </div>
+          <div className="absolute -bottom-4 left-4 sm:left-8 bg-surface-container-lowest rounded-2xl shadow-[0_16px_40px_-16px_rgba(61,43,31,0.35)] px-4 py-3 flex items-center gap-3">
+            <span className="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+              <PawPrint size={20} className="text-primary" />
+            </span>
+            <div className="leading-tight">
+              <div className="font-body-sm text-[0.65rem] font-bold uppercase tracking-wider text-on-surface-variant">
+                AI Confidence
+              </div>
+              <div className="font-headline-lg text-on-surface text-[1.05rem]">
+                French Bulldog · 98%
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Feature Grid */}
-      <div className="feature-grid">
-
-        {/* Breed Recommendation */}
-        <div className="feature-card">
-          <div className="feature-icon" style={{ background: 'rgba(116, 67, 54, 0.12)' }}>
-            <Search size="50%" color="#744336" />
-          </div>
-          <span className="feature-tag" style={{ background: 'rgba(116, 67, 54, 0.12)', color: '#744336', alignSelf: 'flex-start' }}>
-            AI SUGGESTION
-          </span>
-          <h3 className="feature-card__title" style={{ marginTop: 'var(--space-2)' }}>Tìm giống chó phù hợp</h3>
-          <p className="feature-card__desc">
-            Trả lời 5 câu hỏi nhanh về không gian sống và thời gian rảnh rỗi để AI tìm ra
-            người bạn bốn chân hoàn hảo nhất cho bạn.
-          </p>
-          <div className="feature-card__spacer" />
-          <button className="btn-secondary btn-lg" onClick={() => onNavigate('recommendation')}>
-            Bắt đầu khảo sát
+      {/* Feature grid */}
+      <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {FEATURES.map(({ icon: Icon, title, desc, path }) => (
+          <button
+            key={path}
+            onClick={() => navigate(path)}
+            className="group text-left flex flex-col gap-4 bg-surface-container-lowest border border-primary/10 rounded-[1.5rem] p-7 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_44px_-22px_rgba(61,43,31,0.35)] hover:border-primary/30"
+          >
+            <span className="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+              <Icon size={22} className="text-primary" />
+            </span>
+            <h3 className="font-headline-lg text-on-surface text-[1.6rem]">{title}</h3>
+            <p className="font-body-md text-on-surface-variant leading-relaxed flex-1">{desc}</p>
+            <span className="inline-flex items-center gap-1.5 text-primary font-body-md font-semibold">
+              Open <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </span>
           </button>
-        </div>
+        ))}
+      </section>
 
-        {/* Image Gallery with AI Tagging */}
-        <div className="feature-card">
-          <div className="feature-icon" style={{ background: 'rgba(67, 137, 82, 0.12)' }}>
-            <Camera size="50%" color="#438952" />
-          </div>
-          <span className="feature-tag" style={{ background: 'rgba(67, 137, 82, 0.12)', color: '#438952', alignSelf: 'flex-start' }}>
-            AI TAGGING GALLERY
-          </span>
-          <h3 className="feature-card__title" style={{ marginTop: 'var(--space-2)' }}>Khoảnh khắc cún cưng</h3>
-          <p className="feature-card__desc">
-            Tải ảnh của bạn lên, AI tự động quét nhận diện trạng thái cảm xúc và sức khỏe da lông.
-          </p>
-          <div className="feature-tags">
-            <span className="feature-tag" style={{ color: '#438952' }}>#Healthy</span>
-            <span className="feature-tag" style={{ color: '#744336' }}>#Golden</span>
-          </div>
-          <div className="feature-card__spacer" />
-          <button className="btn-secondary btn-lg" onClick={() => onNavigate('gallery')}>
-            Tải lên kho ảnh
-          </button>
-        </div>
-
-        {/* Emergency Vet Hub */}
-        <div className="feature-card feature-card--alert">
-          <div className="feature-icon" style={{ background: 'rgba(227, 68, 50, 0.1)' }}>
-            <Stethoscope size="50%" color="#E34432" />
-          </div>
-          <span className="feature-tag" style={{ background: 'rgba(227, 68, 50, 0.1)', color: '#E34432', alignSelf: 'flex-start' }}>
-            EMERGENCY HUB
-          </span>
-          <h3 className="feature-card__title" style={{ marginTop: 'var(--space-2)' }}>Cứu hộ thú y khẩn cấp</h3>
-          <p className="feature-card__desc">
-            Phát hiện 2 bệnh viện thú y mở cửa 24/7 gần vị trí của bạn hiện tại (Bán kính dưới 2km).
-          </p>
-          <div className="clinic-box">
-            <strong style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4em' }}>
-              <MapPin size="1em" color="#E34432" /> Bệnh viện Thú y Quốc tế Pawcare
-            </strong>
-            <br />
-            <span style={{ color: '#438952' }}>🟢 Đang mở cửa</span> • Cách bạn 1.2 km
-          </div>
-          <div className="feature-card__spacer" />
-          <button className="btn-primary btn-lg" style={{ backgroundColor: '#E34432' }} onClick={() => onNavigate('vet')}>
-            Gọi hỗ trợ khẩn cấp
-          </button>
-        </div>
-
-      </div>
+      {/* CTA */}
+      <section className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary-container via-surface-container-high to-primary-container px-8 py-12 sm:px-14 sm:py-16">
+        <h2 className="font-headline-xl text-on-surface text-[clamp(2rem,5vw,3.25rem)] leading-tight max-w-[30rem]">
+          Not sure where to start?
+        </h2>
+        <p className="font-body-md text-on-surface-variant text-[1.05rem] leading-relaxed max-w-[34rem] mt-4">
+          Tell PawPal about your home and lifestyle — get a shortlist of breeds that will love
+          living with you.
+        </p>
+        <button
+          onClick={() => navigate("/recommendation")}
+          className="inline-flex items-center gap-2 bg-tertiary hover:opacity-90 text-on-tertiary font-body-md font-semibold px-7 py-3.5 rounded-full mt-8 transition-opacity cursor-pointer border-none"
+        >
+          <Sparkles size={18} /> Find my perfect dog
+        </button>
+      </section>
     </div>
   );
 }

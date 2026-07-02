@@ -35,19 +35,19 @@ export function BreedProfile() {
   if (loading)
     return (
       <div className="w-full min-h-screen flex items-center justify-center bg-surface font-body-md text-secondary italic">
-        Consulting biological archives...
+        Loading breed profile…
       </div>
     );
   if (!breed)
     return (
       <div className="w-full min-h-screen flex items-center justify-center bg-surface font-headline-lg text-error">
-        Record Not Found
+        Breed not found
       </div>
     );
 
   // Tách mảng hình ảnh để đan xen và lấy Caption tương ứng
   const visualAssets = breed.visualArchives || [];
-  const heroImage = visualAssets[0]?.url || breed.thumbnail || "https://placehold.co/1200x800/efe8d5/154212?text=No+Archival+Image";
+  const heroImage = visualAssets[0]?.url || breed.thumbnail || "https://placehold.co/1200x800/f7dcc0/cb6a4b?text=No+Image";
   const vintageImg1 = visualAssets[1];
   const vintageImg2 = visualAssets[2];
   const vintageImg3 = visualAssets[3];
@@ -67,7 +67,7 @@ export function BreedProfile() {
           <span className="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">
             arrow_back
           </span>
-          {isFromIdentify ? "Return to Identification" : "Return to Archive"}
+          {isFromIdentify ? "Back to results" : "Back to Encyclopedia"}
         </button>
 
         {/* 2. PHYSICAL STATS */}
