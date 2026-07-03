@@ -367,3 +367,391 @@ html::-webkit-scrollbar-thumb {
 .custom-scrollbar {
   scrollbar-width: none !important;
 }
+
+/* ============================================================
+   NUTRITION PAGE — Archival Editorial Redesign
+   ============================================================ */
+
+/* Background parchment pattern */
+.nutrition-bg-pattern {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-color: #FFF9EB;
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDePhcsRmh9IHnfiwyezKdizywHJF7jv1-gSgZIR0YdupJRGJhmQ4o2n5rBAY7DxUXmn6LDEN0dXLnGFmxdO6GI0_qtli8uD9rQeyl-EboyvdJr5NJhwbm1M9NFSdJ4qls7ON4C184XIAE4ScyO5Ep-6rYa_-SOD5GIDcLFwZdEU4Q9Xu_HmMP7ZSFL2ViFxbefod7nSBRmrId3p3NMw3HM6Qh2oi25tmzzEKtMGXP6o1_CHHtTsQFOMyUt741INwL3J99uO90aCoWl');
+  background-size: 200px;
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+  opacity: 0.06;
+}
+
+/* Flat archival card */
+.nutrition-flat-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+  box-shadow: 0 1px 2px rgba(37, 34, 30, 0.04);
+}
+
+.nutrition-flat-card--accent {
+  border-color: rgba(227, 163, 146, 0.4);
+}
+
+/* Input field styling */
+.nutrition-input {
+  width: 100%;
+  background: var(--bg-light-gray);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: clamp(0.6rem, 0.5rem + 0.4vw, 0.75rem) clamp(0.8rem, 0.7rem + 0.5vw, 1rem);
+  font-family: var(--font-ui);
+  font-size: var(--fs-400);
+  color: var(--primary-dark);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.nutrition-input:focus {
+  border-color: #154212;
+  box-shadow: 0 0 0 1px #154212;
+}
+.nutrition-input::placeholder {
+  color: #999;
+}
+
+/* Custom select dropdown */
+select.nutrition-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23625e50' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* Textarea */
+textarea.nutrition-input {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+/* Section header inside card */
+.nutrition-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: clamp(0.75rem, 0.5rem + 0.5vw, 1rem);
+}
+.nutrition-section-header h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-600);
+  font-weight: 600;
+  color: #154212;
+  margin: 0;
+}
+
+/* Label */
+.nutrition-label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: clamp(0.65rem, 0.6rem + 0.2vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #625e50;
+  margin-bottom: clamp(0.35rem, 0.3rem + 0.15vw, 0.5rem);
+}
+
+/* Radio group */
+.nutrition-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 0.5rem + 0.8vw, 1.25rem);
+  margin-top: 0.5rem;
+}
+.nutrition-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: var(--fs-400);
+  color: var(--primary-dark);
+}
+.nutrition-radio-group input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #154212;
+  cursor: pointer;
+}
+
+/* Submit button */
+.nutrition-submit-btn {
+  background-color: #154212;
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: var(--fs-btn);
+  font-weight: 600;
+  padding: clamp(0.75rem, 0.65rem + 0.5vw, 1rem) clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(21, 66, 18, 0.15);
+}
+.nutrition-submit-btn:hover {
+  background-color: #2d5a27;
+  box-shadow: 0 4px 16px rgba(21, 66, 18, 0.25);
+}
+.nutrition-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ------- Results Page ------- */
+
+/* Metric card */
+.nutrition-metric-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: clamp(8rem, 6rem + 5vw, 10rem);
+  position: relative;
+  overflow: hidden;
+}
+.nutrition-metric-card__label {
+  font-family: var(--font-ui);
+  font-size: clamp(0.6rem, 0.55rem + 0.2vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #625e50;
+}
+.nutrition-metric-card__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+.nutrition-metric-card__unit {
+  font-family: var(--font-ui);
+  font-size: var(--fs-400);
+  font-weight: 400;
+  color: #625e50;
+  margin-left: 0.25em;
+}
+
+/* Macro bar */
+.nutrition-macro-bar {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.35rem, 0.3rem + 0.15vw, 0.5rem);
+}
+.nutrition-macro-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.nutrition-macro-bar__name {
+  font-family: var(--font-ui);
+  font-size: var(--fs-400);
+  font-weight: 600;
+  color: #154212;
+}
+.nutrition-macro-bar__badge {
+  font-family: var(--font-ui);
+  font-size: clamp(0.6rem, 0.55rem + 0.15vw, 0.7rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.15em 0.5em;
+  border-radius: var(--radius-sm);
+}
+.nutrition-macro-bar__track {
+  width: 100%;
+  height: clamp(2.5rem, 2rem + 1.5vw, 3rem);
+  background: var(--bg-pale-beige);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  display: flex;
+  overflow: hidden;
+}
+.nutrition-macro-bar__fill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(0.5rem, 0.3rem + 0.5vw, 1rem);
+  font-size: clamp(0.7rem, 0.6rem + 0.2vw, 0.8rem);
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+  border-right: 1px solid rgba(255,255,255,0.3);
+}
+.nutrition-macro-bar__desc {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(0.5rem, 0.3rem + 0.5vw, 1rem);
+  font-size: clamp(0.7rem, 0.6rem + 0.2vw, 0.8rem);
+  color: #625e50;
+}
+
+/* Ledger list (Taxonomic Overview) */
+.nutrition-ledger {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.nutrition-ledger__header {
+  background: var(--bg-pale-beige);
+  padding: clamp(0.75rem, 0.6rem + 0.5vw, 1rem) clamp(1rem, 0.8rem + 0.6vw, 1.5rem);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nutrition-ledger__header h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-600);
+  font-weight: 600;
+  color: #154212;
+  margin: 0;
+}
+.nutrition-ledger__item {
+  display: flex;
+  flex-direction: row;
+  padding: clamp(0.65rem, 0.5rem + 0.4vw, 1rem) clamp(1rem, 0.8rem + 0.6vw, 1.5rem);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.15s ease;
+}
+.nutrition-ledger__item:last-child {
+  border-bottom: none;
+}
+.nutrition-ledger__item:hover {
+  background: var(--bg-light-gray);
+}
+.nutrition-ledger__key {
+  width: 35%;
+  font-family: var(--font-ui);
+  font-size: clamp(0.6rem, 0.55rem + 0.15vw, 0.7rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #625e50;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nutrition-ledger__value {
+  width: 65%;
+  font-family: var(--font-ui);
+  font-size: var(--fs-400);
+  color: #154212;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Energy bar dots */
+.nutrition-energy-bars {
+  display: flex;
+  gap: 0.2rem;
+}
+.nutrition-energy-bar {
+  width: 0.5rem;
+  height: 1rem;
+  border-radius: 2px;
+}
+.nutrition-energy-bar--filled {
+  background: #e3a392;
+}
+.nutrition-energy-bar--empty {
+  background: var(--bg-pale-beige);
+  border: 1px solid var(--border-color);
+}
+
+/* Sidebar dietary details */
+.nutrition-sidebar-section h3 {
+  font-family: var(--font-ui);
+  font-size: clamp(0.6rem, 0.55rem + 0.15vw, 0.7rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: clamp(0.5rem, 0.4rem + 0.3vw, 0.75rem);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nutrition-sidebar-section ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  font-size: var(--fs-400);
+  line-height: 1.7;
+}
+.nutrition-sidebar-section ul li::marker {
+  color: #e3a392;
+}
+
+/* Portion guidance box */
+.nutrition-portion-box {
+  background: var(--bg-pale-beige);
+  padding: clamp(0.75rem, 0.6rem + 0.5vw, 1rem);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  font-size: var(--fs-400);
+  line-height: 1.6;
+}
+
+/* Progress bar */
+.nutrition-progress-track {
+  width: 100%;
+  height: 4px;
+  background: var(--border-color);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: clamp(0.5rem, 0.4rem + 0.3vw, 0.75rem);
+}
+.nutrition-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* Back button */
+.nutrition-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.5em 1.2em;
+  font-family: var(--font-ui);
+  font-size: var(--fs-400);
+  font-weight: 500;
+  color: var(--primary-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.nutrition-back-btn:hover {
+  background: var(--bg-light-gray);
+  border-color: rgba(21, 66, 18, 0.3);
+}
+
+/* Responsive: mobile ledger items stack vertically */
+@media (max-width: 560px) {
+  .nutrition-ledger__item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .nutrition-ledger__key,
+  .nutrition-ledger__value {
+    width: 100%;
+  }
+}
