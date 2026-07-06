@@ -91,7 +91,7 @@ export function BreedProfile() {
         <BreedProfileCareHealth breed={breed} />
 
         {/* 6. FULL VISUAL ARCHIVES GALLERY */}
-        <BreedProfileGallery remainingImages={remainingImages} />
+        <BreedProfileGallery remainingImages={visualAssets} />
       </main>
     </>
   );
