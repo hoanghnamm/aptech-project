@@ -6,14 +6,17 @@ export function Navbar() {
   const location = useLocation();
   const pathname = location.pathname;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   // Check active navigation states
   const isEncyclopedia = pathname === "/encyclopedia" || pathname.startsWith("/breeds/");
   const isIdentify = pathname === "/identify";
+  const isServiceTab = ["/chatbot", "/nutrition", "/recommendation", "/gallery", "/insights", "/vet"].includes(pathname);
 
   const handleNavigate = (path) => {
     navigate(path);
     setMobileMenuOpen(false);
+    setServicesOpen(false);
   };
 
   const serviceItems = [
@@ -24,38 +27,35 @@ export function Navbar() {
     { path: "/vet", label: "Emergency Vets" },
   ];
 
-  const linkBase =
-    "cursor-pointer pb-1 border-b-2 transition-all duration-300 ease-out hover:scale-108 transform active:scale-95 origin-center";
-
   return (
-    <header className="bg-primary border-b border-white/10 sticky top-0 z-50 text-white shadow-md">
+    <header className="bg-surface border-b border-secondary/10 sticky top-0 z-50">
       <div className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-5 max-w-[1280px] mx-auto w-full">
-        {/* Brand Logo with smooth hover scaling */}
+        {/* Brand Logo */}
         <div
-          className="font-headline-lg text-surface tracking-tighter cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300 ease-out origin-left"
+          className="font-headline-lg text-primary tracking-tighter cursor-pointer hover:opacity-80 transition-opacity"
           onClick={() => handleNavigate("/")}
         >
           Canis Archive
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-4 xl:gap-6 items-center font-label-md uppercase tracking-widest text-[11px] relative whitespace-nowrap">
+        <nav className="hidden md:flex gap-4 xl:gap-8 items-center font-label-md uppercase tracking-widest text-[11px] relative whitespace-nowrap">
           <span
             onClick={() => handleNavigate("/encyclopedia")}
-            className={`${linkBase} ${
+            className={`cursor-pointer pb-1 border-b-2 transition-all duration-300 ${
               isEncyclopedia
-                ? "text-surface border-surface font-bold"
-                : "text-white/70 border-transparent hover:text-white"
+                ? "text-primary font-bold border-primary"
+                : "text-on-surface-variant border-transparent hover:text-primary"
             }`}
           >
             Encyclopedia
           </span>
           <span
             onClick={() => handleNavigate("/identify")}
-            className={`${linkBase} ${
+            className={`cursor-pointer pb-1 border-b-2 transition-all duration-300 ${
               isIdentify
-                ? "text-surface border-surface font-bold"
-                : "text-white/70 border-transparent hover:text-white"
+                ? "text-primary font-bold border-primary"
+                : "text-on-surface-variant border-transparent hover:text-primary"
             }`}
           >
             Identify
@@ -66,10 +66,10 @@ export function Navbar() {
             <span
               key={item.path}
               onClick={() => handleNavigate(item.path)}
-              className={`${linkBase} ${
+              className={`cursor-pointer pb-1 border-b-2 transition-all duration-300 ${
                 pathname === item.path
-                  ? "text-surface border-surface font-bold"
-                  : "text-white/70 border-transparent hover:text-white"
+                  ? "text-primary font-bold border-primary"
+                  : "text-on-surface-variant border-transparent hover:text-primary"
               }`}
             >
               {item.label}
@@ -80,7 +80,7 @@ export function Navbar() {
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden flex items-center justify-center p-2 text-white/80 hover:text-white bg-transparent border-none cursor-pointer hover:scale-110 active:scale-90 transition-transform"
+          className="md:hidden flex items-center justify-center p-2 text-on-surface-variant hover:text-primary bg-transparent border-none cursor-pointer"
           aria-label="Toggle menu"
         >
           <span className="material-symbols-outlined text-[24px]">
@@ -91,34 +91,34 @@ export function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-primary-container border-b border-white/10 px-margin-mobile py-4 flex flex-col gap-4 text-left">
+        <div className="md:hidden bg-surface border-b border-secondary/10 px-margin-mobile py-4 flex flex-col gap-4 text-left">
           <span
             onClick={() => handleNavigate("/encyclopedia")}
-            className={`font-label-md uppercase tracking-widest text-[12px] cursor-pointer py-2 border-b border-white/10 transition-colors ${
-              isEncyclopedia ? "text-surface font-bold" : "text-white/70 hover:text-white"
+            className={`font-label-md uppercase tracking-widest text-[12px] cursor-pointer py-2 border-b border-secondary/5 ${
+              isEncyclopedia ? "text-primary font-bold" : "text-on-surface-variant"
             }`}
           >
             Encyclopedia
           </span>
           <span
             onClick={() => handleNavigate("/identify")}
-            className={`font-label-md uppercase tracking-widest text-[12px] cursor-pointer py-2 border-b border-white/10 transition-colors ${
-              isIdentify ? "text-surface font-bold" : "text-white/70 hover:text-white"
+            className={`font-label-md uppercase tracking-widest text-[12px] cursor-pointer py-2 border-b border-secondary/5 ${
+              isIdentify ? "text-primary font-bold" : "text-on-surface-variant"
             }`}
           >
             Identify
           </span>
 
-          <div className="flex flex-col gap-2 pl-3 border-l border-white/10">
-            <div className="font-label-md text-white/50 text-[10px] uppercase tracking-widest mb-1">
+          <div className="flex flex-col gap-2 pl-3 border-l border-secondary/10">
+            <div className="font-label-md text-secondary/60 text-[10px] uppercase tracking-widest mb-1">
               AI Services
             </div>
             {serviceItems.map((item) => (
               <span
                 key={item.path}
                 onClick={() => handleNavigate(item.path)}
-                className={`font-body-sm text-[13px] cursor-pointer py-1.5 transition-colors ${
-                  pathname === item.path ? "text-surface font-semibold" : "text-white/70 hover:text-white"
+                className={`font-body-sm text-[13px] cursor-pointer py-1.5 ${
+                  pathname === item.path ? "text-primary font-semibold" : "text-on-surface-variant"
                 }`}
               >
                 {item.label}

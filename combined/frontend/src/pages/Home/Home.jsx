@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getBreeds } from "../../api/breed.api";
 import { BreedCard } from "../../components/breed/BreedCard";
-import { DogNewsSection } from "../../components/news/DogNewsSection";
 
 const FEATURES = [
   {
@@ -40,10 +39,6 @@ export default function Home() {
   const [loadingBreeds, setLoadingBreeds] = useState(true);
   const [heroBreed, setHeroBreed] = useState(null);
 
-  // Scroll reveal visibility for Feature cards
-  const [cardsVisible, setCardsVisible] = useState(false);
-  const cardsRef = useRef(null);
-
   useEffect(() => {
     const fetchFeaturedBreeds = async () => {
       try {
@@ -63,26 +58,6 @@ export default function Home() {
       }
     };
     fetchFeaturedBreeds();
-  }, []);
-
-  // IntersectionObserver for Feature cards
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setCardsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (cardsRef.current) {
-      observer.observe(cardsRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
   }, []);
 
   return (
@@ -125,7 +100,7 @@ export default function Home() {
           <img
             src={heroBreed?.thumbnail || FALLBACK_HERO}
             alt={heroBreed ? `${heroBreed.name} portrait` : "Portrait of a dog"}
-            className="w-full h-full object-cover animate-[fadeIn_0.8s_ease-out]"
+            className="w-full h-full object-cover"
           />
           {heroBreed && (
             <span className="absolute bottom-3 left-3 px-2.5 py-1 bg-surface/90 text-on-surface font-label-md font-semibold text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-md group-hover:bg-surface transition-colors">
@@ -135,42 +110,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Dog Health News Section */}
-      <DogNewsSection />
-
-      {/* Feature cards with staggered slide reveal animation */}
-      <section
-        ref={cardsRef}
-        className="grid grid-cols-1 md:grid-cols-3 gap-8 overflow-hidden py-4"
-      >
-        {FEATURES.map((f, index) => (
+      {/* Feature cards */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {FEATURES.map((f) => (
           <article
             key={f.path}
             onClick={() => navigate(f.path)}
-            style={{ transitionDelay: `${index * 150}ms` }}
-            className={`group cursor-pointer border border-secondary/15 bg-white p-6 flex flex-col gap-4 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(21,66,18,0.06)] hover:bg-white transition-all duration-500 transform ease-out ${
-              cardsVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-12"
-            }`}
+            className="group cursor-pointer border border-secondary/20 bg-surface hover:bg-surface-container transition-colors p-6 flex flex-col gap-4"
           >
-            <span className="material-symbols-outlined text-3xl text-primary transform group-hover:scale-110 transition-transform duration-300">
+            <span className="material-symbols-outlined text-3xl text-primary">
               {f.icon}
             </span>
-            <span className="self-start px-2.5 py-1 bg-[#e3a392]/20 text-[#1e1c10] font-label-md font-semibold text-[10px] uppercase tracking-wider rounded-sm">
+            <span className="self-start px-2.5 py-1 bg-[#e3a392]/25 text-on-surface font-label-md font-semibold text-[10px] uppercase tracking-wider rounded-sm">
               {f.tag}
             </span>
-            <h2 className="font-display font-semibold text-2xl text-primary group-hover:text-primary-coral-hover transition-colors leading-snug">
+            <h2 className="font-headline-lg text-[22px] text-primary group-hover:text-surface-tint transition-colors">
               {f.title}
             </h2>
             <p className="font-body-sm text-on-surface-variant leading-relaxed">
               {f.desc}
             </p>
-            <div className="mt-auto border-t border-secondary/15 pt-3 flex justify-between items-center">
-              <span className="font-body-sm text-on-surface-variant uppercase tracking-widest text-[11px] group-hover:text-primary transition-colors">
+            <div className="mt-auto border-t border-secondary/20 pt-3 flex justify-between items-center">
+              <span className="font-body-sm text-on-surface-variant uppercase tracking-widest text-[11px]">
                 {f.cta}
               </span>
-              <span className="material-symbols-outlined text-secondary/50 group-hover:text-primary group-hover:translate-x-1 transition-all">
+              <span className="material-symbols-outlined text-secondary/50 group-hover:text-primary transition-colors">
                 arrow_forward
               </span>
             </div>

@@ -8,7 +8,7 @@ export function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-surface text-on-surface font-body-md overflow-x-hidden">
       <Navbar />
-      <main className="flex-grow w-full pb-16">
+      <main className="flex-grow w-full">
         <Outlet />
       </main>
       <Footer />

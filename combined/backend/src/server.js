@@ -1,8 +1,4 @@
-require("dotenv").config({ override: true });
-const dns = require("dns");
-
-// Sửa lỗi querySrv ECONNREFUSED trên Windows khi phân giải DNS của MongoDB Atlas
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
+require("dotenv").config();
 
 const app = require("./app");
 const connectDB = require("./config/db");
