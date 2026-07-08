@@ -16,9 +16,16 @@ const { notFound, errorHandler } = require("./middlewares/error.middleware");
 
 const app = express();
 
+// ponytail: allow the configured client plus any localhost port in dev (Vite hops ports).
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "*",
+    origin: (origin, cb) => {
+      if (!origin) return cb(null, true); // curl / same-origin / server-to-server
+      if (origin === process.env.CLIENT_URL || /^https?:\/\/localhost:\d+$/.test(origin)) {
+        return cb(null, true);
+      }
+      return cb(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
