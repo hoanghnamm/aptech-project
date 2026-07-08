@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const GalleryImage = require("../models/GalleryImage");
 const imageTaggingService = require("../services/image/image-tagging.service");
 const imageUploadService = require("../services/image/image-upload.service");
@@ -65,14 +67,25 @@ const listImages = async (req, res, next) => {
     const perPage = Math.min(60, Math.max(1, Number(limit) || 24));
     const skip = (Math.max(1, Number(page) || 1) - 1) * perPage;
 
-    const [docs, total] = await Promise.all([
-      GalleryImage.find(query).sort({ createdAt: -1 }).skip(skip).limit(perPage).lean(),
-      GalleryImage.countDocuments(query),
-    ]);
+    const docs = await GalleryImage.find(query).sort({ createdAt: -1 }).skip(skip).limit(perPage).lean();
 
-    const items = docs.map((d) => ({ ...d, imageUrl: absoluteUrl(req, d.imageUrl) }));
+    // Verify if physical image file exists on server disk
+    const validItems = [];
+    for (const d of docs) {
+      const filePath = path.join(imageUploadService.UPLOAD_DIR, d.fileName);
+      if (fs.existsSync(filePath)) {
+        validItems.push({ ...d, imageUrl: absoluteUrl(req, d.imageUrl) });
+      } else {
+        // Asynchronously delete record from DB since file is physically missing on disk
+        GalleryImage.deleteOne({ _id: d._id }).catch((err) => 
+          console.error("Failed to delete stale database record:", err)
+        );
+      }
+    }
 
-    return sendSuccess(res, { items, total }, "Gallery fetched");
+    const total = await GalleryImage.countDocuments(query);
+
+    return sendSuccess(res, { items: validItems, total }, "Gallery fetched");
   } catch (error) {
     next(error);
   }
