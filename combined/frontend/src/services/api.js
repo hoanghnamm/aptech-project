@@ -114,13 +114,15 @@ export const trackBreedView = (breedName) =>
 
 export const getPersonalized = async () => {
   const res = await http.get("/api/analytics/personalized", {
-    params: { sessionId: getSessionId() },
+    params: { sessionId: getSessionId(), _t: Date.now() },
   });
   return res.data?.data || res.data;
 };
 
 export const getTrending = async () => {
-  const res = await http.get("/api/analytics/trending");
+  const res = await http.get("/api/analytics/trending", {
+    params: { _t: Date.now() },
+  });
   return res.data?.data || res.data;
 };
 

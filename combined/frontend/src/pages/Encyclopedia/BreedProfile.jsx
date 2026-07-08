@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { getBreed } from "../../api/breed.api";
+import { trackBreedView } from "../../services/api";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { BreedProfileHero } from "../../components/breed/BreedProfileHero";
 import { BreedProfileStats } from "../../components/breed/BreedProfileStats";
@@ -25,6 +26,34 @@ export function BreedProfile() {
         const data = await getBreed(breedId);
         if (data) {
           setBreed(data);
+          trackBreedView(data.breedName);
+
+          // Local storage tracking for client-side analytics
+          try {
+            // 1. Update view counts
+            const countsStr = localStorage.getItem("pawintel_local_view_counts") || "{}";
+            const counts = JSON.parse(countsStr);
+            counts[data.breedName] = (counts[data.breedName] || 0) + 1;
+            localStorage.setItem("pawintel_local_view_counts", JSON.stringify(counts));
+
+            // 2. Update view history
+            const historyStr = localStorage.getItem("pawintel_local_history") || "[]";
+            let history = JSON.parse(historyStr);
+            // remove duplicates
+            history = history.filter(b => b.breedName !== data.breedName);
+            // add to beginning
+            history.unshift({
+              breedId: data.breedId,
+              breedName: data.breedName,
+              size: data.lifestyleFilters?.size || data.size,
+              energyLevel: data.comparisonMetrics?.energyLevel || data.energyLevel,
+              origin: data.origin,
+              temperament: data.coreTraits || data.temperament
+            });
+            localStorage.setItem("pawintel_local_history", JSON.stringify(history.slice(0, 20)));
+          } catch (e) {
+            console.error("Local tracking error:", e);
+          }
         }
       } catch (err) {
         console.error("Archive Retrieval Error:", err);

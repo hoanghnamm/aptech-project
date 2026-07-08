@@ -30,12 +30,14 @@ export const trackBreedView = (breedName) => trackEvent("breed_view", { breedNam
 
 export const getPersonalized = async () => {
   const response = await http.get("/api/analytics/personalized", {
-    params: { sessionId: getSessionId() },
+    params: { sessionId: getSessionId(), _t: Date.now() },
   });
   return response.data?.data || response.data;
 };
 
 export const getTrending = async () => {
-  const response = await http.get("/api/analytics/trending");
+  const response = await http.get("/api/analytics/trending", {
+    params: { _t: Date.now() },
+  });
   return response.data?.data || response.data;
 };

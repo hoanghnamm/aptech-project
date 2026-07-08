@@ -13,6 +13,12 @@ export function Layout({ children, wide = true }) {
 
   useEffect(() => {
     trackPageView(location.pathname);
+    try {
+      const current = Number(localStorage.getItem("pawintel_local_page_views") || "0");
+      localStorage.setItem("pawintel_local_page_views", String(current + 1));
+    } catch (e) {
+      console.error(e);
+    }
   }, [location.pathname]);
 
   return (

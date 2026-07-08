@@ -12,8 +12,9 @@ export const uploadGalleryImage = async (file) => {
 };
 
 /** List tagged gallery images (optionally filtered by tag). */
-export const getGallery = async (tag) => {
-  const params = tag ? { tag } : {};
+export const getGallery = async (tag, page = 1, limit = 24) => {
+  const params = { page, limit };
+  if (tag) params.tag = tag;
   const response = await http.get("/api/gallery", { params });
   return response.data?.data || response.data;
 };

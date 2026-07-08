@@ -45,58 +45,84 @@ export default function VetAssistancePage() {
   };
 
   return (
-    <div className="page page-wide">
-      <div>
-        <h1 className="page__title">Emergency Vet Assistance</h1>
-        <p className="page__subtitle">
-          Find veterinary clinics near you, sorted by distance. For emergencies, call ahead before you go.
+    <div className="page page-wide" style={{ position: 'relative' }}>
+      <div className="nutrition-bg-pattern" style={{ position: 'absolute', zIndex: -1 }}></div>
+      <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: 'var(--space-2)', marginBottom: 'var(--space-4)' }}>
+        <h1 className="page__title" style={{ color: 'var(--primary-coral)' }}>Emergency Vet Assistance</h1>
+        <p className="page__subtitle" style={{ color: 'var(--sepia)' }}>
+          Locate certified veterinary archives and clinics near you. For emergencies, establish contact prior to arrival.
         </p>
       </div>
 
-      <div style={{ display: 'flex', gap: 'var(--space-1)', flexWrap: 'wrap', alignItems: 'center' }}>
-        <button className="btn-primary" onClick={() => locateAndFetch(open24h)} disabled={loading}>
-          {loading ? 'Locating…' : '📍 Find clinics near me'}
+      <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', alignItems: 'center', marginBottom: 'var(--space-4)' }}>
+        <button className="btn-primary" onClick={() => locateAndFetch(open24h)} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>my_location</span>
+          {loading ? 'Triangulating position…' : 'Locate Nearby Clinics'}
         </button>
         <button
           className={open24h ? 'btn-primary' : 'btn-secondary'}
           onClick={toggle24h}
           disabled={loading}
-          style={open24h ? { backgroundColor: '#438952' } : undefined}
+          style={open24h ? { backgroundColor: 'var(--primary-coral-hover)', display: 'flex', alignItems: 'center', gap: '0.5rem' } : { display: 'flex', alignItems: 'center', gap: '0.5rem' }}
         >
-          {open24h ? '✓ 24/7 only' : 'Show 24/7 only'}
+          {open24h ? <><span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>check_circle</span> Showing 24/7 Only</> : <><span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>schedule</span> Filter 24/7 Only</>}
         </button>
       </div>
 
       {usedFallback && (
-        <div style={{ fontSize: 'var(--fs-300)', color: '#999999' }}>
-          Location unavailable — showing clinics near central Hanoi. Allow location access for accurate distances.
+        <div style={{ fontSize: 'var(--fs-300)', color: 'var(--sepia)', background: 'var(--bg-pale-beige)', padding: 'var(--space-2)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-4)' }}>
+          <strong>Location Status:</strong> Signals blocked or unavailable. Falling back to central archives (Hanoi). Grant location access for precise triangulation.
         </div>
       )}
 
-      {error && <div style={{ color: '#E34432', textAlign: 'center', fontWeight: '600' }}>⚠️ {error}</div>}
+      {error && <div style={{ color: 'var(--error-state)', textAlign: 'center', fontWeight: '600', background: 'var(--bg-pale-beige)', padding: 'var(--space-2)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-4)' }}>⚠️ {error}</div>}
+      
       {!loading && !error && clinics.length === 0 && (
-        <div style={{ textAlign: 'center', color: '#999999' }}>No clinics found.</div>
+        <div style={{ textAlign: 'center', color: 'var(--sepia)', padding: 'var(--space-4)', background: 'var(--bg-white)', border: '1px dashed var(--border-color)', borderRadius: 'var(--radius-md)' }}>
+          No certified clinics located in this sector.
+        </div>
       )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem), 1fr))', gap: 'var(--space-3)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: 'var(--space-4)' }}>
         {clinics.map((c) => (
-          <div key={c.id} className="card-standard" style={{ borderLeft: c.open24h ? '5px solid #438952' : '5px solid #E34432' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 'var(--space-1)', flexWrap: 'wrap' }}>
-              <h3 style={{ fontSize: 'var(--fs-600)' }}>{c.name}</h3>
-              <span style={{ fontWeight: '700', color: '#EE6449' }}>{c.distanceKm} km</span>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)', fontSize: 'var(--fs-400)', marginTop: 'var(--space-1)' }}>
-              <div>📍 {c.address}</div>
-              <div>⭐ {c.rating} / 5</div>
-              <div style={{ color: c.open24h ? '#438952' : '#E34432', fontWeight: '600' }}>
-                {c.open24h ? '🟢 Open 24/7' : '🔴 Limited hours'}
+          <div key={c.id} className="card-standard" style={{ position: 'relative', overflow: 'hidden', padding: 'var(--space-4)', border: '1px solid var(--border-color)' }}>
+            {/* Status indicator line */}
+            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '6px', backgroundColor: c.open24h ? 'var(--primary-coral)' : 'var(--tertiary-accent)' }}></div>
+            
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 'var(--space-2)', flexWrap: 'wrap', marginBottom: 'var(--space-2)' }}>
+              <h3 style={{ fontSize: 'var(--fs-600)', fontFamily: 'var(--font-display)', color: 'var(--primary-dark)', margin: 0, flex: 1 }}>{c.name}</h3>
+              <div style={{ background: 'var(--bg-pale-beige)', padding: '0.25rem 0.5rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', fontWeight: '700', color: 'var(--primary-coral)', fontSize: 'var(--fs-400)', whiteSpace: 'nowrap' }}>
+                {c.distanceKm} km
               </div>
             </div>
-            <a href={`tel:${c.phone.replace(/\s/g, '')}`} style={{ textDecoration: 'none' }}>
-              <button className="btn-primary" style={{ width: '100%', marginTop: 'var(--space-2)', backgroundColor: '#E34432' }}>
-                📞 Call {c.phone}
-              </button>
-            </a>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', fontSize: 'var(--fs-400)', color: 'var(--sepia)' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '1.2em', marginTop: '0.1rem' }}>location_on</span>
+                <span>{c.address}</span>
+              </div>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '1.2em', color: 'var(--warning-state)' }}>star</span>
+                  <span style={{ fontWeight: '600', color: 'var(--primary-dark)' }}>{c.rating}</span> / 5
+                </div>
+                
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', color: c.open24h ? 'var(--primary-coral)' : 'var(--tertiary-accent)', fontWeight: '600', fontSize: 'var(--fs-300)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>{c.open24h ? 'check_circle' : 'info'}</span>
+                  {c.open24h ? 'Open 24/7' : 'Limited Hours'}
+                </div>
+              </div>
+            </div>
+            
+            <div style={{ marginTop: 'var(--space-4)', borderTop: '1px solid var(--border-color)', paddingTop: 'var(--space-3)' }}>
+              <a href={`tel:${c.phone.replace(/\s/g, '')}`} style={{ textDecoration: 'none' }}>
+                <button className="btn-secondary" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>call</span>
+                  Contact Facility
+                </button>
+              </a>
+            </div>
           </div>
         ))}
       </div>

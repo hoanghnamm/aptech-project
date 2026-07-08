@@ -47,8 +47,21 @@ const uploadImage = async (req, res, next) => {
 // GET /api/gallery?tag=&page=&limit=
 const listImages = async (req, res, next) => {
   try {
+    // Exclude/Delete unrecognized and untagged images as requested
+    await GalleryImage.deleteMany({ tags: { $in: ["#Unrecognized", "#Untagged"] } });
+
     const { tag, page = 1, limit = 24 } = req.query;
-    const query = tag ? { tags: tag } : {};
+    let query = {};
+    if (tag) {
+      if (tag === "#Unrecognized" || tag === "#Untagged") {
+        query = { tags: tag };
+      } else {
+        query = { $and: [{ tags: tag }, { tags: { $nin: ["#Unrecognized", "#Untagged"] } }] };
+      }
+    } else {
+      query = { tags: { $nin: ["#Unrecognized", "#Untagged"] } };
+    }
+
     const perPage = Math.min(60, Math.max(1, Number(limit) || 24));
     const skip = (Math.max(1, Number(page) || 1) - 1) * perPage;
 
