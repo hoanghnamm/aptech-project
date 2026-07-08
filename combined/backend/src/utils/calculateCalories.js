@@ -1,3 +1,8 @@
+/**
+ * Calorie Calculator — Enhanced with BCS & Neutered factors (B3, B6)
+ * Uses the standard veterinary RER formula: 70 × W^0.75
+ */
+
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
 function calculateRER(weightKg) {
@@ -44,7 +49,32 @@ function getGoalMultiplier(goal) {
   return map[goal] || 1.0;
 }
 
-function calculateCalories(input, breed = null) {
+/**
+ * B6: Neutered/spayed dogs need ~15-20% fewer calories
+ */
+function getNeuteredMultiplier(isNeutered) {
+  return isNeutered ? 0.85 : 1.0;
+}
+
+/**
+ * B3: BCS calorie adjustment factor
+ * @param {number} bcsAdjust - from evaluateBCS().calorieAdjust (-0.30 to +0.25)
+ */
+function getBcsMultiplier(bcsAdjust) {
+  if (!Number.isFinite(bcsAdjust)) return 1.0;
+  return 1 + bcsAdjust;
+}
+
+/**
+ * B5: Health risk calorie adjustment
+ * @param {number} healthAdjust - from processHealthRisks().totalCalorieAdjust
+ */
+function getHealthRiskMultiplier(healthAdjust) {
+  if (!Number.isFinite(healthAdjust)) return 1.0;
+  return 1 + healthAdjust;
+}
+
+function calculateCalories(input, breed = null, options = {}) {
   const rer = calculateRER(input.weightKg);
   const breedCaloriesPerKg = breed?.nutritionProfile?.caloriesPerKg || 35;
   const breedFactor = breedCaloriesPerKg / 35;
@@ -55,12 +85,18 @@ function calculateCalories(input, breed = null) {
     getActivityMultiplier(input.activityLevel) *
     getLifeStageMultiplier(input.lifeStage) *
     getGoalMultiplier(input.goal) *
-    breedFactor;
+    breedFactor *
+    getNeuteredMultiplier(options.isNeutered || false) *
+    getBcsMultiplier(options.bcsAdjust || 0) *
+    getHealthRiskMultiplier(options.healthCalorieAdjust || 0);
 
-  return Math.round(clamp(calories, 150, 5000));
+  return Math.round(clamp(calories, 100, 6000));
 }
 
 module.exports = {
   calculateRER,
   calculateCalories,
+  getNeuteredMultiplier,
+  getBcsMultiplier,
+  getHealthRiskMultiplier,
 };

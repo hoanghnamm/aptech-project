@@ -1,3 +1,7 @@
+/**
+ * Nutrition AI Service — Enhanced Schema (B4: Weekly Meal Plan)
+ */
+
 const { callGroqStructured } = require("./groq.service");
 const { buildNutritionMessages } = require("../../prompts/nutrition/nutrition.prompt");
 
@@ -16,6 +20,7 @@ const nutritionSchema = {
     "summary",
     "portionGuidance",
     "supplementSuggestions",
+    "weeklyMealPlan",
   ],
   properties: {
     caloriesPerDay: { type: "number" },
@@ -29,6 +34,31 @@ const nutritionSchema = {
     summary: { type: "string" },
     portionGuidance: { type: "string" },
     supplementSuggestions: { type: "array", items: { type: "string" } },
+    weeklyMealPlan: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["day", "meals"],
+        properties: {
+          day: { type: "string" },
+          meals: {
+            type: "array",
+            items: {
+              type: "object",
+              additionalProperties: false,
+              required: ["type", "items", "portionGrams", "calories"],
+              properties: {
+                type: { type: "string" },
+                items: { type: "array", items: { type: "string" } },
+                portionGrams: { type: "number" },
+                calories: { type: "number" },
+              },
+            },
+          },
+        },
+      },
+    },
   },
 };
 
@@ -54,6 +84,7 @@ async function generateNutritionRecommendation({ breed, input, baseEstimate, bre
       summary: "AI service temporarily unavailable. Returned a safe backend-generated nutrition baseline.",
       portionGuidance: baseEstimate.portionGuidance,
       supplementSuggestions: baseEstimate.supplementSuggestions || [],
+      weeklyMealPlan: [],
     };
   }
 }

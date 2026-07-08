@@ -4,15 +4,17 @@ const breedSchema = new mongoose.Schema(
   {
     breedId: {
       type: String,
-      required: true,
-      unique: true,
       trim: true,
       index: true,
     },
     name: {
       type: String,
-      required: true,
       trim: true,
+    },
+    breedName: {
+      type: String,
+      trim: true,
+      index: true,
     },
     origin: {
       type: String,
@@ -58,7 +60,7 @@ const breedSchema = new mongoose.Schema(
       }
     ],
   },
-  { timestamps: true }
+  { timestamps: true, strict: false }
 );
 
 module.exports = mongoose.model("Breed", breedSchema, "dogbreeds");

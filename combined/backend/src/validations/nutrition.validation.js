@@ -1,3 +1,7 @@
+/**
+ * Nutrition Validation — Enhanced (B3: BCS, B6: Neutered)
+ */
+
 const { body, validationResult } = require("express-validator");
 
 const nutritionRules = [
@@ -83,6 +87,18 @@ const nutritionRules = [
     .optional()
     .isArray()
     .withMessage("healthIssues must be an array"),
+
+  // B3: Body Condition Score (1-9 veterinary scale)
+  body("bodyConditionScore")
+    .optional()
+    .isInt({ min: 1, max: 9 })
+    .withMessage("bodyConditionScore must be between 1 and 9"),
+
+  // B6: Neutered/Spayed flag
+  body("isNeutered")
+    .optional()
+    .isBoolean()
+    .withMessage("isNeutered must be a boolean"),
 ];
 
 const validateNutrition = (req, res, next) => {
