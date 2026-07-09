@@ -1,6 +1,19 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { getNearbyClinics } from '../../api/vet.api';
 
+// ponytail: single danger accent instead of 3 clashing hardcoded hexes; green reuses theme success token.
+const DANGER = '#c0392b';
+const SUCCESS = 'var(--success-accent)';
+
+// Quick triage shown before the list — the whole point of an "emergency" page.
+const FIRST_AID = [
+  ['Poisoning / ate something toxic', 'Do NOT induce vomiting unless a vet says so. Bring the packaging/plant. Call ahead.'],
+  ['Choking', 'Open the mouth, remove visible objects. For small dogs, 5 firm back blows between the shoulder blades.'],
+  ['Heavy bleeding', 'Press a clean cloth firmly on the wound and keep pressure while you travel.'],
+  ['Heatstroke', 'Move to shade, wet with cool (not ice-cold) water, offer small sips. Go now — this kills fast.'],
+  ['Seizure', 'Clear the area, don’t restrain or touch the mouth, time it. Over 5 min = emergency.'],
+];
+
 export default function VetAssistancePage() {
   const [clinics, setClinics] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -54,6 +67,20 @@ export default function VetAssistancePage() {
         </p>
       </div>
 
+      {/* First-aid triage — native <details>, no JS, no deps */}
+      <details className="card-standard" style={{ borderLeft: `5px solid ${DANGER}`, marginBottom: 'var(--space-4)' }}>
+        <summary style={{ cursor: 'pointer', fontWeight: 700, fontSize: 'var(--fs-500)', color: DANGER }}>
+          🚨 While you get there — quick first aid
+        </summary>
+        <ul style={{ marginTop: 'var(--space-2)', display: 'grid', gap: 'var(--space-2)', paddingLeft: '1.1rem' }}>
+          {FIRST_AID.map(([title, tip]) => (
+            <li key={title}>
+              <strong>{title}:</strong> {tip}
+            </li>
+          ))}
+        </ul>
+      </details>
+
       <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', alignItems: 'center', marginBottom: 'var(--space-4)' }}>
         <button className="btn-primary" onClick={() => locateAndFetch(open24h)} disabled={loading} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>my_location</span>
@@ -84,48 +111,78 @@ export default function VetAssistancePage() {
       )}
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: 'var(--space-4)' }}>
-        {clinics.map((c) => (
-          <div key={c.id} className="card-standard" style={{ position: 'relative', overflow: 'hidden', padding: 'var(--space-4)', border: '1px solid var(--border-color)' }}>
-            {/* Status indicator line */}
-            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '6px', backgroundColor: c.open24h ? 'var(--primary-coral)' : 'var(--tertiary-accent)' }}></div>
-            
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 'var(--space-2)', flexWrap: 'wrap', marginBottom: 'var(--space-2)' }}>
-              <h3 style={{ fontSize: 'var(--fs-600)', fontFamily: 'var(--font-display)', color: 'var(--primary-dark)', margin: 0, flex: 1 }}>{c.name}</h3>
-              <div style={{ background: 'var(--bg-pale-beige)', padding: '0.25rem 0.5rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', fontWeight: '700', color: 'var(--primary-coral)', fontSize: 'var(--fs-400)', whiteSpace: 'nowrap' }}>
-                {c.distanceKm} km
+        {loading && clinics.length === 0
+          ? Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="card-standard" aria-hidden style={{ position: 'relative', overflow: 'hidden', padding: 'var(--space-4)', border: '1px solid var(--border-color)', opacity: 0.5 }}>
+                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '6px', backgroundColor: 'var(--border-color)' }}></div>
+                <div style={{ height: '1.4rem', width: '70%', background: 'var(--border-color)', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-2)' }} />
+                <div style={{ height: '0.9rem', width: '90%', background: 'var(--border-color)', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-2)' }} />
+                <div style={{ height: '0.9rem', width: '50%', background: 'var(--border-color)', borderRadius: 'var(--radius-sm)' }} />
               </div>
-            </div>
-            
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', fontSize: 'var(--fs-400)', color: 'var(--sepia)' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '1.2em', marginTop: '0.1rem' }}>location_on</span>
-                <span>{c.address}</span>
-              </div>
-              
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '1.2em', color: 'var(--warning-state)' }}>star</span>
-                  <span style={{ fontWeight: '600', color: 'var(--primary-dark)' }}>{c.rating}</span> / 5
+            ))
+          : clinics.map((c, i) => {
+              const isNearest = i === 0;
+              const phoneHref = `tel:${c.phone.replace(/\s/g, '')}`;
+              const mapsHref = `https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lng}`;
+              return (
+                <div key={c.id} className="card-standard" style={{ position: 'relative', overflow: 'hidden', padding: 'var(--space-4)', border: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column' }}>
+                  {/* Status indicator line */}
+                  <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '6px', backgroundColor: c.open24h ? SUCCESS : 'var(--tertiary-accent)' }}></div>
+                  
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 'var(--space-2)', flexWrap: 'wrap', marginBottom: 'var(--space-2)' }}>
+                    <h3 style={{ fontSize: 'var(--fs-600)', fontFamily: 'var(--font-display)', color: 'var(--primary-dark)', margin: 0, flex: 1 }}>{c.name}</h3>
+                    <div style={{ background: 'var(--bg-pale-beige)', padding: '0.25rem 0.5rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', fontWeight: '700', color: 'var(--primary-coral)', fontSize: 'var(--fs-400)', whiteSpace: 'nowrap' }}>
+                      {c.distanceKm} km
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: 'var(--space-2)' }}>
+                    {isNearest && <Chip bg="var(--primary-coral)" fg="#fff">Nearest</Chip>}
+                    <Chip bg={c.open24h ? SUCCESS : 'var(--tertiary-accent)'} fg={c.open24h ? '#fff' : 'var(--primary-dark)'}>
+                      {c.open24h ? 'Open 24/7' : 'Limited Hours'}
+                    </Chip>
+                  </div>
+                  
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', fontSize: 'var(--fs-400)', color: 'var(--sepia)', marginBottom: 'var(--space-3)' }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                      <span className="material-symbols-outlined" style={{ fontSize: '1.2em', marginTop: '0.1rem' }}>location_on</span>
+                      <span>{c.address}</span>
+                    </div>
+                    
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                        <span className="material-symbols-outlined" style={{ fontSize: '1.2em', color: 'var(--warning-state)' }}>star</span>
+                        <span style={{ fontWeight: '600', color: 'var(--primary-dark)' }}>{c.rating}</span> / 5
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div style={{ display: 'flex', gap: 'var(--space-2)', marginTop: 'auto', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--border-color)' }}>
+                    <a href={phoneHref} style={{ flex: 1, textDecoration: 'none' }}>
+                      <button className="btn-secondary" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', backgroundColor: DANGER, color: '#fff', border: 'none' }}>
+                        <span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>call</span>
+                        Call
+                      </button>
+                    </a>
+                    <a href={mapsHref} target="_blank" rel="noreferrer" style={{ flex: 1, textDecoration: 'none' }}>
+                      <button className="btn-secondary" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}>
+                        <span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>explore</span>
+                        Directions
+                      </button>
+                    </a>
+                  </div>
                 </div>
-                
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', color: c.open24h ? 'var(--primary-coral)' : 'var(--tertiary-accent)', fontWeight: '600', fontSize: 'var(--fs-300)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>{c.open24h ? 'check_circle' : 'info'}</span>
-                  {c.open24h ? 'Open 24/7' : 'Limited Hours'}
-                </div>
-              </div>
-            </div>
-            
-            <div style={{ marginTop: 'var(--space-4)', borderTop: '1px solid var(--border-color)', paddingTop: 'var(--space-3)' }}>
-              <a href={`tel:${c.phone.replace(/\s/g, '')}`} style={{ textDecoration: 'none' }}>
-                <button className="btn-secondary" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '1.2em' }}>call</span>
-                  Contact Facility
-                </button>
-              </a>
-            </div>
-          </div>
-        ))}
+              );
+            })}
       </div>
     </div>
+  );
+}
+
+function Chip({ children, bg, fg }) {
+  return (
+    <span style={{ background: bg, color: fg, fontSize: 'var(--fs-300)', fontWeight: 600, padding: '0.2rem 0.6rem', borderRadius: '999px', lineHeight: 1.4 }}>
+      {children}
+    </span>
   );
 }
