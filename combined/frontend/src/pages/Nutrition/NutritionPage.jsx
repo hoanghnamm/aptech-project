@@ -837,6 +837,7 @@ function ResultsView({ result, onBack, previousResult }) {
               <img
                 alt="Dog Bowl"
                 className="w-24 h-24 object-contain"
+                style={{ mixBlendMode: 'multiply' }}
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzczRoDUrtfYJxnrB54cDi0YKCeUrfx0lEeoC6Si3j8WngZHqejxe2F-kQIJgiKl8-QGVbbgTw47onNPkdoRvPY51hs7J6kRVjVblBZF6pShT1G1I_48cVG-71C3QV3xpP8gH8D2PUuEWacTv2Puj0kOo9leDIG8r2BLIUbLCxEMksp-uuUyMgNxcJutZgDshWkJ15jMu0D7Y7J5fobWw1hSldijNuBFBZBPGcQCv9G5OjIiRQ1vnt3ndhtHcXOoAOfJDhMW25isYv"
               />
             </div>
