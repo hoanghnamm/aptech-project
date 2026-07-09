@@ -1007,6 +1007,33 @@ export default function NutritionPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Nutrition history
+  const [historyItems, setHistoryItems] = useState([]);
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
+
+  // Check auth from localStorage token
+  const hasToken = !!localStorage.getItem('token');
+
+  // Load nutrition history on mount if user has token
+  useEffect(() => {
+    if (!hasToken) return;
+    setHistoryLoading(true);
+    fetch(`${API_BASE}/history?limit=10`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success) {
+          setHistoryItems(Array.isArray(data.data) ? data.data : []);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setHistoryLoading(false));
+  }, [hasToken]);
+
   const calculateNutrition = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -1024,9 +1051,13 @@ export default function NutritionPage() {
         isNeutered: formData.isNeutered,
       };
 
+      const headers = { 'Content-Type': 'application/json' };
+      const token = localStorage.getItem('token');
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
       const response = await fetch(`${API_BASE}/recommend`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify(payload),
       });
 
@@ -1048,6 +1079,21 @@ export default function NutritionPage() {
     }
   };
 
+  // Load a past result
+  const loadHistoryResult = (item) => {
+    setResult({
+      breed: item.breedSnapshot || { breedName: item.breedName },
+      breedMatched: item.breedMatched,
+      recommendation: item.aiResponse?.recommendation || item.aiResponse || {},
+    });
+    setShowHistory(false);
+  };
+
+  const formatHistoryDate = (dateStr) => {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
   return (
     <div className="bg-surface text-on-surface antialiased font-body-md min-h-screen relative overflow-x-hidden">
       {/* Background Pattern Wrapper */}
@@ -1055,6 +1101,118 @@ export default function NutritionPage() {
       
       {/* Main Content Canvas */}
       <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 flex flex-col gap-gutter">
+        {/* Past Results Banner */}
+        {hasToken && historyItems.length > 0 && !result && !loading && (
+          <div style={{
+            background: '#154212',
+            border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: 'var(--radius-md)',
+            padding: 'var(--space-3)',
+            marginBottom: 'var(--space-2)',
+          }}>
+            <div
+              onClick={() => setShowHistory(!showHistory)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                cursor: 'pointer',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#fff' }}>history</span>
+                <span style={{
+                  fontFamily: "'Hanken Grotesk', sans-serif",
+                  fontSize: 'var(--fs-400)',
+                  fontWeight: 600,
+                  color: '#fff',
+                }}>
+                  Past Nutrition Plans ({historyItems.length})
+                </span>
+              </div>
+              <span
+                className="material-symbols-outlined"
+                style={{
+                  fontSize: '20px',
+                  color: '#fff',
+                  transition: 'transform 0.2s ease',
+                  transform: showHistory ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}
+              >
+                expand_more
+              </span>
+            </div>
+
+            {showHistory && (
+              <div style={{ marginTop: 'var(--space-2)', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {historyItems.map((item) => (
+                  <div
+                    key={item._id}
+                    onClick={() => loadHistoryResult(item)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '0.75rem 1rem',
+                      borderRadius: '0.375rem',
+                      border: '1px solid rgba(21, 66, 18, 0.2)',
+                      cursor: 'pointer',
+                      transition: 'background 0.15s ease, border-color 0.15s ease',
+                      background: '#e9e1cc',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#dfd5bb';
+                      e.currentTarget.style.borderColor = '#154212';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#e9e1cc';
+                      e.currentTarget.style.borderColor = 'rgba(21, 66, 18, 0.2)';
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#154212' }}>pets</span>
+                      <div>
+                        <div style={{
+                          fontWeight: 700,
+                          fontSize: 'var(--fs-400)',
+                          color: '#1e1c10',
+                        }}>
+                          {item.breedName}
+                        </div>
+                        <div style={{ fontSize: '12px', color: '#4e4839', fontWeight: 500 }}>
+                          {item.requestData?.weightKg}kg • {item.requestData?.ageMonths} months • {item.requestData?.activityLevel} activity
+                        </div>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#5a5445', fontWeight: 500, whiteSpace: 'nowrap' }}>
+                      {formatHistoryDate(item.createdAt)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Sign-in hint for guests */}
+        {!hasToken && !result && !loading && (
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.625rem 1rem',
+            background: 'linear-gradient(135deg, #f3f4ed, #faf3e0)',
+            borderRadius: 'var(--radius-sm)',
+            border: '1px solid var(--border-color)',
+            marginBottom: 'var(--space-1)',
+            fontSize: 'var(--fs-300)',
+            color: '#625e50',
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#154212' }}>info</span>
+            <span>Sign in to save your nutrition plans and view them later</span>
+          </div>
+        )}
+
         {error && (
           <div style={{
             background: '#ffdad6', color: '#93000a', padding: 'var(--space-2)', borderRadius: 'var(--radius-sm)',
@@ -1079,3 +1237,4 @@ export default function NutritionPage() {
     </div>
   );
 }
+

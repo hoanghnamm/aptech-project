@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getBreeds } from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
+import * as userApi from '../../api/user.api';
 
 const BreedCard = ({ breed }) => (
   <div className="card-standard" style={{ border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)' }}>
@@ -23,6 +25,7 @@ const StatBox = ({ label, value }) => (
 );
 
 export default function InsightsPage({ onNavigate }) {
+  const { user } = useAuth();
   const [stats, setStats] = useState({ uniqueVisitors: 1, pageViews: 0, breedViews: 0, totalEvents: 0 });
   const [personalized, setPersonalized] = useState(null);
   const [trendingList, setTrendingList] = useState([]);
@@ -30,89 +33,149 @@ export default function InsightsPage({ onNavigate }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchLocalData = async () => {
+    const fetchData = async () => {
       setLoading(true);
       setError(null);
       try {
-        // 1. Get stats from local storage
-        const localPageViews = Number(localStorage.getItem("pawintel_local_page_views") || "0");
-        const localViewCounts = JSON.parse(localStorage.getItem("pawintel_local_view_counts") || "{}");
-        const localHistory = JSON.parse(localStorage.getItem("pawintel_local_history") || "[]");
-
-        const pageViews = Math.max(1, localPageViews);
-        const breedViews = Object.values(localViewCounts).reduce((a, b) => a + b, 0);
-        const totalEvents = pageViews + breedViews;
-
-        setStats({
-          uniqueVisitors: 1,
-          pageViews,
-          breedViews,
-          totalEvents
-        });
-
-        // 2. Highly Researched Subjects (Trending)
-        let localTrending = Object.entries(localViewCounts)
-          .map(([breedName, views]) => ({ breedName, views }))
-          .sort((a, b) => b.views - a.views)
-          .slice(0, 6);
-
-        // If client has no views yet, query all breeds and use first 4 as default trending fallbacks
         const breedData = await getBreeds({ limit: 100 });
         const allBreeds = breedData.items || [];
 
-        if (localTrending.length === 0) {
-          localTrending = allBreeds.slice(0, 4).map(b => ({
-            breedName: b.breedName || b.name,
-            views: 0
-          }));
-        }
-        setTrendingList(localTrending);
+        if (user) {
+          // ─── CLOUD MODE: Fetch from API ───
+          const prefs = await userApi.getPreferences();
+          const viewedBreeds = prefs.viewedBreeds || [];
 
-        // 3. Personalized recommendations
-        if (localHistory.length === 0) {
-          setPersonalized({
-            personalized: false,
-            basedOn: [],
-            recommendations: allBreeds.slice(4, 10).map(b => ({
-              ...b,
-              breedName: b.breedName || b.name,
-              size: b.lifestyleFilters?.size || b.size || "medium",
-              energyLevel: b.energyLevel || (b.comparisonMetrics?.energyLevel === 5 ? "high" : b.comparisonMetrics?.energyLevel === 3 ? "medium" : "low"),
-              temperament: b.coreTraits || b.temperament || []
-            }))
-          });
-        } else {
-          const sizes = [...new Set(localHistory.map(h => h.size).filter(Boolean))];
-          const energies = [...new Set(localHistory.map(h => h.energyLevel).filter(Boolean))];
+          const breedViews = viewedBreeds.reduce((acc, b) => acc + (b.viewCount || 0), 0);
+          const localPageViews = Number(localStorage.getItem("pawintel_local_page_views") || "0");
+          const pageViews = Math.max(1, localPageViews);
+          const totalEvents = pageViews + breedViews;
 
-          const recommendations = allBreeds
-            .map(b => {
-              const bSize = b.lifestyleFilters?.size || b.size || "medium";
-              const bEnergyText = b.energyLevel || (b.comparisonMetrics?.energyLevel === 5 ? "high" : b.comparisonMetrics?.energyLevel === 3 ? "medium" : "low");
-              return {
-                ...b,
-                breedName: b.breedName || b.name,
-                size: bSize,
-                energyLevel: bEnergyText,
-                temperament: b.coreTraits || b.temperament || []
-              };
-            })
-            .filter(b => {
-              const isAlreadyViewed = localHistory.some(h => h.breedName === b.breedName);
-              if (isAlreadyViewed) return false;
+          setStats({ uniqueVisitors: 1, pageViews, breedViews, totalEvents });
 
-              const sizeMatch = sizes.includes(b.size);
-              const energyMatch = energies.includes(b.energyLevel) || energies.includes(b.comparisonMetrics?.energyLevel);
-
-              return sizeMatch || energyMatch;
-            })
+          // Trending from cloud data
+          let cloudTrending = viewedBreeds
+            .map((b) => ({ breedName: b.breedName, views: b.viewCount || 0 }))
+            .sort((a, b) => b.views - a.views)
             .slice(0, 6);
 
-          setPersonalized({
-            personalized: true,
-            basedOn: localHistory.map(h => h.breedName),
-            recommendations
-          });
+          if (cloudTrending.length === 0) {
+            cloudTrending = allBreeds.slice(0, 4).map(b => ({
+              breedName: b.breedName || b.name,
+              views: 0
+            }));
+          }
+          setTrendingList(cloudTrending);
+
+          // Personalized recommendations from cloud
+          if (viewedBreeds.length === 0) {
+            setPersonalized({
+              personalized: false,
+              basedOn: [],
+              recommendations: allBreeds.slice(4, 10).map(b => ({
+                ...b,
+                breedName: b.breedName || b.name,
+                size: b.lifestyleFilters?.size || b.size || "medium",
+                energyLevel: b.energyLevel || "medium",
+                temperament: b.coreTraits || b.temperament || []
+              }))
+            });
+          } else {
+            const sizes = [...new Set(viewedBreeds.map(h => h.size).filter(Boolean))];
+            const energies = [...new Set(viewedBreeds.map(h => h.energyLevel).filter(Boolean))];
+            const viewedNames = viewedBreeds.map(h => h.breedName.toLowerCase());
+
+            const recommendations = allBreeds
+              .map(b => {
+                const bSize = b.lifestyleFilters?.size || b.size || "medium";
+                const bEnergy = b.energyLevel || "medium";
+                return {
+                  ...b,
+                  breedName: b.breedName || b.name,
+                  size: bSize,
+                  energyLevel: bEnergy,
+                  temperament: b.coreTraits || b.temperament || []
+                };
+              })
+              .filter(b => {
+                if (viewedNames.includes(b.breedName.toLowerCase())) return false;
+                return sizes.includes(b.size) || energies.includes(b.energyLevel);
+              })
+              .slice(0, 6);
+
+            setPersonalized({
+              personalized: true,
+              basedOn: viewedBreeds.map(h => h.breedName),
+              recommendations
+            });
+          }
+        } else {
+          // ─── LOCAL MODE: Fallback to localStorage ───
+          const localPageViews = Number(localStorage.getItem("pawintel_local_page_views") || "0");
+          const localViewCounts = JSON.parse(localStorage.getItem("pawintel_local_view_counts") || "{}");
+          const localHistory = JSON.parse(localStorage.getItem("pawintel_local_history") || "[]");
+
+          const pageViews = Math.max(1, localPageViews);
+          const breedViews = Object.values(localViewCounts).reduce((a, b) => a + b, 0);
+          const totalEvents = pageViews + breedViews;
+
+          setStats({ uniqueVisitors: 1, pageViews, breedViews, totalEvents });
+
+          let localTrending = Object.entries(localViewCounts)
+            .map(([breedName, views]) => ({ breedName, views }))
+            .sort((a, b) => b.views - a.views)
+            .slice(0, 6);
+
+          if (localTrending.length === 0) {
+            localTrending = allBreeds.slice(0, 4).map(b => ({
+              breedName: b.breedName || b.name,
+              views: 0
+            }));
+          }
+          setTrendingList(localTrending);
+
+          if (localHistory.length === 0) {
+            setPersonalized({
+              personalized: false,
+              basedOn: [],
+              recommendations: allBreeds.slice(4, 10).map(b => ({
+                ...b,
+                breedName: b.breedName || b.name,
+                size: b.lifestyleFilters?.size || b.size || "medium",
+                energyLevel: b.energyLevel || (b.comparisonMetrics?.energyLevel === 5 ? "high" : b.comparisonMetrics?.energyLevel === 3 ? "medium" : "low"),
+                temperament: b.coreTraits || b.temperament || []
+              }))
+            });
+          } else {
+            const sizes = [...new Set(localHistory.map(h => h.size).filter(Boolean))];
+            const energies = [...new Set(localHistory.map(h => h.energyLevel).filter(Boolean))];
+
+            const recommendations = allBreeds
+              .map(b => {
+                const bSize = b.lifestyleFilters?.size || b.size || "medium";
+                const bEnergyText = b.energyLevel || (b.comparisonMetrics?.energyLevel === 5 ? "high" : b.comparisonMetrics?.energyLevel === 3 ? "medium" : "low");
+                return {
+                  ...b,
+                  breedName: b.breedName || b.name,
+                  size: bSize,
+                  energyLevel: bEnergyText,
+                  temperament: b.coreTraits || b.temperament || []
+                };
+              })
+              .filter(b => {
+                const isAlreadyViewed = localHistory.some(h => h.breedName === b.breedName);
+                if (isAlreadyViewed) return false;
+                const sizeMatch = sizes.includes(b.size);
+                const energyMatch = energies.includes(b.energyLevel) || energies.includes(b.comparisonMetrics?.energyLevel);
+                return sizeMatch || energyMatch;
+              })
+              .slice(0, 6);
+
+            setPersonalized({
+              personalized: true,
+              basedOn: localHistory.map(h => h.breedName),
+              recommendations
+            });
+          }
         }
       } catch (err) {
         setError(err?.message || 'Failed to load insights.');
@@ -121,8 +184,8 @@ export default function InsightsPage({ onNavigate }) {
       }
     };
 
-    fetchLocalData();
-  }, []);
+    fetchData();
+  }, [user]);
 
   return (
     <div className="page page-wide" style={{ position: 'relative' }}>
@@ -130,8 +193,40 @@ export default function InsightsPage({ onNavigate }) {
       <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: 'var(--space-2)', marginBottom: 'var(--space-4)' }}>
         <h1 className="page__title" style={{ color: 'var(--primary-coral)' }}>Personal Insights</h1>
         <p className="page__subtitle" style={{ color: 'var(--sepia)' }}>
-          Curated botanical and biological recommendations based on your archival explorations.
+          {user
+            ? 'Your research profile is synced across all your devices. Recommendations improve as you explore more.'
+            : 'Curated botanical and biological recommendations based on your archival explorations.'}
         </p>
+        {user && (
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            marginTop: 'var(--space-1)',
+            padding: '0.375rem 0.75rem',
+            background: 'linear-gradient(135deg, rgba(21,66,18,0.08), rgba(45,90,39,0.08))',
+            borderRadius: '9999px',
+            border: '1px solid rgba(21,66,18,0.15)',
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#154212' }}>cloud_done</span>
+            <span style={{ fontSize: 'var(--fs-300)', color: '#154212', fontWeight: 600 }}>Cloud Synced</span>
+          </div>
+        )}
+        {!user && (
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            marginTop: 'var(--space-1)',
+            padding: '0.375rem 0.75rem',
+            background: 'linear-gradient(135deg, #faf3e0, #f4eedb)',
+            borderRadius: '9999px',
+            border: '1px solid var(--border-color)',
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#625e50' }}>info</span>
+            <span style={{ fontSize: 'var(--fs-300)', color: '#625e50' }}>Sign in to sync your data across devices</span>
+          </div>
+        )}
       </div>
 
       {loading && <div style={{ textAlign: 'center', color: 'var(--sepia)', fontStyle: 'italic' }}>Consulting archives...</div>}
@@ -158,7 +253,7 @@ export default function InsightsPage({ onNavigate }) {
           
           {personalized.personalized && personalized.basedOn?.length > 0 && (
             <p style={{ fontSize: 'var(--fs-300)', color: 'var(--sepia)', marginBottom: 'var(--space-3)', fontStyle: 'italic' }}>
-              Influenced by your studies in: {personalized.basedOn.join(', ')}
+              Influenced by your studies in: {personalized.basedOn.slice(0, 5).join(', ')}{personalized.basedOn.length > 5 ? ` and ${personalized.basedOn.length - 5} more` : ''}
             </p>
           )}
           {personalized.recommendations?.length > 0 ? (

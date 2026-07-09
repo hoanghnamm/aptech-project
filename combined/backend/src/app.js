@@ -13,6 +13,7 @@ const vetRoutes = require("./routes/vet.routes");
 const galleryRoutes = require("./routes/gallery.routes");
 const analyticsRoutes = require("./routes/analytics.routes");
 const newsRoutes = require("./routes/news.routes");
+const userRoutes = require("./routes/user.routes");
 const { notFound, errorHandler } = require("./middlewares/error.middleware");
 
 const app = express();
@@ -45,6 +46,7 @@ app.use("/api/vet", vetRoutes);
 app.use("/api/gallery", galleryRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/dog-news", newsRoutes);
+app.use("/api/user", userRoutes);
 
 // Serve uploaded gallery images
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));

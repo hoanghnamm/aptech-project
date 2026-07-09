@@ -10,6 +10,7 @@ import { BreedProfileOrigins } from "../../components/breed/BreedProfileOrigins"
 import { BreedProfileTaxonomy } from "../../components/breed/BreedProfileTaxonomy";
 import { BreedProfileCareHealth } from "../../components/breed/BreedProfileCareHealth";
 import { BreedProfileGallery } from "../../components/breed/BreedProfileGallery";
+import * as userApi from "../../api/user.api";
 
 export function BreedProfile() {
   const { breedId } = useParams();
@@ -27,6 +28,18 @@ export function BreedProfile() {
         if (data) {
           setBreed(data);
           trackBreedView(data.breedName);
+
+          // If logged in, record breed view to backend preferences
+          const token = localStorage.getItem("token");
+          if (token) {
+            userApi
+              .recordBreedView({
+                breedName: data.breedName,
+                size: data.lifestyleFilters?.size || data.size,
+                energyLevel: data.comparisonMetrics?.energyLevel || data.energyLevel,
+              })
+              .catch((err) => console.error("Cloud tracking error:", err));
+          }
 
           // Local storage tracking for client-side analytics
           try {

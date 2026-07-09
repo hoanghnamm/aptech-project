@@ -37,8 +37,19 @@ const uploadImage = async (req, res, next) => {
       tags: tagging.tags,
     });
 
-    const item = doc.toObject();
+    // Populate userId to include user name
+    const populated = await GalleryImage.findById(doc._id)
+      .populate("userId", "name email")
+      .lean();
+
+    const item = { ...populated };
     item.imageUrl = absoluteUrl(req, item.imageUrl);
+    // Flatten user info for frontend
+    if (item.userId && typeof item.userId === "object") {
+      item.uploaderName = item.userId.name || "Anonymous";
+    } else {
+      item.uploaderName = "Guest";
+    }
 
     return sendSuccess(res, item, "Image uploaded and tagged", 201);
   } catch (error) {
@@ -67,14 +78,26 @@ const listImages = async (req, res, next) => {
     const perPage = Math.min(60, Math.max(1, Number(limit) || 24));
     const skip = (Math.max(1, Number(page) || 1) - 1) * perPage;
 
-    const docs = await GalleryImage.find(query).sort({ createdAt: -1 }).skip(skip).limit(perPage).lean();
+    const docs = await GalleryImage.find(query)
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(perPage)
+      .populate("userId", "name email")
+      .lean();
 
     // Verify if physical image file exists on server disk
     const validItems = [];
     for (const d of docs) {
       const filePath = path.join(imageUploadService.UPLOAD_DIR, d.fileName);
       if (fs.existsSync(filePath)) {
-        validItems.push({ ...d, imageUrl: absoluteUrl(req, d.imageUrl) });
+        const item = { ...d, imageUrl: absoluteUrl(req, d.imageUrl) };
+        // Flatten user info
+        if (item.userId && typeof item.userId === "object") {
+          item.uploaderName = item.userId.name || "Anonymous";
+        } else {
+          item.uploaderName = "Guest";
+        }
+        validItems.push(item);
       } else {
         // Asynchronously delete record from DB since file is physically missing on disk
         GalleryImage.deleteOne({ _id: d._id }).catch((err) => 

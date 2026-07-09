@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getBreeds } from "../../api/breed.api";
 import { BreedCard } from "../../components/breed/BreedCard";
 import { DogNewsSection } from "../../components/news/DogNewsSection";
+import { useAuth } from "../../context/AuthContext";
 
 const FEATURES = [
   {
@@ -36,13 +37,30 @@ const FALLBACK_HERO =
 
 export default function Home() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [featuredBreeds, setFeaturedBreeds] = useState([]);
   const [loadingBreeds, setLoadingBreeds] = useState(true);
   const [heroBreed, setHeroBreed] = useState(null);
+  const [showWelcomePrompt, setShowWelcomePrompt] = useState(false);
 
   // Scroll reveal visibility for Feature cards
   const [cardsVisible, setCardsVisible] = useState(false);
   const cardsRef = useRef(null);
+
+  useEffect(() => {
+    // Show banner only if user is not logged in and hasn't closed it before
+    const isDismissed = localStorage.getItem("pawintel_hide_welcome_prompt") === "true";
+    if (!user && !isDismissed) {
+      setShowWelcomePrompt(true);
+    } else {
+      setShowWelcomePrompt(false);
+    }
+  }, [user]);
+
+  const handleDismissPrompt = () => {
+    localStorage.setItem("pawintel_hide_welcome_prompt", "true");
+    setShowWelcomePrompt(false);
+  };
 
   useEffect(() => {
     const fetchFeaturedBreeds = async () => {
@@ -87,6 +105,122 @@ export default function Home() {
 
   return (
     <main className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col gap-16 selection:bg-tertiary selection:text-on-tertiary">
+      {/* Welcome Sign Up / Sign In Banner */}
+      {showWelcomePrompt && (
+        <div style={{
+          position: "relative",
+          background: "linear-gradient(135deg, #154212, #0d2f0c)",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
+          borderRadius: "var(--radius-md)",
+          padding: "2rem var(--space-4)",
+          color: "#fff",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.25rem",
+          boxShadow: "0 10px 30px rgba(21, 66, 18, 0.15)",
+          animation: "fadeIn 0.5s ease-out",
+        }}>
+          {/* Dismiss Icon */}
+          <button
+            onClick={handleDismissPrompt}
+            style={{
+              position: "absolute",
+              top: "1rem",
+              right: "1rem",
+              background: "none",
+              border: "none",
+              color: "rgba(255, 255, 255, 0.6)",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "0.25rem",
+              borderRadius: "50%",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "#fff";
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "rgba(255, 255, 255, 0.6)";
+              e.currentTarget.style.background = "none";
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: "20px" }}>close</span>
+          </button>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", paddingRight: "2rem" }}>
+            <h2 style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.3rem, 1rem + 1vw, 1.8rem)",
+              fontWeight: 600,
+              color: "#fff",
+              margin: 0,
+            }}>
+              Join the Canine Field Guide Today
+            </h2>
+            <p style={{
+              fontFamily: "var(--font-ui)",
+              fontSize: "var(--fs-400)",
+              lineHeight: 1.6,
+              color: "rgba(255, 255, 255, 0.8)",
+              margin: 0,
+              maxWidth: "800px",
+            }}>
+              Sign up or Sign in for a better experience! Unlock cloud-synced breed research dossiers, continuous AI chatbot consultation sessions, and photo uploads tagged with your own profile.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+            <button
+              onClick={() => navigate("/register")}
+              style={{
+                background: "#fff",
+                color: "#154212",
+                border: "none",
+                borderRadius: "9999px",
+                padding: "0.625rem 1.75rem",
+                fontFamily: "var(--font-ui)",
+                fontSize: "var(--fs-300)",
+                fontWeight: 600,
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-1px)"}
+              onMouseLeave={(e) => e.currentTarget.style.transform = "none"}
+            >
+              Sign Up
+            </button>
+            <button
+              onClick={() => navigate("/login")}
+              style={{
+                background: "transparent",
+                color: "#fff",
+                border: "1px solid rgba(255, 255, 255, 0.4)",
+                borderRadius: "9999px",
+                padding: "0.625rem 1.75rem",
+                fontFamily: "var(--font-ui)",
+                fontSize: "var(--fs-300)",
+                fontWeight: 600,
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "#fff";
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.4)";
+                e.currentTarget.style.background = "transparent";
+              }}
+            >
+              Sign In
+            </button>
+          </div>
+        </div>
+      )}
       {/* Hero */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div className="flex flex-col gap-5">

@@ -18,6 +18,8 @@ import ChatbotPage from "./pages/Chatbot/ChatbotPage";
 import GalleryPage from "./pages/Gallery/GalleryPage";
 import InsightsPage from "./pages/Insights/InsightsPage";
 import SearchPage from "./pages/Search/SearchPage";
+import LoginPage from "./pages/Auth/LoginPage";
+import RegisterPage from "./pages/Auth/RegisterPage";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/insights" element={<InsightsPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
