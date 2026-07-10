@@ -182,18 +182,16 @@ export default function ChatbotPage() {
 
         {/* History Sidebar (desktop) */}
         {user && (
-          <div
-            className="hidden md:flex"
-            style={{
+          <div 
+            className="card-encyclopedia hidden md:flex flex-col"
+            style={{ 
+              height: '100%', 
+              overflow: 'hidden', 
               width: '16rem',
-              flexShrink: 0,
-              flexDirection: 'column',
-              background: '#fff',
-              border: '1px solid var(--border-color)',
-              borderRadius: 'var(--radius-md)',
-              overflow: 'hidden',
+              flexShrink: 0
             }}
           >
+            <div style={{ position: 'relative', zIndex: 10, width: '100%', display: 'flex', flexDirection: 'column', height: '100%' }}>
             {/* New Chat Button */}
             <div style={{ padding: '0.75rem' }}>
               <button
@@ -250,58 +248,61 @@ export default function ChatbotPage() {
                   No past conversations yet.
                 </div>
               ) : (
-                historyItems.map((item) => {
-                  const isActive = item._id === currentSessionId;
-                  return (
-                    <div
-                      key={item._id}
-                      onClick={() => loadHistoryItem(item)}
-                      style={{
-                        padding: '0.625rem 0.75rem',
-                        borderRadius: '0.375rem',
-                        cursor: 'pointer',
-                        marginBottom: '0.25rem',
-                        transition: 'all 0.15s ease',
-                        borderLeft: '3px solid',
-                        borderColor: isActive ? '#154212' : 'transparent',
-                        background: isActive ? '#f3f4ed' : 'transparent',
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!isActive) {
-                          e.currentTarget.style.background = '#f3f4ed';
-                          e.currentTarget.style.borderColor = '#154212';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!isActive) {
-                          e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.borderColor = 'transparent';
-                        }
-                      }}
-                    >
-                      <div style={{
-                        fontSize: 'var(--fs-300)',
-                        fontWeight: 600,
-                        color: '#1e1c10',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap',
-                      }}>
-                        {item.userMessage}
-                      </div>
-                      <div style={{ fontSize: '11px', color: '#999', marginTop: '2px' }}>
-                        {formatDate(item.updatedAt || item.createdAt)}
-                      </div>
-                    </div>
-                  );
-                })
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                  {historyItems.map((s) => {
+                    const isActive = s._id === currentSessionId;
+                    return (
+                      <li key={s._id}>
+                        <button
+                          onClick={() => loadHistoryItem(s)}
+                          style={{
+                            width: '100%',
+                            textAlign: 'left',
+                            padding: '0.5rem 0.75rem',
+                            background: isActive ? 'rgba(21, 66, 18, 0.05)' : 'transparent',
+                            border: 'none',
+                            borderRadius: '0.375rem',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '0.25rem',
+                            borderLeft: '3px solid',
+                            borderColor: isActive ? '#154212' : 'transparent',
+                            transition: 'all 0.2s ease'
+                          }}
+                          onMouseEnter={(e) => {
+                            if (!isActive) {
+                              e.currentTarget.style.background = 'rgba(21, 66, 18, 0.02)';
+                              e.currentTarget.style.borderColor = '#154212';
+                            }
+                          }}
+                          onMouseLeave={(e) => {
+                            if (!isActive) {
+                              e.currentTarget.style.background = 'transparent';
+                              e.currentTarget.style.borderColor = 'transparent';
+                            }
+                          }}
+                        >
+                          <span style={{ fontSize: 'var(--fs-300)', fontWeight: isActive ? 600 : 400, color: isActive ? '#154212' : '#42493e', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            {s.userMessage || 'Conversation'}
+                          </span>
+                          <span style={{ fontSize: '11px', color: '#72796e' }}>
+                            {formatDate(s.updatedAt || s.createdAt)}
+                          </span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
               )}
+            </div>
             </div>
           </div>
         )}
 
         {/* Main Chat Area */}
-        <div className="card-standard" style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '0', overflow: 'hidden' }}>
+        <div className="card-encyclopedia" style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '0', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', zIndex: 10, width: '100%', display: 'flex', flexDirection: 'column', height: '100%' }}>
           {/* Top Header info */}
           <div style={{ padding: 'var(--space-2) var(--space-3)', borderBottom: '1px solid rgba(37, 34, 30, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)' }}>
@@ -451,6 +452,7 @@ export default function ChatbotPage() {
               {loading ? '...' : 'Send'}
             </button>
           </form>
+          </div>
         </div>
       </div>
     </div>

@@ -36,22 +36,25 @@ export function BreedProfileGallery({ remainingImages }) {
 
           return (
             <div key={idx} className={`relative group ${colSpan} ${heightClass} flex flex-col`}>
-              <div className="relative p-2.5 md:p-3.5 bg-[#F5EFE3] border-[6px] md:border-[12px] border-[#4E3629] rounded-[4px] shadow-[0_12px_30px_rgba(40,25,10,0.3)] h-full w-full overflow-hidden transition-all duration-700 hover:shadow-[0_20px_50px_rgba(40,25,10,0.5)] md:hover:-translate-y-2 group-hover:border-[#3A261C]">
+              <div className="relative p-2.5 md:p-3.5 bg-[#F5EFE3] border-[6px] md:border-[12px] border-[#4E3629] rounded-[4px] shadow-[0_12px_30px_rgba(40,25,10,0.3)] h-full w-full transition-all duration-700 hover:shadow-[0_20px_50px_rgba(40,25,10,0.5)] md:hover:-translate-y-2 group-hover:border-[#3A261C] flex flex-col">
                 <div className="absolute inset-0.5 border border-[#e3d7bf] pointer-events-none rounded-[2px] z-10" />
-                <img
-                  src={img.url}
-                  alt={img.caption || "Archival documentation"}
-                  className="w-full h-full object-cover filter grayscale-[20%] sepia-[15%] group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
                 
-                {img.caption && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#2A1C14]/90 via-[#2A1C14]/60 to-transparent p-6 pt-16 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out z-20">
-                    <p className="font-serif italic text-[14px] md:text-[16px] text-[#F5EFE3] leading-relaxed drop-shadow-md text-center">
-                      {img.caption}
-                    </p>
-                  </div>
-                )}
+                <div className="relative w-full h-full overflow-hidden rounded-[2px]">
+                  <img
+                    src={img.url}
+                    alt={img.caption || "Archival documentation"}
+                    className="w-full h-full object-cover filter grayscale-[20%] sepia-[15%] group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  
+                  {img.caption && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#2A1C14]/90 via-[#2A1C14]/60 to-transparent p-6 pt-16 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out z-20">
+                      <p className="font-serif italic text-[14px] md:text-[16px] text-[#F5EFE3] leading-relaxed drop-shadow-md text-center">
+                        {img.caption}
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           );

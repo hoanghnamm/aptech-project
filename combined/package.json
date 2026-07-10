@@ -4,8 +4,8 @@
   "description": "PawIntel multi-service concurrent launcher",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently --kill-others-on-fail --prefix-colors \"bgMagenta.bold,bgBlue.bold,bgGreen.bold\" --names \"Python,Node,React\" \"npm run dev:python\" \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "dev:python": "cmd /c \"cd python-backend && venv\\Scripts\\python -m app.main\"",
+    "dev": "node dev.js",
+    "dev:python": "C:\\Windows\\System32\\cmd.exe /c \"cd python-backend && venv\\Scripts\\python -m app.main\"",
     "dev:backend": "npm --prefix backend run dev",
     "dev:frontend": "npm --prefix frontend run dev"
   },

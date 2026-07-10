@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getBreeds } from "../../api/breed.api";
 import { BreedCard } from "../../components/breed/BreedCard";
 import { DogNewsSection } from "../../components/news/DogNewsSection";
+import { FunFactBanner } from "../../components/funfact/FunFactBanner";
 import { useAuth } from "../../context/AuthContext";
 
 const FEATURES = [
@@ -65,12 +66,38 @@ export default function Home() {
   useEffect(() => {
     const fetchFeaturedBreeds = async () => {
       try {
-        const data = await getBreeds({ limit: 3 });
-        setFeaturedBreeds(data.items || []);
+        // Step 1: Fetch total count first with limit 1
+        const initial = await getBreeds({ limit: 1 });
+        const total = initial.total || 0;
+        
+        let items = [];
+        if (total > 0) {
+          if (total <= 100) {
+            // Fetch all breeds if the database count is small
+            const data = await getBreeds({ limit: 100 });
+            items = data.items || [];
+          } else {
+            // Fetch 3 random pages if the database count is large
+            const randomIndices = new Set();
+            while (randomIndices.size < Math.min(3, total)) {
+              randomIndices.add(1 + Math.floor(Math.random() * total));
+            }
+            
+            const promises = Array.from(randomIndices).map(idx => 
+              getBreeds({ limit: 1, page: idx })
+            );
+            const results = await Promise.all(promises);
+            items = results.map(r => r.items?.[0]).filter(Boolean);
+          }
+        }
+
+        // Shuffle and select 3 breeds
+        const shuffled = [...items].sort(() => 0.5 - Math.random());
+        setFeaturedBreeds(shuffled.slice(0, 3));
 
         // Pick one random record from the whole archive for the hero image
-        if (data.total > 0) {
-          const page = 1 + Math.floor(Math.random() * data.total);
+        if (total > 0) {
+          const page = 1 + Math.floor(Math.random() * total);
           const random = await getBreeds({ limit: 1, page });
           if (random.items?.[0]?.thumbnail) setHeroBreed(random.items[0]);
         }
@@ -251,23 +278,36 @@ export default function Home() {
           </div>
         </div>
         <div
-          className={`aspect-[4/3] w-full overflow-hidden rounded-lg border border-secondary/20 bg-surface-container-high relative ${
+          className={`p-3 md:p-4 flex flex-col gap-3 ${
             heroBreed ? "cursor-pointer group" : ""
           }`}
           onClick={() => heroBreed && navigate(`/breeds/${heroBreed.breedId}`)}
         >
-          <img
-            src={heroBreed?.thumbnail || FALLBACK_HERO}
-            alt={heroBreed ? `${heroBreed.name} portrait` : "Portrait of a dog"}
-            className="w-full h-full object-cover animate-[fadeIn_0.8s_ease-out]"
-          />
+          <div className="card-museum-green-frame aspect-[4/3] w-full relative z-10">
+            <img
+              src={heroBreed?.thumbnail || FALLBACK_HERO}
+              alt={heroBreed ? `${heroBreed.name} portrait` : "Portrait of a dog"}
+              className="w-full h-full object-cover filter grayscale-[15%] sepia-[10%] group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-700 animate-[fadeIn_0.8s_ease-out]"
+            />
+          </div>
           {heroBreed && (
-            <span className="absolute bottom-3 left-3 px-2.5 py-1 bg-surface/90 text-on-surface font-label-md font-semibold text-[10px] uppercase tracking-wider rounded-sm backdrop-blur-md group-hover:bg-surface transition-colors">
-              {heroBreed.name}
-            </span>
+            <div className="flex justify-between items-center relative z-10 px-1 pb-1 mt-2">
+              <span className="font-headline-lg-mobile md:font-headline-lg text-[18px] text-primary group-hover:text-surface-tint transition-colors">
+                {heroBreed.name}
+              </span>
+              {heroBreed.origin && (
+                <span className="flex items-center gap-1.5 font-label-md uppercase tracking-widest text-[10px] text-secondary font-semibold border border-secondary/15 px-2.5 py-1 bg-surface-container-lowest">
+                  <span className="material-symbols-outlined text-[13px] text-[#154212] leading-none">public</span>
+                  {heroBreed.origin}
+                </span>
+              )}
+            </div>
           )}
         </div>
       </section>
+
+      {/* Fun Fact Banner */}
+      <FunFactBanner />
 
       {/* Latest Dog Health News Section */}
       <DogNewsSection />
@@ -282,16 +322,17 @@ export default function Home() {
             key={f.path}
             onClick={() => navigate(f.path)}
             style={{ transitionDelay: `${index * 150}ms` }}
-            className={`group cursor-pointer border border-secondary/15 bg-white p-6 flex flex-col gap-4 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(21,66,18,0.06)] hover:bg-white transition-all duration-500 transform ease-out ${
+            className={`group relative cursor-pointer border border-secondary/20 bg-surface p-6 md:p-8 flex flex-col gap-4 shadow-none hover:bg-surface-container transition-colors duration-500 transform ease-out ${
               cardsVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-12"
             }`}
           >
-            <span className="material-symbols-outlined text-3xl text-primary transform group-hover:scale-110 transition-transform duration-300">
+            <div className="absolute inset-1 border border-secondary/10 pointer-events-none" />
+            <span className="relative z-10 material-symbols-outlined text-3xl text-primary transform group-hover:scale-110 transition-transform duration-300">
               {f.icon}
             </span>
-            <span className="self-start px-2.5 py-1 bg-[#e3a392]/20 text-[#1e1c10] font-label-md font-semibold text-[10px] uppercase tracking-wider rounded-sm">
+            <span className="relative z-10 self-start px-2.5 py-1 bg-terracotta-accent/20 text-ink-text font-label-md font-semibold text-[10px] uppercase tracking-wider rounded-none">
               {f.tag}
             </span>
             <h2 className="font-display font-semibold text-2xl text-primary group-hover:text-primary-coral-hover transition-colors leading-snug">

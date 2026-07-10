@@ -125,7 +125,7 @@ function WeightGauge({ weightStatus }) {
   const statusLabels = { underweight: 'Underweight', healthy: 'Healthy Weight', overweight: 'Overweight' };
 
   return (
-    <div className="bg-surface-container-low border border-border-taupe rounded-xl p-4 md:p-6 flex flex-col gap-2">
+    <div className="card-encyclopedia p-4 md:p-6 flex flex-col gap-2">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span className="font-label-md text-label-md uppercase text-secondary">Weight Status</span>
         <span style={{ fontSize: 'var(--fs-body-sm)', fontWeight: 600, color: statusColors[status] }}>
@@ -151,7 +151,7 @@ function HealthAlertsPanel({ alerts, breedName }) {
   const severityIcons = { critical: '🚨', high: '⚠️', medium: '🔶', low: 'ℹ️' };
 
   return (
-    <section className="bg-surface-container-low border border-border-taupe rounded-xl p-6 md:p-8 flex flex-col gap-6">
+    <section className="card-encyclopedia p-6 md:p-8 flex flex-col gap-6">
       <div className="flex items-center gap-2 border-b border-border-taupe pb-4">
         <span className="material-symbols-outlined text-terracotta-accent" style={{ fontVariationSettings: "'FILL' 0" }}>health_and_safety</span>
         <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Health Risks for {breedName}</h2>
@@ -195,7 +195,7 @@ function WeeklyMealPlanner({ mealPlan, caloriesPerDay, mealsPerDay, recommendedF
   }) || mealPlan[activeDay] || mealPlan[0];
 
   return (
-    <section className="bg-surface-container-low border border-border-taupe rounded-xl p-6 md:p-8">
+    <section className="card-encyclopedia p-6 md:p-8">
       <div className="flex items-center gap-2 mb-6 border-b border-border-taupe pb-4">
         <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 0" }}>calendar_month</span>
         <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Weekly Meal Plan</h2>
@@ -681,7 +681,7 @@ function ResultsView({ result, onBack, previousResult }) {
       {/* Primary Metrics Row */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter">
         {/* Calories */}
-        <div className="bg-surface-container-low border border-border-taupe rounded-xl p-4 md:p-6 flex flex-col gap-6 justify-between">
+        <div className="card-encyclopedia p-4 md:p-6 flex flex-col gap-6 justify-between">
           <h3 className="font-label-md text-label-md uppercase text-secondary">Target Calories / Day</h3>
           <div className="flex flex-col gap-1">
             <div className="flex items-baseline gap-1">
@@ -697,7 +697,7 @@ function ResultsView({ result, onBack, previousResult }) {
         </div>
 
         {/* Feeding Frequency */}
-        <div className="bg-surface-container-low border border-border-taupe rounded-xl p-4 md:p-6 flex flex-col gap-6">
+        <div className="card-encyclopedia p-4 md:p-6 flex flex-col gap-6">
           <h3 className="font-label-md text-label-md uppercase text-secondary">Feeding Frequency</h3>
           <div className="flex flex-col">
             <div className="flex items-baseline gap-1 border-b border-border-taupe pb-2 mb-2">
@@ -709,7 +709,7 @@ function ResultsView({ result, onBack, previousResult }) {
         </div>
 
         {/* Confidence */}
-        <div className="bg-surface-container-high border border-border-taupe rounded-xl p-4 md:p-6 flex flex-col gap-6">
+        <div className="card-encyclopedia p-4 md:p-6 flex flex-col gap-6">
           <h3 className="font-label-md text-label-md uppercase text-secondary">Analysis Confidence</h3>
           <div className="flex flex-col gap-2">
             <span className="font-headline-lg text-headline-lg text-terracotta-accent">{confidence}%</span>
@@ -720,7 +720,7 @@ function ResultsView({ result, onBack, previousResult }) {
         </div>
 
         {/* Body Condition */}
-        <div className="bg-surface-container-low border border-border-taupe rounded-xl p-4 md:p-6 flex flex-col gap-6">
+        <div className="card-encyclopedia p-4 md:p-6 flex flex-col gap-6">
           <h3 className="font-label-md text-label-md uppercase text-secondary">Body Condition</h3>
           <div className="flex flex-col">
             <div className="flex items-baseline gap-1">
@@ -748,7 +748,7 @@ function ResultsView({ result, onBack, previousResult }) {
         <div className="md:col-span-8 flex flex-col gap-gutter">
           {/* Macronutrients */}
           {rec.macronutrients && (
-            <div className="bg-surface-container-low border border-border-taupe rounded-xl p-6 md:p-8">
+            <div className="card-encyclopedia p-6 md:p-8">
               <div className="flex items-center gap-2 mb-8 border-b border-border-taupe pb-4">
                 <span className="material-symbols-outlined text-terracotta-accent" style={{ fontVariationSettings: "'FILL' 0" }}>pie_chart</span>
                 <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Macronutrient Profile</h2>
@@ -773,7 +773,7 @@ function ResultsView({ result, onBack, previousResult }) {
           )}
 
           {/* Breed Overview Ledger */}
-          <section className="bg-surface-container border border-border-taupe rounded-xl overflow-hidden">
+          <section className="card-encyclopedia overflow-hidden">
             <div className="flex items-center justify-between p-4 md:p-6 bg-surface-container-low border-b border-border-taupe">
               <h2 className="font-headline-lg text-[24px] md:text-headline-lg text-primary">Breed Overview</h2>
               <span className="material-symbols-outlined text-secondary cursor-pointer" style={{ fontVariationSettings: "'FILL' 0" }}>info</span>
@@ -831,7 +831,7 @@ function ResultsView({ result, onBack, previousResult }) {
 
         {/* Right Sidebar */}
         <div className="md:col-span-4 h-full">
-          <aside className="bg-surface-container-low border border-border-taupe rounded-xl p-6 h-full flex flex-col gap-6 sticky top-8">
+          <aside className="card-encyclopedia p-6 h-full flex flex-col gap-6 sticky top-8">
             {/* Dog Bowl Image Header */}
             <div className="w-full flex justify-center mb-2">
               <img
@@ -1096,7 +1096,7 @@ export default function NutritionPage() {
   };
 
   return (
-    <div className="bg-surface text-on-surface antialiased font-body-md min-h-screen relative overflow-x-hidden">
+    <div className="bg-surface text-on-surface antialiased font-body-md min-h-screen relative">
       {/* Background Pattern Wrapper */}
       <div className="fixed inset-0 pattern-bg opacity-40 pointer-events-none z-[-1]"></div>
       

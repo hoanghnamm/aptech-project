@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { uploadGalleryImage, getGallery } from '../../api/gallery.api';
 import { useAuth } from '../../context/AuthContext';
+import { FunFactBanner } from '../../components/funfact/FunFactBanner';
 
 export default function GalleryPage() {
   const { user } = useAuth();
@@ -157,6 +158,11 @@ export default function GalleryPage() {
         <p className="page__subtitle" style={{ color: 'var(--sepia)' }}>
           Contribute to the PawIntel biological records. Upload an image, and our AI will automatically classify and tag the specimen.
         </p>
+      </div>
+
+      {/* Fun Facts Section */}
+      <div className="mb-8">
+        <FunFactBanner />
       </div>
 
       {/* Success Notification */}

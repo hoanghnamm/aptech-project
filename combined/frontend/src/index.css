@@ -3,6 +3,23 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
+@layer components {
+  .card-encyclopedia {
+    @apply relative bg-white border border-slate-200 shadow-none transition-colors;
+  }
+  .card-encyclopedia-hover {
+    @apply hover:bg-slate-50 cursor-pointer;
+  }
+  .card-encyclopedia::after {
+    content: '';
+    @apply absolute inset-1 border border-slate-100 pointer-events-none;
+  }
+}
+
+html, body {
+  overscroll-behavior: none;
+}
+
 :root {
   /* Theme: Premium Editorial Organic (forest green + warm cream) */
   --primary-coral: #154212;          /* primary (deep forest green) */
@@ -55,10 +72,10 @@
   --space-4: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
   --space-6: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
 
-  /* Fluid radii */
-  --radius-sm: clamp(0.375rem, 0.3rem + 0.3vw, 0.6rem);
-  --radius-md: clamp(0.625rem, 0.5rem + 0.6vw, 1rem);
-  --radius-lg: clamp(1rem, 0.7rem + 1.2vw, 1.5rem);
+  /* Fluid radii replaced with sharp edges for print/editorial aesthetic */
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
 }
 
 /* ponytail: box-sizing only. Don't reset margin/padding here — an unlayered
@@ -128,6 +145,39 @@ h1, h2, h3, h4 {
   padding: var(--space-3);
   box-shadow: var(--shadow-sm);
 }
+
+.card-museum-green-frame {
+  background-color: #154212; /* Forest green matting */
+  border: 1px solid #c5a059; /* Slim outer brass/gold line */
+  border-radius: 0px;
+  padding: 8px; /* Clean green matting margin */
+  box-shadow: 
+    0 16px 36px rgba(21, 66, 18, 0.08), 
+    0 4px 12px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-museum-green-frame::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  right: 7px;
+  bottom: 7px;
+  border: 1px solid rgba(197, 160, 89, 0.4); /* Fine inner gold line on the matting edge */
+  pointer-events: none;
+}
+
+.card-museum-green-frame:hover {
+  border-color: #d4af37; /* Brighter gold on hover */
+  box-shadow: 
+    0 24px 48px rgba(21, 66, 18, 0.12), 
+    0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+
 
 .input-text {
   width: 100%;
@@ -212,9 +262,10 @@ h1, h2, h3, h4 {
 /* --- GLOBAL RESPONSIVE SCALING & SCROLLBAR --- */
 html {
   font-size: 100%; /* Base 16px */
-  scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: rgba(98, 94, 80, 0.3) transparent;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 /* Scale down ALL rem-based sizing (padding, fonts, margins) on smaller screens automatically */
 @media (max-width: 1280px) { html { font-size: 96%; } }
@@ -231,6 +282,16 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-thumb {
   background-color: rgba(98, 94, 80, 0.3);
   border-radius: 4px;
+}
+
+/* Hide scrollbars on body and root to prevent double scrollbars on Windows/Chrome */
+body, #root {
+  scrollbar-width: none !important;
+}
+body::-webkit-scrollbar, #root::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* --- CUSTOM MINIMAL SIDEBAR SCROLLBAR --- */
@@ -1046,4 +1107,15 @@ textarea.nutrition-input {
   background-repeat: repeat;
   background-size: 500px;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.95); }
+}
+
 

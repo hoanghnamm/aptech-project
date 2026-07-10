@@ -105,7 +105,7 @@ export function ImageAnalyzer() {
   const isSplit = loading || results || error;
 
   return (
-    <main className="w-full px-margin-mobile md:px-margin-desktop py-12 flex flex-col justify-center selection:bg-tertiary selection:text-on-tertiary overflow-x-hidden">
+    <main className="w-full px-margin-mobile md:px-margin-desktop py-12 flex flex-col justify-center selection:bg-tertiary selection:text-on-tertiary">
       {/* HEADER TEXT */}
       <div
         className={`text-center max-w-2xl mx-auto flex flex-col gap-4 overflow-hidden transition-all duration-[800ms] ease-in-out ${
@@ -137,13 +137,28 @@ export function ImageAnalyzer() {
           }`}
         >
           <label
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleFileDrop}
-            className={`w-full bg-surface-container-lowest flex flex-col items-center justify-center gap-5 relative overflow-hidden group shadow-none transition-all duration-[1000ms] ${
+            onDragOver={(e) => { e.preventDefault(); e.currentTarget.style.backgroundColor = 'var(--bg-pale-beige)'; e.currentTarget.style.borderColor = 'var(--primary-coral)'; }}
+            onDragLeave={(e) => { e.preventDefault(); e.currentTarget.style.backgroundColor = 'var(--bg-white)'; e.currentTarget.style.borderColor = 'var(--border-color)'; }}
+            onDrop={(e) => { 
+              e.currentTarget.style.backgroundColor = 'var(--bg-white)'; 
+              e.currentTarget.style.borderColor = 'var(--border-color)'; 
+              handleFileDrop(e); 
+            }}
+            className={`w-full flex flex-col items-center justify-center relative overflow-hidden group transition-all duration-[1000ms] ${
               previewUrl
-                ? "border border-secondary/20 p-3 rounded-sm"
-                : "h-[380px] md:h-[460px] border border-dashed border-secondary/40 cursor-pointer hover:bg-surface-container rounded-sm"
+                ? "border border-secondary/20 p-3"
+                : "h-[380px] md:h-[460px] cursor-pointer"
             }`}
+            style={
+              !previewUrl ? {
+                borderStyle: 'dashed',
+                borderWidth: '2px',
+                borderColor: 'var(--border-color)',
+                backgroundColor: 'var(--bg-white)',
+                textAlign: 'center',
+                transition: 'all 0.2s ease',
+              } : {}
+            }
           >
             {previewUrl ? (
               <ImagePreview
@@ -152,7 +167,17 @@ export function ImageAnalyzer() {
                 results={results}
               />
             ) : (
-              <UploadBox />
+              <div style={{ pointerEvents: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ fontSize: 'clamp(2rem, 1.5rem + 3vw, 2.5rem)', marginBottom: '0.5rem' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 'inherit', color: 'var(--tertiary-accent)' }}>add_photo_alternate</span>
+                </div>
+                <span style={{ color: 'var(--primary-coral)', fontWeight: '600', fontSize: 'var(--fs-btn)', fontFamily: 'var(--font-display)', display: 'block' }}>
+                  Click or Drag & Drop to Upload Specimen
+                </span>
+                <p style={{ color: 'var(--sepia)', fontSize: 'var(--fs-300)', fontStyle: 'italic' }}>
+                  Supports JPG, PNG, WEBP.
+                </p>
+              </div>
             )}
             {!isSplit && (
               <input

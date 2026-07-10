@@ -60,9 +60,14 @@ export default {
         "tertiary-container": "#582d21"
       },
       borderRadius: {
-        "DEFAULT": "0.25rem",
-        "lg": "0.5rem",
-        "xl": "0.75rem",
+        "none": "0px",
+        "sm": "0px",
+        "DEFAULT": "2px",
+        "md": "2px",
+        "lg": "2px",
+        "xl": "4px",
+        "2xl": "4px",
+        "3xl": "4px",
         "full": "9999px"
       },
       spacing: {

@@ -14,6 +14,7 @@ const galleryRoutes = require("./routes/gallery.routes");
 const analyticsRoutes = require("./routes/analytics.routes");
 const newsRoutes = require("./routes/news.routes");
 const userRoutes = require("./routes/user.routes");
+const funfactRoutes = require("./routes/funfact.routes");
 const { notFound, errorHandler } = require("./middlewares/error.middleware");
 
 const app = express();
@@ -54,6 +55,7 @@ app.use("/api/gallery", galleryRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/dog-news", newsRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/funfacts", funfactRoutes);
 
 // Serve uploaded gallery images
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
