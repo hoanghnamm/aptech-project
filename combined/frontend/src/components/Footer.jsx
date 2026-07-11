@@ -31,11 +31,10 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
-      className={`w-full bg-[#0d2f0c] text-white border-t border-white/10 mt-20 md:mt-28 transition-all duration-1000 ease-out transform ${
-        isVisible
-          ? "opacity-100 translate-y-0 scale-100"
-          : "opacity-0 translate-y-8 scale-98"
-      }`}
+      className={`w-full bg-[#0d2f0c] text-white border-t border-white/10 mt-20 md:mt-28 transition-all duration-1000 ease-out transform ${isVisible
+        ? "opacity-100 translate-y-0 scale-100"
+        : "opacity-0 translate-y-8 scale-98"
+        }`}
     >
       {/* 1. Newsletter subscription section - Compact Py */}
       <div className="border-b border-white/10 py-5 bg-[#0a2509]">
@@ -48,7 +47,7 @@ export function Footer() {
               Get the latest dog health, nutrition updates, and expert breed advice.
             </p>
           </div>
-          
+
           <form onSubmit={handleSubscribe} className="flex w-full md:w-auto max-w-sm">
             <input
               type="email"
@@ -152,7 +151,7 @@ export function Footer() {
           <div>
             &copy; {new Date().getFullYear()} Canis Archive. All biological and archival records reserved.
           </div>
-          
+
           <div className="flex items-center gap-1.5">
             <span>Powered by</span>
             <span className="font-headline-lg font-bold italic tracking-wide text-white/60 text-xs">PawPal</span>

@@ -120,8 +120,8 @@ function buildNutritionProfile(breed) {
 function macroTextToPercent(type, level) {
   const ranges = {
     protein: { low: { min: 18, max: 22 }, medium: { min: 22, max: 26 }, high: { min: 26, max: 32 } },
-    fat:     { low: { min: 8, max: 12 }, medium: { min: 12, max: 18 }, high: { min: 18, max: 25 } },
-    carb:    { low: { min: 35, max: 45 }, medium: { min: 45, max: 55 }, high: { min: 50, max: 60 } },
+    fat: { low: { min: 8, max: 12 }, medium: { min: 12, max: 18 }, high: { min: 18, max: 25 } },
+    carb: { low: { min: 35, max: 45 }, medium: { min: 45, max: 55 }, high: { min: 50, max: 60 } },
   };
   const lvl = String(level || "medium").toLowerCase();
   return ranges[type]?.[lvl] || ranges[type]?.medium || { min: 20, max: 30 };
